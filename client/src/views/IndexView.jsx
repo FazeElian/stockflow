@@ -1,8 +1,45 @@
 const IndexView = () => {
     return (
-        <div>
-            <h1>Index View</h1>
-        </div>
+        <main className="content-page--company">
+            <h1 className="color-white">Index View</h1>
+            <h1 className="color-white">Index View</h1>
+            <h1 className="color-white">Index View</h1>
+            <h1 className="color-white">Index View</h1>
+            <h1 className="color-white">Index View</h1>
+            <h1 className="color-white">Index View</h1>
+            <h1 className="color-white">Index View</h1>
+            <h1 className="color-white">Index View</h1>
+            <h1 className="color-white">Index View</h1>
+            <h1 className="color-white">Index View</h1>
+            <h1 className="color-white">Index View</h1>
+            <h1 className="color-white">Index View</h1>
+            <h1 className="color-white">Index View</h1>
+            <h1 className="color-white">Index View</h1>
+            <h1 className="color-white">Index View</h1>
+            <h1 className="color-white">Index View</h1>
+            <h1 className="color-white">Index View</h1>
+            <h1 className="color-white">Index View</h1>
+            <h1 className="color-white">Index View</h1>
+            <h1 className="color-white">Index View</h1>
+            <h1 className="color-white">Index View</h1>
+            <h1 className="color-white">Index View</h1>
+            <h1 className="color-white">Index View</h1>
+            <h1 className="color-white">Index View</h1>
+            <h1 className="color-white">Index View</h1>
+            <h1 className="color-white">Index View</h1>
+            <h1 className="color-white">Index View</h1>
+            <h1 className="color-white">Index View</h1>
+            <h1 className="color-white">Index View</h1>
+            <h1 className="color-white">Index View</h1>
+            <h1 className="color-white">Index View</h1>
+            <h1 className="color-white">Index View</h1>
+            <h1 className="color-white">Index View</h1>
+            <h1 className="color-white">Index View</h1>
+            <h1 className="color-white">Index View</h1>
+            <h1 className="color-white">Index View</h1>
+            <h1 className="color-white">Index View</h1>
+            <h1 className="color-white">Index View</h1>
+        </main>
     )
 }
 

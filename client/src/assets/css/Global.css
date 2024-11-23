@@ -1,0 +1,104 @@
+/* Fonts */
+/* Inter */
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+/* Afacad */
+@import url('https://fonts.googleapis.com/css2?family=Afacad:ital,wght@0,400..700;1,400..700&display=swap');
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    background-color: #0B0B0D;
+}
+
+a {
+    text-decoration: none;
+}
+
+.content-page--company {
+    display: flex;
+    width: 100%;
+    margin-top: 6rem;
+    flex-direction: column;
+}
+
+/* Font classes */
+.font-inter {
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+}
+
+.font-afacad {
+    font-family: "Afacad", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+}
+
+/* Background colors */
+    /* Transparent */
+    .bg-transparent {
+        background: transparent;
+    }
+
+    /* Black */
+    .bg-black {
+        background-color: #0B0B0D;
+    }
+
+    /* Black light */
+    .black-light {
+        background-color: #212026;
+    }
+
+    /* Gray */
+    .gray {
+        background-color: #89888C;
+    }
+
+    /* White */
+    .bg-white {
+        background-color: #F2F2F2;
+    }
+
+    /* Blue */
+    .bg-blue {
+        background-color: #11213B;
+    }
+
+    /* Green */
+    .bg-green {
+        background-color: #194026;
+    }
+
+    /* Brown */
+    .bg-brown {
+        background-color: #403116;
+    }
+
+    /* Purple */
+    .bg-purple {
+        background-color:  #2F1E40;
+    }
+
+    /* Pink */
+    .bg-pink {
+        background-color: #401A33;
+    }
+
+/* Font colors */
+    /* Black */
+    .color-black {
+        color: #070709;
+    }
+        
+    /* White */
+    .color-white {
+        color: #F2F2F2;
+    }
+
+    /* Gray */
+    .color-gray {
+        color: #89888C;
+    }

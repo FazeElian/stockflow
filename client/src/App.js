@@ -1,8 +1,8 @@
 import { Routes, Route } from "react-router-dom";
 
 // Base components
-import { HeaderAdmin } from "./views/components/HeaderAdmin";
-import { HeaderCompany } from "./views/components/HeaderCompany";
+import { HeaderAdmin } from "./components/HeaderAdmin";
+import { HeaderCompany } from "./components/HeaderCompany";
 
 // View components
 import IndexView from "./views/IndexView";
