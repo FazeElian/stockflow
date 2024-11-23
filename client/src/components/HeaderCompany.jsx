@@ -1,7 +1,7 @@
 import { Outlet, Link } from "react-router-dom";
 
 // React hooks
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 // Styles for this component
 import "../assets/css/components/HeaderCompany.css";
@@ -41,13 +41,33 @@ const HeaderCompany = () => {
                 setMenu(false);
             }
         };
-    
+
         window.addEventListener('scroll', handleScrollMenu); // Adding Scroll Event
-    
+
         return () => {
             window.removeEventListener('scroll', handleScrollMenu);
         };
     }, [menu]);
+
+    // Create a variable that will storage the reference of the menu
+    const menuRef = useRef(null);
+
+    // Function to handle when user clicks outside of the menu div
+    const handleClickOutside = (event) => {
+        if (menuRef.current && !menuRef.current.contains(event.target)) {
+            setMenu(false);
+        }
+    };
+
+    useEffect(() => {
+        // Add the event listener when the component is enabled
+        document.addEventListener("mousedown", handleClickOutside);
+
+        return () => {
+            // Clear the event listener when the component is disabled
+            document.removeEventListener("mousedown", handleClickOutside);
+        };
+    }, []);
 
     return (
         <>
@@ -57,7 +77,7 @@ const HeaderCompany = () => {
                         <img src={Logo} alt="StockFlow" className="bg-transparent" />
                     </Link>
                 </nav>
-                <nav className={ `nav-list--company ${menu ? "active" : ""}` }>
+                <nav className={ `nav-list--company ${menu ? "active" : ""}` } ref={menuRef}>
                     <section className="sect-list-nav-list--company">
                         <Link to="/" className="item-nav-list--company bg-transparent">
                             <img src={HomeIcon} alt="" />
@@ -100,4 +120,4 @@ const HeaderCompany = () => {
     )
 }
 
-export { HeaderCompany }; 
+export { HeaderCompany };
