@@ -47,14 +47,24 @@ a {
         background-color: #0B0B0D;
     }
 
+    /* Black medium */
+    .bg-black-medium {
+        background-color: #0E0E10;
+    }
+        
     /* Black light */
-    .black-light {
+    .bg-black-light {
         background-color: #212026;
     }
 
     /* Gray */
     .gray {
         background-color: #89888C;
+    }
+    
+    /* Gray dark */
+    .bg-gray-dark {
+        background-color: #1D1C21;
     }
 
     /* White */

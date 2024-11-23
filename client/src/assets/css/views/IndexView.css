@@ -138,6 +138,75 @@
             transition: .3s ease-in;
         }
 
+.app-features {
+    display: flex;
+    width: 100%;
+    height: auto;
+    align-items: center;
+    justify-content: center;
+    padding: 4rem 2rem 4rem;
+    flex-direction: column;
+}
+
+    .app-features h1 {
+        font-size: 1.8rem;
+    }
+
+    .items-app-features {
+        display: flex;
+        width: 100%;
+        height: auto;
+        margin-top: 4rem;
+        align-items: center;
+        justify-content: center;
+        gap: 3rem;
+        flex-wrap: wrap;
+    }
+
+        .item-app-features {
+            display: flex;
+            width: 450px;
+            flex-basis: 450px;
+            height: auto;
+            min-height: 200px;
+            background-color: gray;
+            border-radius: 10px;
+            padding: 2.5rem 2rem 2.5rem;
+            border: 1px solid #89888C;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+            .top-item-app-features {
+                display: flex;
+                width: 100%;
+                height: auto;
+                align-items: flex-end;
+            }
+
+                .top-item-app-features img {
+                    width: 30px;
+                    height: 30px;
+                }
+
+                .top-item-app-features h2 {
+                    font-size: 22px;
+                    margin-left: 1rem;
+                    font-weight: 450;
+                }
+
+            .btm-item-app-features {
+                display: flex;
+                width: 100%;
+                height: auto;
+                margin-top: 1.5rem;
+            }
+
+                .btm-item-app-features p {
+                    line-height: 24px;
+                    font-size: 16px;
+                }
+
 /* Responsive 1440px */
 @media screen and (max-width: 1440px) {
     .banner-services {
@@ -180,6 +249,33 @@
     .btn-start-now-banner-services {
         padding: 0.8rem 2rem 0.8rem;
     }
+
+    .app-features {
+        padding: 4rem 5rem 4rem;
+    }
+
+    .app-features h1 {
+        font-size: 1.6rem;
+    }
+
+    .item-app-features {
+        width: 360px;
+        flex-basis: 360px;
+        padding: 2rem;
+    }
+
+    .top-item-app-features img {
+        width: 25px;
+        height: 25px;
+    }
+
+    .top-item-app-features h2 {
+        font-size: 18px;
+    }
+
+    .btm-item-app-features p {
+        font-size: 15px;
+    }
 }
 
 /* Responsive 1024px */
@@ -217,6 +313,33 @@
         height: 80px;
         flex-basis: 80px;
     }
+
+    .app-features h1 {
+        font-size: 1.5rem;
+    }
+
+    .items-app-features {
+        gap: 2.5rem;
+    }
+
+    .item-app-features {
+        width: 370px;
+        flex-basis: 370px;
+        padding: 2rem;
+    }
+
+    .top-item-app-features img {
+        width: 22px;
+        height: 22px;
+    }
+
+    .top-item-app-features h2 {
+        font-size: 17px;
+    }
+
+    .btm-item-app-features p {
+        font-size: 14px;
+    }
 }
 
 /* Responsive 768px */
@@ -229,6 +352,24 @@
         width: 75px;
         height: 75px;
         flex-basis: 75px;
+    }
+
+    .app-features {
+        padding: 3.5rem 2rem 4rem;
+    }
+
+    .app-features h1 {
+        text-align: center;
+    }
+
+    .items-app-features {
+        margin-top: 2.5rem;
+    }
+
+    .item-app-features {
+        width: 300px;
+        flex-basis: 300px;
+        padding: 2rem;
     }
 }
 
