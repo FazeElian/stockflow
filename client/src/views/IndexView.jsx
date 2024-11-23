@@ -1,4 +1,5 @@
-import { Link } from "react-router-dom";
+// Framer motion
+import { motion } from "framer-motion";
 
 // Styles for this view
 import "../assets/css/views/IndexView.css";
@@ -35,57 +36,109 @@ const IndexView = () => {
                 <div className="btm-banner-services bg-transparent">
                     {/* Dashboard */}
                     <div className="item-btm-banner-services bg-transparent">
-                        <div className="circle-item-btm-banner-services circle-dashboard-btm-banner-services bg-blue">
+                        <motion.div
+                            className="circle-item-btm-banner-services circle-dashboard-btm-banner-services bg-blue"
+                            initial={{ opacity: 0, scale: 0 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                        >
                             <img src={DashboardIcon} alt="Dashboard" className="bg-transparent" />
-                        </div>
+                        </motion.div>
                         <h2 className="color-white bg-transparent">Dashboard</h2>
                     </div>
 
                     {/* Products */}
                     <div className="item-btm-banner-services bg-transparent">
-                        <div className="circle-item-btm-banner-services circle-products-btm-banner-services bg-green">
+                        <motion.div
+                            className="circle-item-btm-banner-services circle-products-btm-banner-services bg-green"
+                            initial={{ opacity: 0, scale: 0 }}
+                            transition={{
+                                delay: .20,
+                            }}
+                            animate={{ opacity: 1, scale: 1 }}
+                        >
                             <img src={ProductsIcon} alt="Productos" className="bg-transparent" />
-                        </div>
+                        </motion.div>
                         <h2 className="color-white bg-transparent">Productos</h2>
                     </div>
 
                     {/* Categories */}
                     <div className="item-btm-banner-services bg-transparent">
-                        <div className="circle-item-btm-banner-services circle-categories-btm-banner-services bg-brown">
+                        <motion.div
+                            className="circle-item-btm-banner-services circle-categories-btm-banner-services bg-brown"
+                            initial={{ opacity: 0, scale: 0 }}
+                            transition={{
+                                delay: .40,
+                            }}
+                            animate={{ opacity: 1, scale: 1 }}
+                        >
                             <img src={CategoriesIcon} alt="Categorías" className="bg-transparent" />
-                        </div>
+                        </motion.div>
                         <h2 className="color-white bg-transparent">Categorías</h2>
                     </div>
 
                     {/* Inventories */}
                     <div className="item-btm-banner-services bg-transparent">
-                        <div className="circle-item-btm-banner-services circle-inventories-btm-banner-services bg-red">
+                        <motion.div
+                            className="circle-item-btm-banner-services circle-inventories-btm-banner-services bg-red"
+                            initial={{ opacity: 0, scale: 0 }}
+                            transition={{
+                                delay: .60,
+                            }}
+                            animate={{ opacity: 1, scale: 1 }}
+                        >
                             <img src={InventoriesIcon} alt="Inventarios" className="bg-transparent" />
-                        </div>
+                        </motion.div>
                         <h2 className="color-white bg-transparent">Inventarios</h2>
                     </div>
 
                     {/* Sales */}
                     <div className="item-btm-banner-services bg-transparent">
-                        <div className="circle-item-btm-banner-services circle-sales-btm-banner-services bg-purple">
+                        <motion.div
+                            className="circle-item-btm-banner-services circle-sales-btm-banner-services bg-purple"
+                            initial={{ opacity: 0, scale: 0 }}
+                            transition={{
+                                delay: .80,
+                            }}
+                            animate={{ opacity: 1, scale: 1 }}
+                        >
                             <img src={SalesIcon} alt="Ventas" className="bg-transparent" />
-                        </div>
+                        </motion.div>
                         <h2 className="color-white bg-transparent">Ventas</h2>
                     </div>
 
                     {/* Customers */}
                     <div className="item-btm-banner-services bg-transparent">
-                        <div className="circle-item-btm-banner-services circle-customers-btm-banner-services bg-pink">
+                        <motion.div
+                            className="circle-item-btm-banner-services circle-customers-btm-banner-services bg-pink"
+                            initial={{ opacity: 0, scale: 0 }}
+                            transition={{
+                                delay: 1,
+                            }}
+                            animate={{ opacity: 1, scale: 1 }}
+                        >
                             <img src={CustomersIcon} alt="Clientes" className="bg-transparent" />
-                        </div>
+                        </motion.div>
                         <h2 className="color-white bg-transparent">Clientes</h2>
                     </div>
                 </div>
 
                 {/* Button start now */}
-                <Link to="/sigin" className="btn-start-now-banner-services color-white">
+                <motion.a
+                    href="/signin"
+                    className="btn-start-now-banner-services color-white"
+                    animate={{
+                        scale: [1, 1.15, 1, 1.15, 1],
+                    }}
+                    transition={{
+                        duration: 2,
+                        ease: "easeInOut",
+                        times: [0, 0.2, 0.5, 0.8, 1],
+                        repeatDelay: .5,
+                        delay: 1,
+                    }}
+                >
                     Empezar Ahora
-                </Link>
+                </motion.a>
             </section>
         </main>
     )
