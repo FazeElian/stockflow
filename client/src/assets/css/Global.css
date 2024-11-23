@@ -19,7 +19,7 @@ a {
 .content-page--company {
     display: flex;
     width: 100%;
-    margin-top: 6rem;
+    margin-top: 5rem;
     flex-direction: column;
 }
 
@@ -75,6 +75,11 @@ a {
     /* Brown */
     .bg-brown {
         background-color: #403116;
+    }
+
+    /* Red */
+    .bg-red {
+        background-color: #3D2120;
     }
 
     /* Purple */
