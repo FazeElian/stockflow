@@ -57,7 +57,7 @@ const HeaderCompany = () => {
                         <img src={Logo} alt="StockFlow" className="bg-transparent" />
                     </Link>
                 </nav>
-                <nav className={ `bg-transparent nav-list--company ${menu ? "active" : ""}` }>
+                <nav className={ `nav-list--company ${menu ? "active" : ""}` }>
                     <section className="sect-list-nav-list--company">
                         <Link to="/" className="item-nav-list--company bg-transparent">
                             <img src={HomeIcon} alt="" />

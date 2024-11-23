@@ -28,6 +28,7 @@
         width: 50%;
         height: 100%;
         list-style: none;
+        background: transparent;
     }
 
         .sect-list-nav-list--company {
@@ -209,6 +210,7 @@
         padding-top: 2.5rem;
         margin-top: 2rem;
         border-top: 1px solid #212026;
+        background-color: #0B0B0D;
     }
 
         .sect-user-nav-list--company a {
