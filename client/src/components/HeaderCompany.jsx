@@ -1,7 +1,7 @@
 import { Outlet, Link } from "react-router-dom";
 
 // React hooks
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 // Styles for this component
 import "../assets/css/components/HeaderCompany.css";
@@ -32,6 +32,22 @@ const HeaderCompany = () => {
     const toggleMenu = () => {
         setMenu(!menu);
     }
+
+    // Hook to disable menu when user scrolls a certain amount
+    useEffect(() => {
+        const handleScrollMenu = () => {
+            const scrollThreshold = 200; // Scroll Amount
+            if (window.scrollY > scrollThreshold && menu) {
+                setMenu(false);
+            }
+        };
+    
+        window.addEventListener('scroll', handleScrollMenu); // Adding Scroll Event
+    
+        return () => {
+            window.removeEventListener('scroll', handleScrollMenu);
+        };
+    }, [menu]);
 
     return (
         <>
