@@ -5,7 +5,9 @@ import { HeaderAdmin } from "./components/HeaderAdmin";
 import { HeaderCompany } from "./components/HeaderCompany";
 
 // View components
-import IndexView from "./views/IndexView";
+  // Company views
+  import IndexView from "./views/IndexView";
+  import PricingView from "./views/modules/company/PricingView";
 
   // Users Module
   import LoginView from './views/modules/users/LoginView';
@@ -24,6 +26,7 @@ function App() {
         {/* Company views */}
         <Route path="/" element={<HeaderCompany />}>
           <Route index element={<IndexView />} />
+          <Route path="/pricing" element={<PricingView />} />
 
           {/* Users module */}
           <Route path="login" element={<LoginView />} />

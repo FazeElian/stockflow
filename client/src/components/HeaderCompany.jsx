@@ -87,7 +87,7 @@ const HeaderCompany = () => {
                             <img src={FeaturesIcon} alt="" />
                             Funcionalidades
                         </Link>
-                        <Link to="/" className="item-nav-list--company bg-transparent">
+                        <Link to="/pricing" className="item-nav-list--company bg-transparent">
                             <img src={PricingIcon} alt="" />
                             Elije tu Plan
                         </Link>
