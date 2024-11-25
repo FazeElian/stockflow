@@ -1,10 +1,11 @@
+import { Link } from 'react-router-dom';
+
 // Styles for this view
 import "../../../assets/css/views/users/Forms.css";
 
 // Images - icons
     // Logo
     import Logo from "../../../assets/img/Logo.png";
-import { Link } from 'react-router-dom';
 
 const LoginView = () => {
     return (
@@ -43,7 +44,7 @@ const LoginView = () => {
                                 Iniciar Sesión
                             </button>
 
-                            <Link to="/signin" className="color-white bg-transparent">No tienes una cuenta? Registrarse</Link>
+                            <Link to="/register" className="color-white bg-transparent">No tienes una cuenta? Registrarse</Link>
                         </div>
                     </form>
                 </section>
