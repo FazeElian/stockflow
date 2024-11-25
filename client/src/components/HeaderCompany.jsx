@@ -98,12 +98,12 @@ const HeaderCompany = () => {
                     </section>
 
                     <section className="sect-user-nav-list--company">
-                        <Link to="/" className="item-nav-list--company bg-transparent">Iniciar Sesión</Link>
+                        <Link to="/login" className="item-nav-list--company bg-transparent">Iniciar Sesión</Link>
                         <Link to="/" className="item-nav-list--company bg-transparent">Registrarse</Link>
                     </section>
                 </nav>
                 <nav className="nav-user--company bg-transparent">
-                    <Link to="/" className="btn-header--company btn-login-header--company color-white">
+                    <Link to="/login" className="btn-header--company btn-login-header--company color-white">
                         Ingresar
                     </Link>
                     <Link to="/" className="btn-header--company btn-signin-header--company color-white">
