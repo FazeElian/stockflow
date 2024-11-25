@@ -23,6 +23,7 @@ const ForgotPasswordView = () => {
                                     name="email"
                                     id=""
                                     className="color-black bg-white font-inter"
+                                    placeholder="Introduce el correo asociado a tu cuenta"
                                     required
                                 />
                             </div>

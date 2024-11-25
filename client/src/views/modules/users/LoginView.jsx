@@ -25,6 +25,7 @@ const LoginView = () => {
                                     name="email"
                                     id=""
                                     className="color-black bg-white font-inter"
+                                    placeholder="Ingresa tu correo electrónico"
                                     required
                                 />
                             </div>
@@ -35,6 +36,7 @@ const LoginView = () => {
                                     name="password"
                                     id=""
                                     className="color-black bg-white font-inter"
+                                    placeholder="Ingresa tu contraseña"
                                     required
                                 />
                                 <Link to="/forgot-password" className="color-white bg-transparent">Olvidaste tu contraseña?</Link>

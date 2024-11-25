@@ -25,6 +25,7 @@ const RegisterView = () => {
                                     name="email"
                                     id=""
                                     className="color-black bg-white font-inter"
+                                    placeholder="Ingresa tu correo electrónico"
                                     required
                                 />
                             </div>
@@ -35,6 +36,7 @@ const RegisterView = () => {
                                     name="name"
                                     id=""
                                     className="color-black bg-white font-inter"
+                                    placeholder="Ingresa tu nombre completo"
                                     required
                                 />
                             </div>
@@ -45,6 +47,7 @@ const RegisterView = () => {
                                     name="password"
                                     id=""
                                     className="color-black bg-white font-inter"
+                                    placeholder="Crea una contraseña (mínimo 8 caracteres)"
                                     required
                                 />
                             </div>
