@@ -4,7 +4,7 @@ import { useState } from 'react';
 // Register function from api controller
 import { Register } from './../../../api/auth';
 
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 // Styles for this view
 import "../../../assets/css/views/users/Forms.css";
@@ -24,13 +24,19 @@ const RegisterView = () => {
         setData ({ ...data, [e.target.name]: e.target.value });
     }
 
+    // Redirect
+    const navigate = useNavigate();
+
     const handleSubmit = async (e) => {
         // Avoid that the form submit auto
         e.preventDefault()
 
         try {
             const response = await Register(data);
-            alert("Resultado:" + response.message);
+            alert("Te has registrado con éxito");
+
+            // Redirection 
+            navigate("/login");
         } catch (error) {
             alert("Error al registrarse" + error);
         }
