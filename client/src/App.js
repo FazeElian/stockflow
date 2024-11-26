@@ -1,5 +1,8 @@
 import { Routes, Route } from "react-router-dom";
 
+// Protected route component
+import { PrivateRoute } from "./PrivateRoute";
+
 // Base components
 import { HeaderAdmin } from "./components/HeaderAdmin";
 import { HeaderCompany } from "./components/HeaderCompany";
@@ -39,8 +42,20 @@ function App() {
         </Route>
 
         {/* Admin views */}
-        <Route path="admin/*" element={<HeaderAdmin />}>
-          <Route path="home" element={<HomeView />} />
+        <Route 
+          path="admin/*"
+          element={
+            <PrivateRoute>
+              <HeaderAdmin />
+            </PrivateRoute>
+          }
+        >
+          <Route 
+            path="home"
+            element={
+              <HomeView />
+            }
+          />
 
           {/* Error 404 */}
           <Route path="*" element={<h1>Error 404</h1>} />
