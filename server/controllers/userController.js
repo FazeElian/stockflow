@@ -65,3 +65,11 @@ exports.login = async (req, res) => {
         res.status(500).json({ message: "Server error" });
     }
 }
+
+exports.logOut = async (req, res) => {
+    try {
+        
+    } catch (error) {
+        
+    }
+}

@@ -4,7 +4,7 @@ import { isAuthenticated } from "./api/auth";
 
 const PrivateRoute = ({ children }) => {
     if (isAuthenticated()) {
-        return <Navigate to="/admin/home/" />;
+        return children;
     } else {
         return <Navigate to="/login" />;
     }
