@@ -83,7 +83,7 @@ const HeaderCompany = () => {
                             <img src={HomeIcon} alt="" />
                             Inicio
                         </Link>
-                        <Link to="/" className="item-nav-list--company bg-transparent">
+                        <Link to="/features" className="item-nav-list--company bg-transparent">
                             <img src={FeaturesIcon} alt="" />
                             Funcionalidades
                         </Link>

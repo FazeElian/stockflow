@@ -11,6 +11,7 @@ import { HeaderCompany } from "./components/HeaderCompany";
   // Company views
   import IndexView from "./views/IndexView";
   import PricingView from "./views/modules/company/PricingView";
+  import FeaturesView from "./views/modules/company/FeaturesView";
 
   // Users Module
   import LoginView from './views/modules/users/LoginView';
@@ -30,6 +31,7 @@ function App() {
         <Route path="/" element={<HeaderCompany />}>
           <Route index element={<IndexView />} />
           <Route path="/pricing" element={<PricingView />} />
+          <Route path="/features" element={<FeaturesView />}/>
 
           {/* Users module */}
           <Route path="login" element={<LoginView />} />
