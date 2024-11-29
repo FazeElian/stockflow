@@ -45,9 +45,9 @@ const IndexView = () => {
                                 initial={{ opacity: 0, scale: 0 }}
                                 animate={{ opacity: 1, scale: 1 }}
                             >
-                                <img src={DashboardIcon} alt="Dashboard" className="bg-transparent" />
+                                <img src={DashboardIcon} alt="Panel Dinámico" className="bg-transparent" />
                             </motion.div>
-                            <h2 className="color-white bg-transparent">Dashboard</h2>
+                            <h2 className="color-white bg-transparent">Panel Dinámico</h2>
                         </div>
 
                         {/* Products */}
@@ -155,8 +155,8 @@ const IndexView = () => {
                             }}
                         >
                             <div className="top-item-app-features bg-transparent">
-                                <img src={DashboardIcon} className="bg-transparent" alt="Dashboard" />
-                                <h2 className="color-white bg-transparent">Dashboard</h2>
+                                <img src={DashboardIcon} className="bg-transparent" alt="Panel Dinámico" />
+                                <h2 className="color-white bg-transparent">Panel Dinámico</h2>
                             </div>
                             <div className="btm-item-app-features bg-transparent">
                                 <p className="color-gray bg-transparent">
