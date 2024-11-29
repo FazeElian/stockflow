@@ -11,7 +11,7 @@ import { FooterCompany } from "../../../components/FooterCompany";
 import { motion } from 'framer-motion';
 
 // Items
-import ItemsFeatures from "../../../components/ItemsFeatures";
+import ItemsFeatures from "../../../components/modules/company/data/ItemsFeatures";
 
 const FeaturesView = () => {
     // States for selected item
