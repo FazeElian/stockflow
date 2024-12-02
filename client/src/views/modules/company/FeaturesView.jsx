@@ -109,7 +109,7 @@ const FeaturesView = () => {
             </main>
 
             {/* Footer component */}
-            <FooterCompany />
+            <FooterCompany bgColor="bg-black-light" />
         </>
     )
 }

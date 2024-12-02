@@ -16,9 +16,9 @@ import "../assets/css/components/FooterCompany.css";
     // TwitterX
     import TwitterXIcon from "../assets/img/icons/TwitterX.png";
 
-const FooterCompany = () => {
+const FooterCompany = (props) => {
     return (
-        <footer className="footer-company font-inter bg-black-light">
+        <footer className={ `footer-company font-inter ${props.bgColor}` }>
             <div className="items-footer-company bg-transparent">
                 <div className="item-footer-company about-footer-company bg-transparent">
                     <img src={Logo} className="bg-transparent" alt="" />

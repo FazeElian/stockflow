@@ -21,7 +21,7 @@ const IndexView = () => {
             </main>
 
             {/* Footer component */}
-            <FooterCompany />
+            <FooterCompany bgColor="bg-black" />
         </>
     )
 }
