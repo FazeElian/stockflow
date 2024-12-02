@@ -1,6 +1,6 @@
 
 // Styles for this view
-import "../../../assets/css/views/company/PricingView.css";
+import "../../../assets/css/components/company/ChooseYourPlan.css";
 
 // Framer motion
 import { motion } from 'framer-motion';
