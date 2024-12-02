@@ -8,6 +8,7 @@ import { FooterCompany } from "../components/FooterCompany";
 import { TopBannerServices } from "../components/modules/company/TopBannerServices";
 import { AppMainFeatures } from "../components/modules/company/AppMainFeatures";
 import { ChooseYourPlan } from "../components/modules/company/ChooseYourPlan";
+import { StartNowCallToAction } from "../components/modules/company/StartNowCallToAction";
 
 const IndexView = () => {
     return (
@@ -16,6 +17,7 @@ const IndexView = () => {
                 <TopBannerServices />
                 <AppMainFeatures />
                 <ChooseYourPlan />
+                <StartNowCallToAction />
             </main>
 
             {/* Footer component */}
