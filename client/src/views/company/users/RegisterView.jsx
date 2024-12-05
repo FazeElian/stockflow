@@ -2,7 +2,7 @@
 import { useState } from 'react';
 
 // Register function from api controller
-import { Register } from './../../../api/auth';
+import { Register } from '../../../api/auth';
 
 import { Link, useNavigate } from 'react-router-dom';
 

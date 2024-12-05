@@ -16,10 +16,9 @@ const TopBannerServices = () => {
             <div className="btm-banner-services bg-transparent">
                 {/* Items */}
                 {ItemsBannerServices.map((item) => (
-                    <div className="item-btm-banner-services bg-transparent">
+                    <div className="item-btm-banner-services bg-transparent" key={item.id}>
                         <motion.div
                             className={ `circle-item-btm-banner-services ${item.class}` }
-                            key={item.id}
                             initial={{ opacity: 0, scale: 0 }}
                             animate={{ opacity: 1, scale: 1 }}
                             transition={{

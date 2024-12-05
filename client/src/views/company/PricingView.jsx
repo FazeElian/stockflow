@@ -1,8 +1,8 @@
 // Styles for this view
-import "../../../assets/css/components/company/ChooseYourPlan.css";
+import "../../assets/css/components/company/ChooseYourPlan.css";
 
 // Choose plan component
-import { ChooseYourPlan } from "../../../components/modules/company/ChooseYourPlan";
+import { ChooseYourPlan } from "../../components/company/ChooseYourPlan";
 
 const PricingView = () => {
     return (

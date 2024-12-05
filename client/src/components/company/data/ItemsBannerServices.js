@@ -1,21 +1,21 @@
 // Images - Icons
     // Dashboard
-    import DashboardIcon from "../../../../assets/img/icons/Dashboard.png";
+    import DashboardIcon from "../../../assets/img/icons/Dashboard.png";
 
     // Products
-    import ProductsIcon from "../../../../assets/img/icons/Products.png";
+    import ProductsIcon from "../../../assets/img/icons/Products.png";
 
     // Categories
-    import CategoriesIcon from "../../../../assets/img/icons/Categories.png";
+    import CategoriesIcon from "../../../assets/img/icons/Categories.png";
 
     // Inventories
-    import InventoriesIcon from "../../../../assets/img/icons/Inventories.png";
+    import InventoriesIcon from "../../../assets/img/icons/Inventories.png";
 
     // Sales
-    import SalesIcon from "../../../../assets/img/icons/Sales.png";
+    import SalesIcon from "../../../assets/img/icons/Sales.png";
 
     // Customers
-    import CustomersIcon from "../../../../assets/img/icons/Customers.png";
+    import CustomersIcon from "../../../assets/img/icons/Customers.png";
 
 const ItemsBannerServices = [
     {

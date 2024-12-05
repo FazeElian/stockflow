@@ -8,7 +8,7 @@ import { motion } from 'framer-motion';
 import "../../assets/css/components/company/AppDetailedFeatures.css";
 
 // Items
-import ItemsFeatures from './company/data/ItemsFeatures';
+import ItemsFeatures from './data/ItemsFeatures';
 
 const AppDetailedFeatures = () => {
     // States for selected item

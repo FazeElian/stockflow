@@ -5,23 +5,23 @@ import { PrivateRoute } from "./PrivateRoute";
 
 // Base components
 import { HeaderAdmin } from "./components/HeaderAdmin";
-import { HeaderCompany } from "./components/HeaderCompany";
+import { HeaderCompany } from "./components/company/HeaderCompany";
 
 // View components
   // Company views
   import IndexView from "./views/IndexView";
-  import PricingView from "./views/modules/company/PricingView";
-  import FeaturesView from "./views/modules/company/FeaturesView";
+  import PricingView from "./views/company/PricingView";
+  import FeaturesView from "./views/company/FeaturesView";
 
   // Users Module
-  import LoginView from './views/modules/users/LoginView';
-  import RegisterView from './views/modules/users/RegisterView';
-  import ForgotPasswordView from './views/modules/users/ForgotPasswordView';
-  import ResetPasswordView from "./views/modules/users/ResetPasswordView";
+  import LoginView from './views/company/users/LoginView';
+  import RegisterView from './views/company/users/RegisterView';
+  import ForgotPasswordView from './views/company/users/ForgotPasswordView';
+  import ResetPasswordView from "./views/company/users/ResetPasswordView";
 
   // Admin views
   // Main view
-  import HomeView from "./views/modules/HomeView";
+  import HomeView from "./views/admin/HomeView";
 
 function App() {
   return (

@@ -1,20 +1,20 @@
 import { Link } from 'react-router-dom';
 
 // Styles for this component
-import "../assets/css/components/FooterCompany.css";
+import "../../assets/css/components/company/FooterCompany.css";
 
 // Images - icons
     // Logo
-    import Logo from "../assets//img/Logo.png";
+    import Logo from "../../assets/img/Logo.png";
 
     // Instagram
-    import InstagramIcon from "../assets/img/icons/Instagram.png";
+    import InstagramIcon from "../../assets/img/icons/Instagram.png";
 
     // Facebook
-    import FacebookIcon from "../assets/img/icons/Facebook.png";
+    import FacebookIcon from "../../assets/img/icons/Facebook.png";
 
     // TwitterX
-    import TwitterXIcon from "../assets/img/icons/TwitterX.png";
+    import TwitterXIcon from "../../assets/img/icons/TwitterX.png";
 
 const FooterCompany = (props) => {
     return (

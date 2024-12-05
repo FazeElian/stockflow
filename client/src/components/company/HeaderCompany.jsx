@@ -4,26 +4,26 @@ import { Outlet, Link } from "react-router-dom";
 import { useState, useEffect, useRef } from "react";
 
 // Styles for this component
-import "../assets/css/components/HeaderCompany.css";
+import "../../assets/css/components/company/HeaderCompany.css";
 
 // Images - icons
     // Logo
-    import Logo from "../assets/img/Logo.png";
+    import Logo from "../../assets/img/Logo.png";
 
     // Menu
-    import MenuIcon from "../assets/img/icons/Menu.png";
+    import MenuIcon from "../../assets/img/icons/Menu.png";
 
     // Home
-    import HomeIcon from "../assets/img/icons/Home.png";
+    import HomeIcon from "../../assets/img/icons/Home.png";
 
     // Features
-    import FeaturesIcon from "../assets/img/icons/Features.png";
+    import FeaturesIcon from "../../assets/img/icons/Features.png";
 
     // Pricing
-    import PricingIcon from "../assets/img/icons/Pricing.png";
+    import PricingIcon from "../../assets/img/icons/Pricing.png";
 
     // Contact us
-    import ContactUsIcon from "../assets/img/icons/ContactUs.png";
+    import ContactUsIcon from "../../assets/img/icons/ContactUs.png";
 
 const HeaderCompany = () => {
     // Menu states

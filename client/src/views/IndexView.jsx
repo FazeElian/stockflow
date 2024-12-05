@@ -2,13 +2,13 @@
 import "../assets/css/views/IndexView.css";
 
 // Footer component
-import { FooterCompany } from "../components/FooterCompany";
+import { FooterCompany } from "../components/company/FooterCompany";
 
 // Components for this view
-import { TopBannerServices } from "../components/modules/company/TopBannerServices";
-import { AppMainFeatures } from "../components/modules/company/AppMainFeatures";
-import { ChooseYourPlan } from "../components/modules/company/ChooseYourPlan";
-import { StartNowCallToAction } from "../components/modules/company/StartNowCallToAction";
+import { TopBannerServices } from "../components/company/TopBannerServices";
+import { AppMainFeatures } from "../components/company/AppMainFeatures";
+import { ChooseYourPlan } from "../components/company/ChooseYourPlan";
+import { StartNowCallToAction } from "../components/company/StartNowCallToAction";
 
 const IndexView = () => {
     return (

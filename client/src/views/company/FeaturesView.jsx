@@ -1,8 +1,8 @@
 // Footer component
-import { FooterCompany } from "../../../components/FooterCompany";
+import { FooterCompany } from "../../components/company/FooterCompany";
 
 // App features component
-import { AppDetailedFeatures } from "../../../components/modules/AppDetailedFeatures";
+import { AppDetailedFeatures } from "../../components/company/AppDetailedFeatures";
 
 const FeaturesView = () => {
     return (
