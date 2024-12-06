@@ -107,23 +107,23 @@ const HeaderAdmin = () => {
                         <DashboardIcon className="icon-item-nav-list-side-bar--admin" />
                         Panel Principal
                     </Link>
-                    <Link to="/admin/home" className="item-nav-list-side-bar--admin">
+                    <Link to="/admin/products" className="item-nav-list-side-bar--admin">
                         <ProductsIcon className="icon-item-nav-list-side-bar--admin" />
                         Productos
                     </Link>
-                    <Link to="/admin/home" className="item-nav-list-side-bar--admin">
+                    <Link to="/admin/categories" className="item-nav-list-side-bar--admin">
                         <CategoriesIcon className="icon-item-nav-list-side-bar--admin" />
                         Categorías
                     </Link>
-                    <Link to="/admin/home" className="item-nav-list-side-bar--admin">
+                    <Link to="/admin/inventories" className="item-nav-list-side-bar--admin">
                         <InventoriesIcon className="icon-item-nav-list-side-bar--admin" />
                         Inventarios
                     </Link>
-                    <Link to="/admin/home" className="item-nav-list-side-bar--admin">
+                    <Link to="/admin/sales" className="item-nav-list-side-bar--admin">
                         <SalesIcon className="icon-item-nav-list-side-bar--admin" />
                         Ventas
                     </Link>
-                    <Link to="/admin/home" className="item-nav-list-side-bar--admin">
+                    <Link to="/admin/customers" className="item-nav-list-side-bar--admin">
                         <CustomersIcon className="icon-item-nav-list-side-bar--admin" />
                         Clientes
                     </Link>

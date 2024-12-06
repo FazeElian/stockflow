@@ -30,6 +30,7 @@ a {
     margin-left: 300px;
     margin: 0 22rem 0;
     height: auto;
+    padding-top: 2rem;
 }
 
 /* Font classes */
@@ -132,6 +133,7 @@ a {
     .content-page--admin {
         margin-left: 280px;
         margin: 0 20rem 0;
+        padding-top: 1.5rem;
     }
 }
 
@@ -139,5 +141,6 @@ a {
 @media screen and (max-width: 1024px) {
     .content-page--admin {
         margin: 0 2.5rem 0;
+        padding-top: 2rem;
     }
 }

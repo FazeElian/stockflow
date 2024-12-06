@@ -22,6 +22,21 @@ import { HeaderCompany } from "./components/company/HeaderCompany";
   // Admin views
   // Main view
   import HomeView from "./views/admin/HomeView";
+  
+  // Products
+  import ProductsView from './views/admin/Products/ProductsView';
+
+  // Products Categories
+  import CategoriesView from "./views/admin/Categories/CategoriesView";
+
+  // Inventories
+  import InventoriesView from "./views/admin/Inventories/InventoriesView";
+
+  // Sales
+  import SalesView from "./views/admin/Sales/SalesView";
+
+  // Customers
+  import CustomersView from "./views/admin/Customers/CustomersView";
 
 function App() {
   return (
@@ -56,6 +71,36 @@ function App() {
             path="home"
             element={
               <HomeView />
+            }
+          />
+          <Route 
+            path="products"
+            element={
+              <ProductsView />
+            }
+          />
+          <Route 
+            path="categories"
+            element={
+              <CategoriesView />
+            }
+          />
+          <Route 
+            path="inventories"
+            element={
+              <InventoriesView />
+            }
+          />
+          <Route 
+            path="sales"
+            element={
+              <SalesView />
+            }
+          />
+          <Route 
+            path="customers"
+            element={
+              <CustomersView />
             }
           />
 
