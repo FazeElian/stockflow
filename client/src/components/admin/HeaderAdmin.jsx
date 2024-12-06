@@ -1,4 +1,4 @@
-import { Outlet, Link } from "react-router-dom";
+import { Outlet, Link, useLocation } from "react-router-dom";
 
 // React hooks
 import { useState, useEffect, useRef } from "react";
@@ -96,6 +96,9 @@ const HeaderAdmin = () => {
         };
     }, []);
 
+    // Location for path item style
+    const location = useLocation();
+
     return (
         <>
             <aside className="side-bar--admin bg-gray-dark font-inter">
@@ -103,27 +106,57 @@ const HeaderAdmin = () => {
                     <img src={Logo} className="bg-transparent" alt="Logo" />
                 </div>
                 <nav className="nav-list-side-bar--admin bg-transparent">
-                    <Link to="/admin/home" className="item-nav-list-side-bar--admin item-active-nav-list-side-bar--admin">
+                    <Link
+                        to="/admin/home"
+                        className={`item-nav-list-side-bar--admin 
+                            ${location.pathname === "/admin/home" ? "item-active-nav-list-side-bar--admin" : ""}
+                        `}
+                    >
                         <DashboardIcon className="icon-item-nav-list-side-bar--admin" />
                         Panel Principal
                     </Link>
-                    <Link to="/admin/products" className="item-nav-list-side-bar--admin">
+                    <Link
+                        to="/admin/products"
+                        className={`item-nav-list-side-bar--admin 
+                            ${location.pathname === "/admin/products" ? "item-active-nav-list-side-bar--admin" : ""}
+                        `}
+                    >
                         <ProductsIcon className="icon-item-nav-list-side-bar--admin" />
                         Productos
                     </Link>
-                    <Link to="/admin/categories" className="item-nav-list-side-bar--admin">
+                    <Link
+                        to="/admin/categories"
+                        className={`item-nav-list-side-bar--admin 
+                            ${location.pathname === "/admin/categories" ? "item-active-nav-list-side-bar--admin" : ""}
+                        `}
+                    >
                         <CategoriesIcon className="icon-item-nav-list-side-bar--admin" />
                         Categorías
                     </Link>
-                    <Link to="/admin/inventories" className="item-nav-list-side-bar--admin">
+                    <Link
+                        to="/admin/inventories"
+                        className={`item-nav-list-side-bar--admin 
+                            ${location.pathname === "/admin/inventories" ? "item-active-nav-list-side-bar--admin" : ""}
+                        `}
+                    >
                         <InventoriesIcon className="icon-item-nav-list-side-bar--admin" />
                         Inventarios
                     </Link>
-                    <Link to="/admin/sales" className="item-nav-list-side-bar--admin">
+                    <Link
+                        to="/admin/sales"
+                        className={`item-nav-list-side-bar--admin 
+                            ${location.pathname === "/admin/sales" ? "item-active-nav-list-side-bar--admin" : ""}
+                        `}
+                    >
                         <SalesIcon className="icon-item-nav-list-side-bar--admin" />
                         Ventas
                     </Link>
-                    <Link to="/admin/customers" className="item-nav-list-side-bar--admin">
+                    <Link
+                        to="/admin/customers"
+                        className={`item-nav-list-side-bar--admin 
+                            ${location.pathname === "/admin/customers" ? "item-active-nav-list-side-bar--admin" : ""}
+                        `}
+                    >
                         <CustomersIcon className="icon-item-nav-list-side-bar--admin" />
                         Clientes
                     </Link>

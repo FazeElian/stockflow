@@ -6,7 +6,7 @@
     xmlns="http://www.w3.org/2000/svg"
 >
     <g style="mix-blend-mode:darken">
-        <rect y="0.943329" width="14" height="14.3162" fill="currentcolor"/>
+        <rect y="0.943329" fill="currentcolor"/>
     </g>
     <path 
         fill-rule="evenodd"
