@@ -1,0 +1,272 @@
+.side-bar--admin {
+    display: flex;
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    width: 300px;
+    flex-direction: column;
+    height: 100vh;
+    padding: 2rem 2rem 2rem;
+    border-right: 1px solid #89888C;
+    overflow: auto;
+}
+
+    .side-bar-responsive--admin {
+        display: none;
+    }
+
+    .logo-side-bar--admin {
+        display: flex;
+        width: 100%;
+        height: auto;
+        align-items: center;
+        justify-content: center;
+    }
+
+        .logo-side-bar--admin img {
+            width: 85%;
+        }
+
+    .nav-list-side-bar--admin {
+        display: flex;
+        width: 100%;
+        height: auto;
+        flex-direction: column;
+        list-style: none;
+        gap: 1rem;
+        padding-top: 1.5rem;
+        margin-top: 1rem;
+        border-top: 1px solid #89888C;
+    }
+
+        .item-nav-list-side-bar--admin {
+            display: flex;
+            width: 100%;
+            height: auto;
+            padding: 1rem 1.2rem 1rem;
+            align-items: center;
+            border-radius: 10px;
+            background: transparent;
+            color: white;
+            font-size: 16px;
+            font-weight: 400;
+        }
+
+            .item-nav-list-side-bar--admin:hover {
+                background-color: #0E0E10;
+                transition: .2s ease all;
+                color: white;
+            }
+
+            .icon-item-nav-list-side-bar--admin {
+                width: 20px;
+                height: 20px;
+                margin-right: 8px;
+                background: transparent;
+            }
+            
+            .item-active-nav-list-side-bar--admin {
+                background-color: #A9D9CB;
+                color: #0E0E10;
+                font-weight: 500;
+            }
+
+                .item-active-nav-list-side-bar--admin:hover {
+                    opacity: .9;
+                }
+
+        .cont-help-item-nav-list-side-bar--admin {
+            display: flex;
+            width: 100%;
+            height: auto;
+            border-top: 1px solid #89888C;
+            margin-top: 1rem;
+            padding-top: 1rem;
+        }
+
+.nav-top--admin {
+    display: flex;
+    position: sticky;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    height: auto;
+    z-index: 999;
+    top: 0;
+    padding: 18px 1.5rem 18px;
+    justify-content: flex-end;
+    border-bottom: 1px solid #89888C;
+    align-items: center;
+}
+
+    .cont-btns-user-nav-top--admin {
+        display: flex;
+        width: auto;
+        height: 100%;
+        gap: 1.5rem;
+        align-items: center;
+    }
+
+    .cont-btn-menu-nav-top--admin {
+        display: none;
+    }
+    
+    .btn-notifications-side-bar--admin,
+    .btn-user-side-bar--admin {
+        display: flex;
+        width: auto;
+        background: transparent;
+        cursor: pointer;
+        border: none;
+    }
+
+        .btn-notifications-side-bar--admin img {
+            width: 24px;
+            height: 24px;
+        }
+
+        .btn-user-side-bar--admin img {
+            width: 35px;
+            height: 35px;
+        }
+
+/* Responsive 1440px */
+@media screen and (max-width: 1440px) {
+    .side-bar--admin {
+        width: 280px;
+    }
+
+    .logo-side-bar--admin img {
+        width: 82%;
+    }
+
+    .item-nav-list-side-bar--admin {
+        font-size: 15px;
+        font-weight: 400;
+        padding: 1rem 1.1rem 1rem;
+    }
+
+    .item-active-nav-list-side-bar--admin {
+        font-weight: 450;
+    }
+
+    .btn-notifications-side-bar--admin img {
+        width: 22px;
+        height: 22px;
+    }
+
+    .btn-user-side-bar--admin img {
+        width: 32px;
+        height: 32px;
+    }
+}
+
+/* Responsive 1024px */
+@media screen and (max-width: 1024px) {
+    .side-bar--admin {
+        display: none;
+    }
+
+    .item-nav-list-side-bar--admin {
+        font-size: 14px;
+        font-weight: 400;
+        padding: .9rem 1rem .9rem;
+    }
+
+    .item-active-nav-list-side-bar--admin {
+        font-weight: 450;
+    }
+
+    .nav-top--admin {
+        padding: 1rem 1.5rem 1rem;
+    }
+
+    .btn-notifications-side-bar--admin img {
+        width: 20px;
+        height: 20px;
+    }
+
+    .btn-user-side-bar--admin img {
+        width: 30px;
+        height: 30px;
+    }
+
+    .cont-btn-menu-nav-top--admin {
+        display: flex;
+        width: auto;
+        height: auto;
+    }
+
+        .btn-menu-nav-top--admin {
+            display: flex;
+            width: auto;
+            height: auto;
+            align-items: center;
+            justify-content: center;
+            border: none;
+            cursor: pointer;
+        }
+
+            .btn-menu-nav-top--admin img {
+                width: 27px;
+                height: 27px;
+            }
+
+    .side-bar-responsive--admin {
+        display: flex;
+        position: absolute;
+        top: 4rem;
+        width: 280px;
+        height: -webkit-fill-available;
+        overflow: auto;
+        transition: .3s;
+        flex-direction: column;
+        transform: translateX(-100%);
+        left: 0;
+        padding: 28px 2.5rem 2.5rem;
+        z-index: 1000;
+        opacity: 0;
+        border-right: 1px solid #89888C;
+        gap: 1rem;
+    }
+
+        .side-bar-responsive--admin.active {
+            transform: translate(0) !important;
+            opacity: 1;
+        }
+
+        .side-bar-responsive--admin h2 {
+            font-size: 17px;
+            font-weight: 520;
+            text-transform: uppercase;
+            margin-top: 10px;
+        }
+
+        .item-side-bar-responsive--admin {
+            display: flex;
+            width: 100%;
+            height: auto;
+            padding: 10px 0 11px;
+            color: white !important;
+            align-items: flex-end;
+            font-size: 15px;
+        }
+
+        .nav-top--admin {
+            justify-content: space-between;
+            padding: 1rem 2rem 1rem;
+        }
+    
+            .icon-item-nav-list-side-bar--admin {
+                width: 21px;
+                height: 21px;
+            }
+}
+
+/* Responsive 425px */
+@media screen and (max-width: 425px) {
+    .side-bar-responsive--admin {
+        width: 260px;
+    }
+}

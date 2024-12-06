@@ -4,7 +4,7 @@ import { Routes, Route } from "react-router-dom";
 import { PrivateRoute } from "./PrivateRoute";
 
 // Base components
-import { HeaderAdmin } from "./components/HeaderAdmin";
+import { HeaderAdmin } from "./components/admin/HeaderAdmin";
 import { HeaderCompany } from "./components/company/HeaderCompany";
 
 // View components

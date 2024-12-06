@@ -12,8 +12,8 @@ const HomeView = () => {
 
     return (
         <>            
-            <main className="content-page--company">
-                <div className="font-inter" style={{ margin: "2rem" }}>
+            <main className="content-page--admin">
+                <div className="font-inter" style={{ paddingTop: '2rem' }}>
                     <h1 className="color-white bg-transparent">Bienvenido Administrador !</h1>
                     <br />
                     <button

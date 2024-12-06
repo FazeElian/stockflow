@@ -19,8 +19,17 @@ a {
 .content-page--company {
     display: flex;
     width: 100%;
-    margin-top: 5rem;
     flex-direction: column;
+}
+
+.content-page--company {
+    margin-top: 5rem;
+}
+
+.content-page--admin {
+    margin-left: 300px;
+    margin: 0 22rem 0;
+    height: auto;
 }
 
 /* Font classes */
@@ -117,3 +126,18 @@ a {
     .color-gray {
         color: #89888C;
     }
+
+/* Responsive 1440px */
+@media screen and (max-width: 1440px) {
+    .content-page--admin {
+        margin-left: 280px;
+        margin: 0 20rem 0;
+    }
+}
+
+/* Responsive 1024px */
+@media screen and (max-width: 1024px) {
+    .content-page--admin {
+        margin: 0 2.5rem 0;
+    }
+}
