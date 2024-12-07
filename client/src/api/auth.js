@@ -1,9 +1,6 @@
 import axios from "axios";
 
-const API_URL =
-    process.env.APP_ENV === "production"
-        ? process.env.API_URL
-        : "http://localhost:5000/api";
+const API_URL = process.env.API_URL;
 
 // Function to check if the user is authenticated
 export const isAuthenticated = () => {
