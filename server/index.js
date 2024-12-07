@@ -1,6 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const app = express(); // Creation of Express app
+require("dotenv").config(); // For environmental variables
 
 // Auth routes
 const authRoutes = require("./routes/userRoutes");
@@ -22,8 +23,8 @@ app.get("/", (req, res) => {
 // Routes
 app.use("/api/", authRoutes);
 
-// Server port number
-const PORT = 5000;
+// Server port number from .env file
+const PORT = process.env.PORT;
 
 // Start server
 app.listen(PORT, () => {

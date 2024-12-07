@@ -1,8 +1,16 @@
 const { Sequelize } = require("sequelize");
+require("dotenv").config(); // For environmental variables
 
-const sequelize = new Sequelize ("stockflow", "root", "123", {
-    host: "localhost",
-    dialect: "mysql"
+// Environmental variables
+const host = process.env.DB_HOST;
+const db_dialect = process.env.DB_DIALECT;
+const db = process.env.DB_NAME;
+const user = process.env.DB_USER;
+const password = process.env.DB_PASSWORD;
+
+const sequelize = new Sequelize (db, user, password, {
+    host: host,
+    dialect: db_dialect
 });
 
 sequelize.authenticate()
