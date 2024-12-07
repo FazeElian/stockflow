@@ -1,6 +1,8 @@
 import axios from "axios";
 
-const API_URL = process.env.API_URL;
+const API_URL = process.env.APP_ENV === "production"
+    ? "https://stockflow-app-a9a6f5c11a06.herokuapp.com/api"
+    : "http://localhost:5000/api";
 
 // Function to check if the user is authenticated
 export const isAuthenticated = () => {
