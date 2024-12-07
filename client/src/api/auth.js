@@ -1,6 +1,9 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:5000/api";
+const API_URL =
+    process.env.APP_ENV === "production"
+        ? process.env.API_URL
+        : "http://localhost:5000/api";
 
 // Function to check if the user is authenticated
 export const isAuthenticated = () => {
@@ -18,7 +21,7 @@ export const isAuthenticated = () => {
 // Function to register new user
 export const Register = async (data) => {
     try {
-        const response = await axios.post("https://stockflow-app-a9a6f5c11a06.herokuapp.com/api" || `${API_URL}/register`, data);
+        const response = await axios.post(`${API_URL}/register`, data);
         return response.data;
     } catch (error) {
         throw error.response?.data || error.message;
@@ -28,7 +31,7 @@ export const Register = async (data) => {
 // Function for login
 export const Login = async (data) => {
     try {
-        const response = await axios.post("https://stockflow-app-a9a6f5c11a06.herokuapp.com/api" || `${API_URL}/login`, data);
+        const response = await axios.post(`${API_URL}/login`, data);
         return response.data;
     } catch (error) {
         throw error.response?.data || error.message;
