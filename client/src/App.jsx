@@ -1,32 +1,41 @@
-import { useEffect, useState } from 'react'
-import './App.css'
+import { Route, Routes } from "react-router-dom"
 
-function App() {
-  const [data, setData] = useState([{}]);
+// Header component
+import { Header } from "./components/admin/Header"
 
-  useEffect(() => {
-    fetch("/api").then (
-      response => response.json()
-    ).then(
-      data => {
-        setData(data);
-      }
-    )
-  }, [])
+// Views component
+import IndexView from "./views/IndexView"
+import RegisterView from "./views/company/RegisterView"
+import LoginView from "./views/company/LoginView"
+import ForgotPasswordView from "./views/company/ForgotPasswordView"
+import HomeView from "./views/admin/HomeView"
+import ProductsView from "./views/admin/ProductsView"
 
+const App = () => {
   return (
-    <>
-      <div>
-        <h1>Backend Data</h1>
-        {(typeof data.users === "undefined") ? (
-          <h2>Loading</h2>
-        ): (
-          data.users.map((user, i) => (
-            <h2 key={i}>{user}</h2>
-          ))
-        )}
-      </div>
-    </>
+    <Routes>
+      <Route
+        path="/"
+        index
+        element={<IndexView />}
+      />
+      <Route path="auth/*">
+        <Route path="register" element={<RegisterView />} />
+        <Route path="login" element={<LoginView />} />
+        <Route path="forgot-password" element={<ForgotPasswordView />} />
+      </Route>
+      <Route path="admin/*" element={<Header />}>
+        <Route
+          path="home"
+          index
+          element={<HomeView />}
+        />
+        <Route
+          path="products"
+          element={<ProductsView />}
+        />
+      </Route>
+    </Routes>
   )
 }
 
