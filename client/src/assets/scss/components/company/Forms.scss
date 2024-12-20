@@ -1,0 +1,126 @@
+@import "../../variables";
+
+.form-users {
+    display: flex;
+    width: 26%;
+    min-width: 440px;
+    height: auto;
+    padding: 4rem 3rem 4rem;
+    background-color: $gray-dark;
+    border-radius: 8px;
+    border: 1px solid $white;
+    align-items: center;
+    flex-direction: column;
+    
+    h1 {
+        font-size: 28px;
+        color: $white;
+        font-weight: 450;
+        margin-bottom: 1.7rem;
+    }
+
+    .form-group {
+        display: flex;
+        width: 100%;
+        height: auto;
+        flex-direction: column;
+        gap: 7px;
+        margin-bottom: 2rem;
+
+        label {
+            color: $white;
+            font-size: 17px;
+            font-weight: 450;
+        }
+
+        input {
+            padding: 10px 1rem 10px;
+            font-size: 15px;
+            border-radius: 5px;
+            border: none;
+            outline: none;
+        }
+
+        a {
+            font-size: 15px;
+            color: $white;
+            font-weight: 450;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    }
+
+    .btn-submit {
+        display: flex;
+        width: 100%;
+        height: auto;
+        background-color: $black;
+        padding: 12px 0 12px;
+        align-items: center;
+        justify-content: center;
+        color: $gray;
+        cursor: pointer;
+        border-radius: 8px;
+        border: 1px solid $gray;
+        margin-top: 10px;
+        font-size: 16px;
+        transition: .2s ease-in-out;
+    }
+
+    .btn-submit:hover {
+        color: $white;
+        border: 1px solid $white;
+        transition: .2s ease-in;
+    }
+
+    a {
+        font-size: 15px;
+        color: $white;
+        font-weight: 450;
+        text-decoration: none;
+        margin-top: 12px;
+    }
+
+    a:hover {
+        text-decoration: underline;
+    }
+}
+
+// Responsive 1440px
+@media screen and (max-width: 1440px) {
+    .form-users {
+        h1 {
+            font-size: 25px;
+        }
+
+        .form-group {
+            gap: 5px;
+            margin-bottom: 
+            1.52rem;
+
+            label {
+                font-size: 15px;
+            }
+
+            input {
+                font-size: 14px;
+            }
+
+            a {
+                font-size: 13px;
+            }
+        }
+        
+        .btn-submit {
+            margin: 0;
+            font-size: 15px;
+        }
+
+        a {
+            font-size: 14px;
+        }
+    }
+}
