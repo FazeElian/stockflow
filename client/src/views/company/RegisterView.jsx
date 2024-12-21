@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { Register } from "../../api/users";
 
 const RegisterView = () => {
@@ -13,11 +13,18 @@ const RegisterView = () => {
         setData ({ ...data, [e.target.name]: e.target.value });
     }
 
+    const navigate = useNavigate();
+
     const handleSubmit = async (e) => {
         e.preventDefault();
 
         try {
             const response = await Register(data);
+                
+            // Redirection with alert
+            navigate("/admin/home");
+            alert("Te has registrado con éxito");
+            
             console.log("Resultado: ", response.message);
         } catch (error) {
             console.error("Error al registrarse", error);
