@@ -1,6 +1,11 @@
 const HomeView = () => {
     return (
-        <div>HomeView</div>
+        <div>
+            HomeView
+            <button>
+                Cerrar Sesión
+            </button>
+        </div>
     )
 }
 
