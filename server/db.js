@@ -1,20 +1,12 @@
-const mysql = require("mysql")
+const { Sequelize } = require("sequelize");
 
-// Environmental variables
-const db = mysql.createConnection({
-    host: "localhost",
-    user: "root",
-    password: "123",
-    database: "stockflow"
+const sequelize = new Sequelize ("stockflow", "root", "123", {
+  host: "localhost",
+  dialect: "mysql"
 });
 
-module.exports = db;
+sequelize.authenticate()
+  .then(() => console.log("Connected to the database"))
+  .catch((err) => console.log("Error connecting to the database:", err));
 
-// Connection to database
-db.connect((err) => {
-    if (err) {
-      console.error("Error connecting to database: ", err);
-      return;
-    }
-    console.log("Connected to database!");
-});
+module.exports = sequelize;

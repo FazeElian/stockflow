@@ -1,10 +1,33 @@
+import { useState } from "react"
 import { Link } from "react-router-dom"
+import { Register } from "../../api/users";
 
 const RegisterView = () => {
+    const [ data, setData ] = useState({
+        name: "",
+        email: "",
+        password: "",
+    });
+
+    const handleChange = (e) => {
+        setData ({ ...data, [e.target.name]: e.target.value });
+    }
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        try {
+            const response = await Register(data);
+            console.log("Resultado: ", response.message);
+        } catch (error) {
+            console.error("Error al registrarse", error);
+        }
+    } 
+
     return (
         <>
             <section className="bg-content-center">
-                <form action="" className="form-users" method="post">
+                <form action="" className="form-users" method="post" onSubmit={handleSubmit}>
                     <h1>Registrarse</h1>
                     <div className="form-group">
                         <label htmlFor="name">Nombre</label>
@@ -13,6 +36,7 @@ const RegisterView = () => {
                             name="name"
                             id="name"
                             placeholder="Ingresa tu nombre completo"
+                            onChange={handleChange}
                             required
                         />
                     </div>
@@ -23,6 +47,7 @@ const RegisterView = () => {
                             name="email"
                             id="email"
                             placeholder="Ingresa tu correo electrónico"
+                            onChange={handleChange}
                             required
                         />
                     </div>
@@ -33,6 +58,7 @@ const RegisterView = () => {
                             name="password"
                             id="password"
                             placeholder="Crea una contraseña (Mínimo 8 caracteres)"
+                            onChange={handleChange}
                             required
                         />
                     </div>

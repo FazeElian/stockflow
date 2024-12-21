@@ -1,25 +1,29 @@
 const express = require("express");
-const db = require("./db");
+const cors = require("cors");
+
+// Modules routes
+const userRoutes = require("./routes/userRoutes");
 
 // Create express app
 const app = express();
 
-// Backend API
-app.get("/api", (req, res) => {
-    res.json({ "users": ["user 1", "user 2", "user 3"] })
-});
+// Cors
+app.use(cors());
 
-// Get users from database
-app.get("/api/users", (req, res) => {
-    db.query("SELECT * FROM USERS", (err, users) => {
-        if (err) {
-            console.log(err);
-            res.status(500).send("Error fetching users");
-            return;
-        }
-        res.json({"users": users});
+// Middleware to analize JSON
+app.use(express.json());
+
+// Middleware to analize data (forms)
+app.use(express.urlencoded({ extended: true }));
+
+// Backend routes
+    // Example
+    app.get("/", (req, res) => {
+        res.send("Hello World!")
     })
-});
+
+// Users module
+app.use("/api/auth/", userRoutes);
 
 // Start server
 const PORT = 5000;
