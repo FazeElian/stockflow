@@ -22,7 +22,7 @@ const RegisterView = () => {
             const response = await Register(data);
                 
             // Redirection with alert
-            navigate("/admin/home");
+            navigate("/auth/login");
             alert("Te has registrado con éxito");
             
             console.log("Resultado: ", response.message);

@@ -10,6 +10,7 @@ import LoginView from "./views/company/LoginView"
 import ForgotPasswordView from "./views/company/ForgotPasswordView"
 import HomeView from "./views/admin/HomeView"
 import ProductsView from "./views/admin/ProductsView"
+import { PrivateRoute } from "./PrivateRoute"
 
 const App = () => {
   return (
@@ -24,7 +25,14 @@ const App = () => {
         <Route path="login" element={<LoginView />} />
         <Route path="forgot-password" element={<ForgotPasswordView />} />
       </Route>
-      <Route path="admin/*" element={<Header />}>
+      <Route
+        path="admin/*"
+        element={
+          <PrivateRoute>
+            <Header />
+          </PrivateRoute>
+        }
+      >
         <Route
           path="home"
           index
