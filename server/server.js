@@ -3,6 +3,7 @@ const cors = require("cors");
 
 // Modules routes
 const userRoutes = require("./routes/userRoutes");
+const adminRoutes = require("./routes/adminRoutes");
 
 // Create express app
 const app = express();
@@ -24,6 +25,9 @@ app.use(express.urlencoded({ extended: true }));
 
 // Users module
 app.use("/api/auth/", userRoutes);
+
+// Admin interface
+app.use("/api/admin/", adminRoutes);
 
 // Start server
 const PORT = 5000;

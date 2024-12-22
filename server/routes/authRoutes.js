@@ -7,7 +7,4 @@ router.get("/login", authToken, (req, res) => {
     res.status(200).json({ message: "Acceso concedido.", user: req.user });
 });
 
-router.get("/admin/home", authToken, (req, res) => {
-    res.status(200).json({ message: "Acceso concedido.", user: req.user });
-});
 module.exports = router;
