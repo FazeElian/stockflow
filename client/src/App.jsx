@@ -11,6 +11,7 @@ import ForgotPasswordView from "./views/company/ForgotPasswordView"
 import HomeView from "./views/admin/HomeView"
 import ProductsView from "./views/admin/ProductsView"
 import { PrivateRoute } from "./PrivateRoute"
+import NotFound from "./components/admin/NotFound"
 
 const App = () => {
   return (
@@ -41,6 +42,17 @@ const App = () => {
         <Route
           path="products"
           element={<ProductsView />}
+        />
+
+        {/* Error 404 */}
+        <Route
+          path="*"
+          element={
+            <NotFound
+              btnText="Volver al Dashboard"
+              btnLink="/admin/home"
+            />
+          }
         />
       </Route>
     </Routes>
