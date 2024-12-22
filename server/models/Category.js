@@ -1,26 +1,26 @@
 const { DataTypes } = require("sequelize");
 const sequelize = require("../db");
 
-const User = sequelize.define("User", {
+const Category = sequelize.define("Category", {
     id: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
         primaryKey: true,
     },
+    // Foreign key from Users table => id
+    userId: {
+        type: DataTypes.INTEGER,
+        references: {
+            model: "Users", // Table name on db
+            key: "id",
+        },
+        allowNull: false,
+    },
     name: {
         type: DataTypes.STRING,
         allowNull: false,
     },
-    email: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        unique: true,
-    },
-    password: {
-        type: DataTypes.STRING,
-        allowNull: false,
-    },
-    profilePhoto: {
+    description: {
         type: DataTypes.STRING,
         allowNull: true,
     },
@@ -34,4 +34,4 @@ const User = sequelize.define("User", {
     },
 });
 
-module.exports = User;
+module.exports = Category;
