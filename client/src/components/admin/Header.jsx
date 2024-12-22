@@ -5,10 +5,8 @@ import { SideBar } from "./SideBar";
 const Header = () => {
     return (
         <>
-            <NavBar />
             <SideBar />
-
-            <br />
+            <NavBar />
             <Outlet />
         </>
     )

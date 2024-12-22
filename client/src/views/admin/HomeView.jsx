@@ -11,13 +11,14 @@ const HomeView = () => {
     }
     
     return (
-        <div>
-            HomeView
+        <main className="content-page" style={{ color: "white" }}>
+            <br /><br />
+            <h2>Home View</h2>
             <br />
-            <button onClick={logOut}>
+            <button onClick={logOut} style={{ width: "200px" }}>
                 Cerrar Sesión
             </button>
-        </div>
+        </main>
     )
 }
 

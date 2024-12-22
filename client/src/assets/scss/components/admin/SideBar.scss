@@ -1,0 +1,121 @@
+@import "../../variables";
+
+.side-bar {
+    display: flex;
+    width: 300px;
+    height: 100vh;
+    position: fixed;
+    background-color: $black-light;
+    flex-direction: column;
+    padding: 2rem;
+    border-right: 1px solid $gray;
+    z-index: 1;
+
+    .top-side-bar {
+        display: flex;
+        width: 100%;
+        height: auto;
+        align-items: center;
+        justify-content: center;
+        padding-bottom: .75rem;
+        border-bottom: 1px solid $gray;
+
+        img {
+            width: 85%;
+        }
+    }
+
+    .nav-side-bar {
+        display: flex;
+        width: 100%;
+        height: auto;
+        flex-direction: column;
+        margin-top: 2rem;
+        gap: 1rem;
+        padding-bottom: 1rem;
+
+        .item-nav-side-bar {
+            display: flex;
+            text-decoration: none;
+            color: $white !important;
+            padding: 14px 1.2rem 14px;
+            border-radius: 10px;
+            transition: .3s ease-in-out;
+            gap: 5px;
+            align-items: center;
+            
+            svg {
+                width: 22px;
+                height: 22px;
+            }
+
+            h2 {
+                display: flex;
+                font-size: 16px;
+                font-weight: 400;
+            }
+        }
+        
+        .item-nav-side-bar:hover {
+            background-color: $black-medium;
+            transition: .25s ease-in;
+        }
+
+        .item-selected-nav-side-bar {
+            background-color: $aqua;
+            color: $black !important;
+        }
+
+        .item-selected-nav-side-bar:hover {
+            background-color: $black;
+            transition: .25s ease-in;
+            color: $white !important;
+        }
+    }
+}
+
+// Responsive 1440px
+@media screen and (max-width: 1440px) {
+    .side-bar {
+        width: 280px;
+        padding: 2rem;
+    
+        .top-side-bar {
+            padding-bottom: .6rem;
+            border-bottom: 1px solid $gray;
+    
+            img {
+                width: 80%;
+            }
+        }
+    
+        .nav-side-bar {
+            margin-top: 1.5rem;
+            gap: 1rem;
+            padding-bottom: 1rem;
+    
+            .item-nav-side-bar {
+                padding: 12px 1rem 12px;
+                border-radius: 6px;
+                
+                svg {
+                    width: 20px;
+                    height: 20px;
+                }
+    
+                h2 {
+                    display: flex;
+                    font-size: 15px;
+                    font-weight: 400;
+                }
+            }
+        }
+    }    
+}
+
+// Responsive 1024px
+@media screen and (max-width: 1024px) {
+    .side-bar {
+        display: none;
+    }
+}
