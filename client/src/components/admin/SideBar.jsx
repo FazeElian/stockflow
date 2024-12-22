@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 // Styles for this component
 import "../../assets/scss/components/admin/SideBar.scss";
@@ -13,33 +13,65 @@ import { TbCashRegister } from "react-icons/tb";
 import { IoPeopleOutline } from "react-icons/io5";
 
 const SideBar = () => {
+    const location = useLocation();
+
     return (
         <aside className="side-bar">
             <div className="top-side-bar">
                 <img src={Logo} alt="" />
             </div>
             <nav className="nav-side-bar">
-                <Link to="/admin/home" className="item-nav-side-bar item-selected-nav-side-bar">
+                <Link
+                    to="/admin/home"
+                    className={`item-nav-side-bar
+                        ${location.pathname === "/admin/home" ? "item-selected-nav-side-bar" : ""}
+                    `}
+                >
                     <MdOutlineDashboard />
                     <h2>Panel Principal</h2>
                 </Link>
-                <Link to="/admin/products" className="item-nav-side-bar">
+                <Link
+                    to="/admin/products"
+                    className={`item-nav-side-bar
+                        ${location.pathname === "/admin/products" ? "item-selected-nav-side-bar" : ""}
+                    `}
+                >
                     <BiShoppingBag />
                     <h2>Productos</h2>
                 </Link>
-                <Link to="/admin/products" className="item-nav-side-bar">
+                <Link
+                    to="/admin/categories"
+                    className={`item-nav-side-bar
+                        ${location.pathname === "/admin/categories" ? "item-selected-nav-side-bar" : ""}
+                    `}
+                >
                     <BiCategory />
                     <h2>Categorías</h2>
                 </Link>
-                <Link to="/admin/products" className="item-nav-side-bar">
+                <Link
+                    to="/admin/inventories"
+                    className={`item-nav-side-bar
+                        ${location.pathname === "/admin/inventories" ? "item-selected-nav-side-bar" : ""}
+                    `}
+                >
                     <MdOutlineInventory />
                     <h2>Inventarios</h2>
                 </Link>
-                <Link to="/admin/products" className="item-nav-side-bar">
+                <Link
+                    to="/admin/sales"
+                    className={`item-nav-side-bar
+                        ${location.pathname === "/admin/sales" ? "item-selected-nav-side-bar" : ""}
+                    `}
+                >
                     <TbCashRegister />
                     <h2>Ventas</h2>
                 </Link>
-                <Link to="/admin/products" className="item-nav-side-bar">
+                <Link
+                    to="/admin/customers"
+                    className={`item-nav-side-bar
+                        ${location.pathname === "/admin/customers" ? "item-selected-nav-side-bar" : ""}
+                    `}
+                >
                     <IoPeopleOutline />
                     <h2>Clientes</h2>
                 </Link>

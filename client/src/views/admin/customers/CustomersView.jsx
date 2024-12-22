@@ -1,10 +1,10 @@
-const HomeView = () => {
+const CustomersView = () => {
     return (
         <main className="content-page" style={{ color: "white" }}>
             <br /><br />
-            <h2>Home View</h2>
+            <h2>Customers View</h2>
         </main>
     )
 }
 
-export default HomeView
+export default CustomersView
