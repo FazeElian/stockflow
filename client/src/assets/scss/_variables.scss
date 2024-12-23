@@ -16,6 +16,9 @@ $gray: #89888C;
 $gray-dark: #1D1C21;
 $white: #F2F2F2;
 $aqua: #A9D9CB;
+$aquamarine: #22F2A4;
+$blue: #22B7F2;
+$red: #F20544;
 
 // Content
 .bg-content-center {
@@ -47,5 +50,11 @@ $aqua: #A9D9CB;
 @media screen and (max-width: 1024px) {
     .content-page {
         margin-left: 0;
+    }
+}
+
+@media screen and (max-width: 425px) {
+    .content-page {
+        padding: 4rem 2.2rem 5rem;  
     }
 }

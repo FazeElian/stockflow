@@ -1,0 +1,47 @@
+@import "../../variables.scss";
+
+.title-page {
+    display: flex;
+    width: 100%;
+    height: auto;
+    margin-top: 2.5rem;
+
+    h1 {
+        font-size: 1.6rem;
+        font-weight: 500;
+        color: $white;
+    }
+}
+
+// Responsive 1440px
+@media screen and (max-width: 1440px) {
+    .title-page {
+        margin-top: 2rem;
+        
+        h1 {
+            font-size: 1.4rem;
+        }
+    }
+}
+
+// Responsive 1024px
+@media screen and (max-width: 1024px) {
+    .title-page {
+        margin-top: 1.7rem;
+        
+        h1 {
+            font-size: 1.3rem;
+        }
+    }
+}
+
+// Responsive 425px
+@media screen and (max-width: 425px) {
+    .title-page {
+        margin-top: 2rem;
+        
+        h1 {
+            font-size: 1.2rem;
+        }
+    }
+}
