@@ -1,4 +1,3 @@
-
 @import "../../variables";
 
 .not-found {
@@ -9,6 +8,7 @@
     justify-content: center;
     flex-direction: column;
     background-color: $black;
+    text-align: center;
 
     h1 {
         color: $white;
@@ -41,6 +41,7 @@
         margin-top: 2rem;
         font-size: 17px;
         transition: .25s ease-in-out;
+        text-align: center;
     }
 
     .btn-not-found:hover {
@@ -55,5 +56,52 @@
     }
     50% {
       text-shadow: none;
+    }
+}
+
+// Responsive 1440px
+@media screen and (max-width: 1440px) {
+    .not-found {
+        h1 {
+            font-size: 8rem;
+        }
+
+        h2{ 
+            font-size: 18px;
+        }
+
+        .btn-not-found {
+            font-size: 15px;
+            padding: 13px 2rem 13px;
+        }
+    }
+}
+
+// Responsive 768px
+@media screen and (max-width: 768px) {
+    .not-found {
+        h1 {
+            font-size: 7rem;
+        }
+
+        h2{ 
+            font-size: 16px;
+            font-weight: 400;
+            margin-top: 0;
+        }
+
+        .btn-not-found {
+            font-size: 14px;
+            padding: 12px 2rem 12px;
+        }
+    }
+}
+
+// Responsive 768px
+@media screen and (max-width: 768px) {
+    .not-found {
+        h1 {
+            font-size: 6.5rem;
+        }
     }
 }
