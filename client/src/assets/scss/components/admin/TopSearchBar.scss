@@ -1,0 +1,267 @@
+@import "../../variables";
+
+.top-search-bar {
+    display: flex;
+    width: 100%;
+    height: auto;
+    justify-content: space-between;
+    margin-top: 1.5rem;
+
+    .search {
+        display: flex;
+        width: 50%;
+        height: auto;
+        gap: 1.2rem;
+
+        .btn-filter {
+            display: flex;
+            width: auto;
+            height: auto;
+            padding: 10px;
+            background-color: $aqua;
+            border: none;
+            border-radius: 7px;
+            cursor: pointer;
+            align-items: center;
+            justify-content: center;
+
+            svg {
+                width: 24px;
+                height: 23px;
+                color: $black !important;
+            }
+        }
+
+        .search-bar {
+            display: flex;
+            align-items: center;
+            border-bottom: 2px solid $white;
+            gap: 10px;
+
+            svg {
+                width: 20px;
+                height: 20px;
+                color: $white !important;
+            }
+
+            input {
+                display: flex;
+                width: 50%;
+                min-width: 360px;
+                height: 100%;
+                font-size: 16px;
+                border: none;
+                outline: none;
+                background: transparent;
+                color: $gray;
+                transition: .2s ease-in-out;
+            }
+
+            input::-webkit-input-placeholder {
+                color: $gray;
+            }
+
+            input:focus {
+                color: $white;
+            }
+        }
+    }
+
+    .module-options {
+        display: flex;
+        width: 50%;
+        height: 100%;
+        justify-content: flex-end;
+        gap: 1rem;
+
+        .btn-module-options {
+            display: flex;
+            width: auto;
+            height: auto;
+            padding: 11px 2rem 11px;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+            font-size: 15px;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+            transition: .2s ease-in-out;
+            text-decoration: none;
+
+            h2 {
+                font-size: 15px;
+                font-weight: 400;
+            }
+
+            svg {
+                width: 20px;
+                height: 20px;
+                margin-right: 5px;
+            }
+        }
+
+            .btn-module-options:hover {
+                opacity: .7;
+                transition: .2s ease-in;
+            }
+
+        .btn-export {
+            color: $white !important;
+            background-color: $black-light;
+            border: 1px solid $white;
+        }
+
+        .btn-new {
+            color: $black !important;
+            background-color: $aqua;
+        }
+    }
+}
+
+// Responsive 1440px
+@media screen and (max-width: 1440px) {
+    .top-search-bar {
+        margin-top: 1rem;
+    
+        .search {
+            gap: 1rem;
+    
+            .btn-filter {
+                padding: 0 13px 0;
+                border-radius: 5px;
+                
+                svg {
+                    width: 21px;
+                    height: 21px;
+                }
+            }
+    
+            .search-bar {
+                border-bottom: 1px solid $white;
+                gap: 10px;
+    
+                svg {
+                    width: 18px;
+                    height: 18px;
+                }
+    
+                input {
+                    width: 35%;
+                    min-width: 280px;
+                    font-size: 15px;
+                }
+            }
+        }
+    
+        .module-options {
+            .btn-module-options {
+                padding: 11px 2rem 11px;
+                font-size: 14px;
+                border-radius: 4px;
+                gap: 8px;
+                
+                h2 {
+                    display: none;
+                }
+    
+                svg {
+                    width: 19px;
+                    height: 19px;
+                    margin: 0;
+                }
+            }
+        }
+    }   
+}
+
+// Responsive 1280px
+@media screen and (max-width: 1280px) {
+    .top-search-bar {
+        .module-options {
+            .btn-export {
+                font-size: 0;
+                gap: 0;
+                padding: 10px 14px 10px;
+            }
+        }
+    }
+}
+
+// Responsive 1024px
+@media screen and (max-width: 1024px) {
+    .top-search-bar {
+        .search {
+            .btn-filter {
+                svg {
+                    width: 19px;
+                    height: 19px;
+                }
+            }
+            
+            .search-bar {
+                input {
+                    min-width: 250px;
+                }
+            }
+        }
+
+        .module-options {
+            .btn-export {
+                font-size: 0;
+                gap: 0;
+                padding: 10px 14px 10px;
+            }
+        }
+    }
+}
+
+// Responsive 768px
+@media screen and (max-width: 768px) {
+    .top-search-bar {
+        .module-options {
+            .btn-new {
+                font-size: 0;
+                gap: 0;
+                padding: 10px 14px 10px;
+            }
+        }
+    }
+}
+
+// Responsive 600px
+@media screen and (max-width: 600px) {
+    .top-search-bar {
+        flex-direction: column;
+        gap: 1.2rem;
+        margin-top: 1.5rem;
+
+        .search,
+        .module-options {
+            width: 100%;
+        }
+
+        .search {
+            .btn-filter {
+                padding: 10px;
+            }
+            .search-bar {
+                width: 100%;
+                input {
+                    min-width: 90%;
+                }
+            }
+        }
+
+        .module-options {
+            gap: 12px;
+
+            .btn-module-options {
+                width: 50%;
+                font-size: 14px;
+                gap: 8px;
+                padding: 10px 1.2rem 10px;
+            }
+        }
+    }
+}
