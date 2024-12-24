@@ -47,35 +47,39 @@ const CategoriesView = () => {
             />
 
             <table className="table table-categories">
-                <thead className="thead-categories thead">
-                    <tr className="tr tr-categories tr-no-category">No</tr>
-                    <tr className="tr tr-name-category">Nombre</tr>
-                    <tr className="tr tr-description-category">Descripción</tr>
-                    <tr className="tr tr-options-category">Opciones</tr>
+                <thead>
+                    <tr className="thead-categories thead">
+                        <th className="tr tr-categories tr-no-category">No</th>
+                        <th className="tr tr-name-category">Nombre</th>
+                        <th className="tr tr-description-category">Descripción</th>
+                        <th className="tr tr-options-category">Opciones</th>
+                    </tr>
                 </thead>
                 
-                {categories.length > 0 ? (
-                    categories.map((category, i) => (
-                        <tbody className="tbody tbody-categories" key={category.id}>
-                            <td className="td td-no-category">{i+1}</td>
-                            <td className="td td-name-category">{category.name}</td>
-                            <td className="td td-description-category">
-                                {category.description ? category.description : "Sin descripción"}
+                <tbody>
+                    {categories.length > 0 ? (
+                        categories.map((category, i) => (
+                            <tr className="tbody tbody-categories" key={category.id}>
+                                <td className="td td-no-category">{i+1}</td>
+                                <td className="td td-name-category">{category.name}</td>
+                                <td className="td td-description-category">
+                                    {category.description ? category.description : "Sin descripción"}
+                                </td>
+                                <td className="td td-options td-options-category">
+                                    <button className="btn-td btn-td-view"><FaEye /></button>
+                                    <button className="btn-td btn-td-edit"><TbEdit /></button>
+                                    <button className="btn-td btn-td-delete"><MdDelete /></button>
+                                </td>
+                            </tr>
+                        ))
+                    ) : (
+                        <tr className="tbody tbody-categories">
+                            <td className="td td-none">
+                                No hay categorías
                             </td>
-                            <td className="td td-options td-options-category">
-                                <button className="btn-td btn-td-view"><FaEye /></button>
-                                <button className="btn-td btn-td-edit"><TbEdit /></button>
-                                <button className="btn-td btn-td-delete"><MdDelete /></button>
-                            </td>
-                        </tbody>
-                    ))
-                ) : (
-                    <tbody className="tbody tbody-categories">
-                        <td className="td td-none">
-                            No hay categorías
-                        </td>
-                    </tbody>
-                )}
+                        </tr>
+                    )}
+                </tbody>
             </table>
         </main>
     )
