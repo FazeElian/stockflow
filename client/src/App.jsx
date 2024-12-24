@@ -23,6 +23,7 @@ import CustomersView from "./views/admin/customers/CustomersView"
 
   // Not found
   import NotFound from "./components/admin/NotFound"
+import NewCategoryView from "./views/admin/categories/NewCategoryView"
 
 const App = () => {
   return (
@@ -54,10 +55,18 @@ const App = () => {
           path="products"
           element={<ProductsView />}
         />
+
+        {/* Categories module */}
         <Route
           path="categories"
           element={<CategoriesView />}
         />
+          {/* New */}
+          <Route
+            path="categories/new"
+            element={<NewCategoryView />}
+          />
+          
         <Route
           path="inventories"
           element={<InventoriesView />}

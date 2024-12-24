@@ -1,0 +1,136 @@
+@import "../../variables";
+
+.form-module {
+    display: flex;
+    width: 100%;
+    height: auto;
+    background-color: $black-light;
+    flex-direction: column;
+    margin-top: 3rem;
+    padding: 3rem;
+    border-radius: 8px;
+    gap: 1.5rem;
+    
+    h1 {
+        color: $white;
+        font-size: 1.6rem;
+        font-weight: 500;
+    }
+
+    .group-form-module {
+        display: flex;
+        width: 100%;
+        height: auto;
+        flex-direction: column;
+        gap: 8px;
+
+        label {
+            font-weight: 500;
+            font-size: 17px;
+            color: $white;
+        }
+
+        input, textarea {
+            display: flex;
+            width: 100%;
+            height: auto;
+            padding: 10px 1rem 10px;
+            font-size: 15.5px;
+            background: transparent;
+            border: 1px solid $gray;
+            outline: none;
+            border-radius: 5px;
+            color: $white;
+            transition: .2s ease-in-out;
+        }
+
+        textarea {
+            field-sizing: content;
+            min-height: 100px;
+        }
+
+        input:focus,
+        textarea:focus {
+            border: 1px solid $white;
+            transition: .2s ease-in;
+        }
+
+        input::-webkit-input-placeholder,
+        textarea::-webkit-input-placeholder {
+            color: $gray;
+        }
+    }
+}
+
+// Responsive 1440px
+@media screen and (max-width: 1440px) {
+    .form-module {
+        padding: 2.8rem;
+        border-radius: 6px;
+        gap: 1.2rem;
+        
+        h1 {
+            font-size: 1.5rem;
+        }
+    
+        .group-form-module {
+            gap: 6px;
+    
+            label {
+                font-size: 16px;
+            }
+    
+            input, textarea {
+                padding: 9px 1rem 9px;
+                font-size: 14px;
+                border-radius: 4px;
+            }
+    
+            textarea {
+                min-height: 90px;
+            }
+        }
+    }    
+}
+
+// Responsive 600px
+@media screen and (max-width: 600px) {
+    .form-module {
+        padding: 2.5rem;
+        border-radius: 5px;
+        gap: 1.1rem;
+        
+        h1 {
+            font-size: 1.4rem;
+        }
+    
+        .group-form-module {
+            gap: 5px;
+    
+            textarea {
+                min-height: 80px;
+            }
+        }
+    }   
+}
+
+// Responsive 425px
+@media screen and (max-width: 425px) {
+    .form-module {
+        h1 {
+            font-size: 1.3rem;
+        }
+
+        .group-form-module {
+            gap: 8px;
+    
+            label {
+                font-size: 15px;
+            }
+
+            textarea {
+                min-height: 100px;
+            }
+        }
+    }
+}
