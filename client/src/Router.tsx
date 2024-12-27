@@ -6,6 +6,9 @@ import { HeaderAdmin } from "./components/admin/HeaderAdmin";
 
 // Company views components
 import IndexView from "./views/company/IndexView";
+import ChooseYourPlanView from "./views/company/ChooseYourPlanView";
+
+// Users module
 import RegisterView from "./views/company/users/RegisterView";
 import LoginView from "./views/company/users/LoginView";
 import ForgotPasswordView from "./views/company/users/ForgotPassword";
@@ -21,6 +24,8 @@ export default function Router () {
                 <Route element={<HeaderCompany />}>
                     {/* Index */}
                     <Route index element={<IndexView />} />
+                    
+                    <Route path="/plans" element={<ChooseYourPlanView />} />
 
                     {/* Users module */}
                     <Route path="/auth/register" element={<RegisterView />} />

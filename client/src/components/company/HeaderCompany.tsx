@@ -39,7 +39,7 @@ const HeaderCompany = () => {
                             <FaGears />
                             Funcionalidades
                         </Link>
-                        <Link to="/pricing" className="item-nav-list--company bg-transparent">
+                        <Link to="/plans" className="item-nav-list--company bg-transparent">
                             <IoMdPricetags />
                             Elije tu Plan
                         </Link>
