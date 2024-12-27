@@ -186,14 +186,16 @@
                 align-items: flex-end;
             }
 
-                .top-item-app-features img {
-                    width: 30px;
-                    height: 30px;
+                .top-item-app-features svg {
+                    width: 28px;
+                    height: 28px;
+                    background: transparent;
+                    color: white !important;
                 }
 
                 .top-item-app-features h2 {
                     font-size: 22px;
-                    margin-left: 1rem;
+                    margin-left: .7rem;
                     font-weight: 450;
                 }
 
