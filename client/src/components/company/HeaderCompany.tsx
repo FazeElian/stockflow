@@ -50,15 +50,15 @@ const HeaderCompany = () => {
                     </section>
 
                     <section className="sect-user-nav-list--company">
-                        <Link to="/login" className="item-nav-list--company bg-transparent">Iniciar Sesión</Link>
-                        <Link to="/register" className="item-nav-list--company bg-transparent">Registrarse</Link>
+                        <Link to="/auth/login" className="item-nav-list--company bg-transparent">Iniciar Sesión</Link>
+                        <Link to="/auth/register" className="item-nav-list--company bg-transparent">Registrarse</Link>
                     </section>
                 </nav>
                 <nav className="nav-user--company bg-transparent">
-                    <Link to="/login" className="btn-header--company btn-login-header--company color-white">
+                    <Link to="/auth/login" className="btn-header--company btn-login-header--company color-white">
                         Ingresar
                     </Link>
-                    <Link to="/register" className="btn-header--company btn-signin-header--company color-white">
+                    <Link to="/auth/register" className="btn-header--company btn-signin-header--company color-white">
                         Únete
                     </Link>
                     <button className="btn-menu--company color-white bg-transparent" onClick={toggleMenu}>
