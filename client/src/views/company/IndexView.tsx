@@ -5,6 +5,7 @@ import "../../assets/css/views/company/IndexView.css";
 import { TopBannerServices } from "../../components/company/TopBannerServices"
 import { AppMainFeatures } from "../../components/company/AppMainFeatures";
 import { ChooseYourPlan } from "../../components/company/ChooseYourPlan";
+import { FooterCompany } from "../../components/company/FooterCompany";
 
 const IndexView = () => {
     return (
@@ -13,6 +14,7 @@ const IndexView = () => {
                 <TopBannerServices />
                 <AppMainFeatures />
                 <ChooseYourPlan />
+                <FooterCompany bgColor="bg-black-light" />
             </main>
         </>
     )
