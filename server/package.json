@@ -1,0 +1,31 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FazeElian/stockflow.git"
+  },
+  "keywords": [
+    "Admin",
+    "dashboard",
+    "Management",
+    "Inventories",
+    "Products",
+    "Sales",
+    "Stockflow"
+  ],
+  "author": "Elián Ibarra",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/FazeElian/stockflow/issues"
+  },
+  "homepage": "https://github.com/FazeElian/stockflow#readme",
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}
