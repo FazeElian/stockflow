@@ -1,8 +1,16 @@
+// Styles for this view
+import "../../assets/css/views/company/IndexView.css";
+
+// Components for this view
+import { TopBannerServices } from "../../components/company/TopBannerServices"
+
 const IndexView = () => {
     return (
-        <div>
-            <h1>Index view</h1>
-        </div>
+        <>
+            <main className="content-page--company">
+                <TopBannerServices />
+            </main>
+        </>
     )
 }
 
