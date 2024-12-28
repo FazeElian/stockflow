@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom"
+import axios, { isAxiosError } from "axios";
 
 // Styles for this view
 import "../../../assets/css/views/company/users/Form.css";
@@ -12,18 +13,46 @@ import { useForm } from "react-hook-form";
 // Error message component
 import ErrorMessageValidation from '../../../components/company/users/ErrorMessageValidation';
 
+// User type
+import { LoginForm } from "../../../types/users";
+
+// Toast alert component
+import { toast } from "sonner";
+
+// Redirection
+import { useNavigate } from "react-router-dom";
+
 const LoginView = () => {
     const initialValues = {
         email: "",
         password: ""
     }
 
-    const { register, handleSubmit, formState: { errors } } = useForm({
+    const { register, handleSubmit, reset, formState: { errors } } = useForm({
         defaultValues: initialValues
     });
 
-    const handleLogin = () => {
-        console.log("Desde handle login");
+    // Redirect
+    const navigate = useNavigate();
+
+    const handleLogin = async (formData: LoginForm) => {
+        try {
+            const {data} = await axios.post(`${import.meta.env.VITE_API_URL}/auth/login`, formData);
+            toast.success(data);
+            
+            // Clear form
+            reset()
+
+            setTimeout(() => {
+                // Redirection to admin dashboard
+                navigate("/admin/home");
+            }, 2000)
+
+        } catch (error) {
+            if (isAxiosError(error) && error.response) {
+                toast.error(error.response.data);
+            }
+        }
     }
 
     return (
