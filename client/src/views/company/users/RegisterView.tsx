@@ -29,7 +29,7 @@ const RegisterView = () => {
 
     const handleRegister = async (formData : RegisterForm) => {
         try {
-            const {data} = await axios.post("http://localhost:8081/auth/register", formData);
+            const {data} = await axios.post(`${import.meta.env.VITE_API_URL}/auth/register`, formData);
             console.log({data});
             alert("Usuario creado con éxito")
         } catch (error) {
