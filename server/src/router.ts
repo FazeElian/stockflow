@@ -1,7 +1,8 @@
 import { Router } from "express";
+import { body } from "express-validator";
 
-// User model
-import User from "./models/User";
+// Validation middleware
+import { handleInputErrors } from "./middleware/validation";
 
 // Functions from controller
 import { Login, Register } from "./controllers/userController";
@@ -10,9 +11,30 @@ import { Login, Register } from "./controllers/userController";
 const router = Router();
 
 // New user
-router.post("/auth/register", Register);
+router.post("/auth/register",
+    body("userName")
+        .notEmpty()
+        .withMessage("El nombre de usuario no puede ir vacío"),
+    body("email")
+        .isEmail()
+        .withMessage("Correo electrónico no válido"),
+    body("password")
+        .isLength({ min: 8 })
+        .withMessage("La contraseña debe ser de mínimo 8 caracteres"),
+    handleInputErrors,
+    Register
+);
 
 // Login
-router.post("/auth/login", Login);
+router.post("/auth/login",
+    body("email")
+        .isEmail()
+        .withMessage("Correo electrónico no válido"),
+    body("password")
+        .isLength({ min: 8 })
+        .withMessage("La contraseña debe ser de mínimo 8 caracteres"),
+    handleInputErrors,
+    Login
+);
 
 export default router;
