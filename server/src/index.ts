@@ -1,14 +1,9 @@
-import express from "express";
-
-// Express app
-const app = express()
-
-// Route
-app.get('/', (req, res) => {
-    res.send("Hello World");
-});
+import server from "./server";
 
 // Server
-app.listen(5000, () => {
-    console.log("Server running on port 5000");
+// Port
+const PORT = 5000;
+
+server.listen(PORT, () => {
+    console.log("Server running on port: ", PORT);
 });
