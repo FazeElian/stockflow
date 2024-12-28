@@ -1,10 +1,15 @@
 import { Router } from "express";
 
+// User model
+import User from "./models/User";
+
+// Functions from controller
+import { Register } from "./controllers/userController";
+
+// Router
 const router = Router();
 
-// Routes
-router.get("/", (req, res) => {
-    res.send("Home page");
-});
+// New user
+router.post("/auth/register", Register)
 
 export default router;
