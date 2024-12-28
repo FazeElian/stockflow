@@ -48,3 +48,16 @@ export const Login = async (req: Request, res: Response) => {
 
     res.status(200).send("Has iniciado sesión con éxito");
 }
+
+export const ForgotPassword = async (req: Request, res: Response) => {
+    const { email } = req.body;
+
+    // Check if exists an user with the email sent
+    const user = await User.findOne({ email });
+    if(!user) {
+        res.status(404).send("No existe una cuenta asociada al correo ingresado");
+    }
+
+    // Success message
+    res.status(200).send("Código enviado al correo para reestablecer contraseña");
+}

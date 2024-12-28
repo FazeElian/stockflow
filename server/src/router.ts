@@ -5,7 +5,7 @@ import { body } from "express-validator";
 import { handleInputErrors } from "./middleware/validation";
 
 // Functions from controller
-import { Login, Register } from "./controllers/userController";
+import { Login, Register, ForgotPassword } from "./controllers/userController";
 
 // Router
 const router = Router();
@@ -35,6 +35,15 @@ router.post("/auth/login",
         .withMessage("La contraseña debe ser de mínimo 8 caracteres"),
     handleInputErrors,
     Login
+);
+
+// Forgot password
+router.post("/auth/forgot-password",
+    body("email")
+        .isEmail()
+        .withMessage("Correo electrónico no válido"),
+    handleInputErrors,
+    ForgotPassword
 );
 
 export default router;
