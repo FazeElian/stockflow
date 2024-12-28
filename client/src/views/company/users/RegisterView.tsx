@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom"
+import axios, { isAxiosError } from "axios";
 
 // Styles for this view
 import "../../../assets/css/views/company/users/Form.css";
@@ -26,8 +27,16 @@ const RegisterView = () => {
         defaultValues: initialValues
     });
 
-    const handleRegister = (formData : RegisterForm) => {
-        console.log(formData);
+    const handleRegister = async (formData : RegisterForm) => {
+        try {
+            const {data} = await axios.post("http://localhost:8081/auth/register", formData);
+            console.log({data});
+            alert("Usuario creado con éxito")
+        } catch (error) {
+            if (isAxiosError(error) && error.response) {
+                console.error(error.response.data.error);
+            }
+        }
     }
 
     return (
