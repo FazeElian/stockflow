@@ -10,3 +10,7 @@ export type User = {
 export type RegisterForm = Pick<User, "userName" | "email"> & {
     password: string,
 }
+
+export type LoginForm = Pick<User, "email"> & {
+    password: string,
+}
