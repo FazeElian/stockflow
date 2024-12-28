@@ -23,7 +23,7 @@ const RegisterView = () => {
         password: ""
     }
 
-    const { register, handleSubmit, formState: { errors } } = useForm({
+    const { register, handleSubmit, reset, formState: { errors } } = useForm({
         defaultValues: initialValues
     });
 
@@ -31,6 +31,10 @@ const RegisterView = () => {
         try {
             const {data} = await axios.post(`${import.meta.env.VITE_API_URL}/auth/register`, formData);
             console.log({data});
+
+            // Clear form
+            reset()
+
             alert("Usuario creado con éxito")
         } catch (error) {
             if (isAxiosError(error) && error.response) {
