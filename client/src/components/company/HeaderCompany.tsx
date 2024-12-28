@@ -13,6 +13,7 @@ import { FaHome } from "react-icons/fa";
 import { FaGears } from "react-icons/fa6";
 import { IoMdPricetags } from "react-icons/io";
 import { MdWifiCalling3 } from "react-icons/md";
+import { Toaster } from "sonner";
 
 const HeaderCompany = () => {
     const [ menu, setMenu ] = useState(false);
@@ -67,6 +68,12 @@ const HeaderCompany = () => {
                 </nav>
             </header>
 
+            <Toaster
+                position="bottom-right"
+                richColors
+                expand
+                visibleToasts={5}
+            />
             <Outlet />
         </>
     )

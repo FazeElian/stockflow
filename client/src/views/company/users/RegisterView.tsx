@@ -3,6 +3,7 @@ import axios, { isAxiosError } from "axios";
 
 // Styles for this view
 import "../../../assets/css/views/company/users/Form.css";
+import "../../../assets/css/components/company/users/FormsAlerts.css";
 
 // Logo
 import Logo from "../../../assets/img/Logo.png";
@@ -16,6 +17,12 @@ import ErrorMessageValidation from "../../../components/company/users/ErrorMessa
 // User type
 import { RegisterForm } from "../../../types/users";
 
+// Toast alert component
+import { toast } from "sonner";
+
+// Redirection
+import { useNavigate } from "react-router-dom";
+
 const RegisterView = () => {
     const initialValues : RegisterForm = {
         userName: "",
@@ -27,18 +34,24 @@ const RegisterView = () => {
         defaultValues: initialValues
     });
 
+    // Redirect
+    const navigate = useNavigate();
+
     const handleRegister = async (formData : RegisterForm) => {
         try {
             const {data} = await axios.post(`${import.meta.env.VITE_API_URL}/auth/register`, formData);
-            console.log({data});
+            toast.success(data);
 
             // Clear form
             reset()
 
-            alert("Usuario creado con éxito")
+            setTimeout(() => {
+                // Redirection to admin dashboard
+                navigate("/admin/home");
+            }, 2000)
         } catch (error) {
             if (isAxiosError(error) && error.response) {
-                console.error(error.response.data.error);
+                toast.error(error.response.data);
             }
         }
     }
