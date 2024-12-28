@@ -12,9 +12,12 @@ import { useForm } from "react-hook-form";
 // Error message component
 import ErrorMessageValidation from "../../../components/company/users/ErrorMessageValidation";
 
+// User type
+import { RegisterForm } from "../../../types/users";
+
 const RegisterView = () => {
-    const initialValues = {
-        name: "",
+    const initialValues : RegisterForm = {
+        userName: "",
         email: "",
         password: ""
     }
@@ -23,8 +26,8 @@ const RegisterView = () => {
         defaultValues: initialValues
     });
 
-    const handleRegister = () => {
-        console.log("Desde handle register");
+    const handleRegister = (formData : RegisterForm) => {
+        console.log(formData);
     }
 
     return (
@@ -38,19 +41,19 @@ const RegisterView = () => {
                         </div>
                         <div className="inputs-form-users bg-transparent">
                             <div className="group-form-users bg-transparent">
-                                <label htmlFor="name" className="bg-transparent color-white">Nombre Completo</label>
+                                <label htmlFor="userName" className="bg-transparent color-white">Nombre de Usuario</label>
                                 <input
                                     type="text"
                                     id=""
                                     className="color-black bg-white font-inter"
-                                    placeholder="Ingresa tu nombre completo"
-                                    {...register("name", {
+                                    placeholder="Ingresa un nombre de usuario"
+                                    {...register("userName", {
                                         required: "El nombre es un campo obligatorio"
                                     })}
                                 />
-                                {errors.name && 
+                                {errors.userName && 
                                     <ErrorMessageValidation>
-                                        {errors.name?.message}
+                                        {errors.userName?.message}
                                     </ErrorMessageValidation>
                                 }
                             </div>
