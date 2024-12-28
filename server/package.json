@@ -1,11 +1,12 @@
 {
   "name": "server",
-  "type": "module",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon index.js"
+    "dev": "nodemon src/index.js",
+    "build": "tsc",
+    "start": "node dist/index.js"
   },
   "repository": {
     "type": "git",
@@ -31,6 +32,8 @@
   },
   "devDependencies": {
     "@types/express": "^5.0.0",
-    "nodemon": "^3.1.9"
+    "nodemon": "^3.1.9",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.7.2"
   }
 }
