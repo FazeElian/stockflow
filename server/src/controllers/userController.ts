@@ -7,6 +7,9 @@ import User from "../models/User";
 // Function to hash password
 import { checkPassword, hashPassword } from "../utils/auth";
 
+// Generate json web token function
+import { generateJWT } from "../utils/jwt";
+
 // New user
 export const Register = async (req: Request, res: Response) => {
     const { email, password } = req.body;
@@ -45,6 +48,9 @@ export const Login = async (req: Request, res: Response) => {
     if(!isPasswordCorrect) {
         res.status(401).send("Contraseña incorrecta");
     }
+
+    // Generate JWT function
+    const token = generateJWT({id: user._id});
 
     res.status(200).send("Has iniciado sesión con éxito");
 }
