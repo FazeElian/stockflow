@@ -38,6 +38,10 @@ const LoginView = () => {
     const handleLogin = async (formData: LoginForm) => {
         try {
             const {data} = await axios.post(`${import.meta.env.VITE_API_URL}/auth/login`, formData);
+            
+            // Save JWT on localStorage
+            localStorage.setItem("AUTH_TOKEN", data);
+
             toast.success(data);
             
             // Clear form
