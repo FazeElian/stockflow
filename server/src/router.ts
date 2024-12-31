@@ -5,7 +5,12 @@ import { body } from "express-validator";
 import { handleInputErrors } from "./middleware/validation";
 
 // Functions from controller
-import { Login, Register, ForgotPassword } from "./controllers/userController";
+import {
+    Login,
+    Register,
+    ForgotPassword,
+    GetUser
+} from "./controllers/userController";
 
 // Router
 const router = Router();
@@ -45,5 +50,8 @@ router.post("/auth/forgot-password",
     handleInputErrors,
     ForgotPassword
 );
+
+// Get user
+router.get("/user", GetUser);
 
 export default router;

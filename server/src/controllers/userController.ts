@@ -10,6 +10,9 @@ import { checkPassword, hashPassword } from "../utils/auth";
 // Generate json web token function
 import { generateJWT } from "../utils/jwt";
 
+// JWT
+import jwt from 'jsonwebtoken';
+
 // New user
 export const Register = async (req: Request, res: Response) => {
     const { email, password } = req.body;
@@ -55,6 +58,7 @@ export const Login = async (req: Request, res: Response) => {
     res.status(200).send("Has iniciado sesión con éxito");
 }
 
+// Forgot password
 export const ForgotPassword = async (req: Request, res: Response) => {
     const { email } = req.body;
 
@@ -66,4 +70,40 @@ export const ForgotPassword = async (req: Request, res: Response) => {
 
     // Success message
     res.status(200).send("Código enviado al correo para reestablecer contraseña");
+}
+
+export const GetUser = async (req: Request, res: Response) => {
+    const bearer = req.headers.authorization;
+
+    // Check if there's a bearer
+    if(!bearer) {
+        const error = new Error("No autorizado");
+        res.status(401).json({ error: error.message });
+        return;
+    }
+
+    // Show only the JWT without "bearer on console"
+    const [, token] = bearer.split(" ");
+
+    // Check if there's a token
+    if(!token) {
+        const error = new Error("No autorizado");
+        res.status(401).json({ error: error.message });
+        return;
+    }
+
+    try {
+        const result = jwt.verify(token, process.env.JWT_SECRET);
+        if(typeof result === "object" && result.id) {
+            const user = await User.findById(result.id)
+            if(!user) {
+                const error = new Error("El usuario no existe");
+                res.status(401).json({ error: error.message });
+                return;
+            }
+            res.json(user);
+        }
+    } catch (error) {
+        res.status(500).send({ error: "Token no válido" })
+    }
 }
