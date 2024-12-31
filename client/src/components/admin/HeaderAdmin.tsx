@@ -6,19 +6,24 @@ import { useQuery } from "@tanstack/react-query"
 // Function from API
 import { getUser } from "../../api/StockFlowAPI";
 
+// Redirection
+import { useNavigate } from "react-router-dom";
+
 const HeaderAdmin = () => {
-    const { data, isLoading, error, isError } = useQuery({
+    const { data, isLoading, isError } = useQuery({
         queryFn: getUser,
         queryKey: ["user"],
         retry: 1,
         refetchOnWindowFocus: false,
     });
 
-    console.log(data);
-    console.log(isLoading);
-    console.log(isError);
-    console.log(error?.message)
-    
+    const navigate = useNavigate();
+
+    if (isLoading) return "Cargando";
+    if (isError) {
+        navigate("/auth/login");
+    }
+
     return (
         <>
             <nav>
