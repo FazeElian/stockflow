@@ -95,7 +95,7 @@ export const GetUser = async (req: Request, res: Response) => {
     try {
         const result = jwt.verify(token, process.env.JWT_SECRET);
         if(typeof result === "object" && result.id) {
-            const user = await User.findById(result.id)
+            const user = await User.findById(result.id).select("userName email") // Select user fields
             if(!user) {
                 const error = new Error("El usuario no existe");
                 res.status(401).json({ error: error.message });
