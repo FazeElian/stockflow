@@ -4,6 +4,9 @@ import { body } from "express-validator";
 // Validation middleware
 import { handleInputErrors } from "./middleware/validation";
 
+// Authentication middleware
+import { authenticate } from "./middleware/auth";
+
 // Functions from controller
 import {
     Login,
@@ -52,6 +55,9 @@ router.post("/auth/forgot-password",
 );
 
 // Get user
-router.get("/user", GetUser);
+router.get("/user",
+    authenticate,
+    GetUser
+);
 
 export default router;
