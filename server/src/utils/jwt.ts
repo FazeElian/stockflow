@@ -5,6 +5,6 @@ export const generateJWT = (payload : JwtPayload) => {
         expiresIn: "1d"
     });
     
-    console.log(token);
+    console.log("Token Usuario: ", token);
     return token;
 }

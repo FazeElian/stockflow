@@ -42,7 +42,7 @@ const LoginView = () => {
             // Save JWT on localStorage
             localStorage.setItem("AUTH_TOKEN", data);
 
-            toast.success(data);
+            toast.success("Has iniciado sesión con éxito");
             
             // Clear form
             reset()

@@ -52,7 +52,8 @@ export const Login = async (req: Request, res: Response) => {
     // Generate JWT function
     const token = generateJWT({id: user._id});
 
-    res.status(200).send("Has iniciado sesión con éxito");
+    // Send token
+    res.send(token);
 }
 
 // Forgot password
