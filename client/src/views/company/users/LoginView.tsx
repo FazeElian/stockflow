@@ -45,16 +45,9 @@ const LoginView = () => {
             // Save JWT on localStorage
             localStorage.setItem("AUTH_TOKEN", data);
 
-            toast.success("Has iniciado sesión con éxito");
-            
             // Clear form
             reset()
-
-            setTimeout(() => {
-                // Redirection to admin dashboard
-                navigate("/admin/home");
-            }, 2000)
-
+            navigate("/admin/home");
         } catch (error) {
             if (isAxiosError(error) && error.response) {
                 toast.error(error.response.data);

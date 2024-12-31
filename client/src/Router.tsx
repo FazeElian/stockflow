@@ -15,6 +15,12 @@ import ForgotPasswordView from "./views/company/users/ForgotPassword";
 
 // Admin views components
 import HomeView from "./views/admin/HomeView";
+import ProductsView from "./views/admin/products/ProductsView";
+import CategoriesView from "./views/admin/categories/CategoriesView";
+import InventoriesView from "./views/admin/inventories/InventoriesView";
+import InvoicesView from "./views/admin/invoices/InvoicesView";
+import SalesView from "./views/admin/sales/SalesView";
+import CustomersView from "./views/admin/customers/CustomersView";
 
 export default function Router () {
     return (
@@ -36,6 +42,12 @@ export default function Router () {
                 {/* Admin views */}
                 <Route element={<HeaderAdmin />}>
                     <Route path="/admin/home" element={<HomeView />} />
+                    <Route path="/admin/products" element={<ProductsView />} />
+                    <Route path="/admin/categories" element={<CategoriesView />} />
+                    <Route path="/admin/inventories" element={<InventoriesView />} />
+                    <Route path="/admin/invoices" element={<InvoicesView />} />
+                    <Route path="/admin/sales" element={<SalesView />} />
+                    <Route path="/admin/customers" element={<CustomersView />} />
                 </Route>
             </Routes>
         </BrowserRouter>

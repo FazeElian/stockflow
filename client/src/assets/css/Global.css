@@ -131,11 +131,22 @@ a {
         color: #89888C;
     }
 
+.content-page--admin {
+    display: flex;
+    width: auto;
+    height: auto;
+    min-height: 100vh;
+    flex-direction: column;
+    margin-left: 300px;
+    background: #0B0B0D;
+    padding: 4rem 3.5rem 5rem;
+}
+    
 /* Responsive 1440px */
 @media screen and (max-width: 1440px) {
     .content-page--admin {
         margin-left: 280px;
-        margin: 0 20rem 0;
+        margin: 0 18rem 0;
         padding-top: 1.5rem;
     }
 }
@@ -143,7 +154,14 @@ a {
 /* Responsive 1024px */
 @media screen and (max-width: 1024px) {
     .content-page--admin {
-        margin: 0 2.5rem 0;
+        margin: 0 1rem 0;
         padding-top: 2rem;
+    }
+}
+
+/* Responsive 425px */
+@media screen and (max-width: 425px) {
+    .content-page--admin {
+        padding: 4rem 2.5rem 5rem;  
     }
 }

@@ -28,16 +28,18 @@ const HeaderAdmin = () => {
         navigate("/auth/login");
     }
 
-    if (data) return (
-        <>
-            <NavBar
-                userName={data.userName}
-                profilePhoto={data.profilePhoto}
-            />
-            <SideBar />
-            <Outlet />
-        </>
-    )
+    if (data) {
+        return (
+            <>
+                <NavBar
+                    userName={data.userName}
+                    profilePhoto={data.profilePhoto}
+                />
+                <SideBar />
+                <Outlet />
+            </>
+        )
+    }
 }
 
 export { HeaderAdmin };
