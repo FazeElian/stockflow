@@ -49,8 +49,8 @@ const RegisterView = () => {
             reset()
 
             setTimeout(() => {
-                // Redirection to admin dashboard
-                navigate("/admin/home");
+                // Redirection to login form
+                navigate("/auth/login");
             }, 2000)
         } catch (error) {
             if (isAxiosError(error) && error.response) {

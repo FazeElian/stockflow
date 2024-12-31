@@ -9,6 +9,10 @@ import { getUser } from "../../api/StockFlowAPI";
 // Redirection
 import { useNavigate } from "react-router-dom";
 
+// Components for this layout
+import { NavBar } from "./NavBar";
+import { SideBar } from "./SideBar";
+
 const HeaderAdmin = () => {
     const { data, isLoading, isError } = useQuery({
         queryFn: getUser,
@@ -26,13 +30,11 @@ const HeaderAdmin = () => {
 
     if (data) return (
         <>
-            <nav style={{ color: "white" }}>
-                <h1>Header Admin side</h1>
-                <br />
-
-                <h2>Bienvenido {data.userName}!</h2>
-            </nav>
-
+            <NavBar
+                userName={data.userName}
+                profilePhoto={data.profilePhoto}
+            />
+            <SideBar />
             <Outlet />
         </>
     )
