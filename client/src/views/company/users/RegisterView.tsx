@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom"
-import axios, { isAxiosError } from "axios";
+import { isAxiosError } from "axios";
 
 // Styles for this view
 import "../../../assets/css/views/company/users/Form.css";
@@ -23,6 +23,9 @@ import { toast } from "sonner";
 // Redirection
 import { useNavigate } from "react-router-dom";
 
+// API Axios config
+import api from "../../../config/axios";
+
 const RegisterView = () => {
     const initialValues : RegisterForm = {
         userName: "",
@@ -39,7 +42,7 @@ const RegisterView = () => {
 
     const handleRegister = async (formData : RegisterForm) => {
         try {
-            const {data} = await axios.post(`${import.meta.env.VITE_API_URL}/auth/register`, formData);
+            const {data} = await api.post(`/auth/register`, formData);
             toast.success(data);
 
             // Clear form

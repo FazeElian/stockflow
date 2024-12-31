@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom"
-import axios, { isAxiosError } from "axios";
+import { isAxiosError } from "axios";
 
 // Styles for this view
 import "../../../assets/css/views/company/users/Form.css";
@@ -22,6 +22,9 @@ import { toast } from "sonner";
 // Redirection
 import { useNavigate } from "react-router-dom";
 
+// API Axios config
+import api from "../../../config/axios";
+
 const LoginView = () => {
     const initialValues = {
         email: "",
@@ -37,7 +40,7 @@ const LoginView = () => {
 
     const handleLogin = async (formData: LoginForm) => {
         try {
-            const {data} = await axios.post(`${import.meta.env.VITE_API_URL}/auth/login`, formData);
+            const {data} = await api.post(`/auth/login`, formData);
             
             // Save JWT on localStorage
             localStorage.setItem("AUTH_TOKEN", data);
