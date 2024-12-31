@@ -24,10 +24,13 @@ const HeaderAdmin = () => {
         navigate("/auth/login");
     }
 
-    return (
+    if (data) return (
         <>
-            <nav>
+            <nav style={{ color: "white" }}>
                 <h1>Header Admin side</h1>
+                <br />
+
+                <h2>Bienvenido {data.userName}!</h2>
             </nav>
 
             <Outlet />
