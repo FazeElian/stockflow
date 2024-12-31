@@ -22,6 +22,6 @@ connectDB()
 app.use(express.json())
 
 // Router
-app.use("/", router);
+app.use("/api", router);
 
 export default app;
