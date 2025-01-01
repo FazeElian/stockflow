@@ -8,12 +8,12 @@ import { handleInputErrors } from "../middleware/validation";
 import { authenticate } from "../middleware/auth";
 
 // Functions from controller
-import { NewCategory } from "../controllers/categoryController";
+import { GetAllCategories, NewCategory } from "../controllers/categoryController";
 
 // Router
 const categoryRouter = Router();
 
-// New user
+// New category
 categoryRouter.post("/admin/categories/new",
     body("name")
         .notEmpty()
@@ -21,6 +21,12 @@ categoryRouter.post("/admin/categories/new",
     authenticate,
     NewCategory,
     handleInputErrors,
+);
+
+// Get all categories
+categoryRouter.get("/admiN/categories",
+    authenticate,
+    GetAllCategories
 );
 
 export default categoryRouter;

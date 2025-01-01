@@ -4,6 +4,7 @@ import { Request, Response } from "express"
 // Model
 import Category from "../models/Category"
 
+// Create category
 export const NewCategory = async (req: Request, res: Response) => {
     const { name, description } = req.body;
 
@@ -27,4 +28,20 @@ export const NewCategory = async (req: Request, res: Response) => {
     await category.save();
 
     res.send(`Categoría creada con éxito: ${category.name}`);
+}
+
+// Get all Categories
+export const GetAllCategories = async (req: Request, res: Response) => {
+    // Get user id
+    if (!req.user){
+        res.status(401).json({ error: "No autorizado desde categoría" });
+        return;
+    }
+    const userId = req.user._id;
+
+    // Query to db
+    const categories = await Category.find({ userId })
+
+    // Send categories to client
+    res.status(200).json(categories);
 }
