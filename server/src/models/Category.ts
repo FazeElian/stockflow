@@ -9,6 +9,11 @@ export interface ICategory {
 
 // Schema
 const categorySchema = new Schema ({
+    userId: {
+        type: Schema.Types.ObjectId,
+        ref: "User",
+        required: true
+    },
     name: {
         type: String,
         required: true,
