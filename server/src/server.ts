@@ -1,6 +1,9 @@
 import express from "express";
-import router from "./router";
 import "dotenv/config";
+
+// Routers:
+import userRouter from "./routers/userRouter";
+import categoryRouter from "./routers/CategoryRouter";
 
 // Cors
 import cors from "cors";
@@ -21,7 +24,8 @@ connectDB()
 // Read form data from all app routes
 app.use(express.json())
 
-// Router
-app.use("/api", router);
+// Routers
+app.use("/api", userRouter);
+app.use("/api/admin", categoryRouter)
 
 export default app;

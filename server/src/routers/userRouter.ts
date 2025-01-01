@@ -2,10 +2,10 @@ import { Router } from "express";
 import { body } from "express-validator";
 
 // Validation middleware
-import { handleInputErrors } from "./middleware/validation";
+import { handleInputErrors } from "../middleware/validation";
 
 // Authentication middleware
-import { authenticate } from "./middleware/auth";
+import { authenticate } from "../middleware/auth";
 
 // Functions from controller
 import {
@@ -13,13 +13,13 @@ import {
     Register,
     ForgotPassword,
     GetUser
-} from "./controllers/userController";
+} from "../controllers/userController";
 
 // Router
-const router = Router();
+const userRouter = Router();
 
 // New user
-router.post("/auth/register",
+userRouter.post("/auth/register",
     body("userName")
         .notEmpty()
         .withMessage("El nombre de usuario no puede ir vacío"),
@@ -34,7 +34,7 @@ router.post("/auth/register",
 );
 
 // Login
-router.post("/auth/login",
+userRouter.post("/auth/login",
     body("email")
         .isEmail()
         .withMessage("Correo electrónico no válido"),
@@ -46,7 +46,7 @@ router.post("/auth/login",
 );
 
 // Forgot password
-router.post("/auth/forgot-password",
+userRouter.post("/auth/forgot-password",
     body("email")
         .isEmail()
         .withMessage("Correo electrónico no válido"),
@@ -55,9 +55,9 @@ router.post("/auth/forgot-password",
 );
 
 // Get user
-router.get("/user",
+userRouter.get("/user",
     authenticate,
     GetUser
 );
 
-export default router;
+export default userRouter;
