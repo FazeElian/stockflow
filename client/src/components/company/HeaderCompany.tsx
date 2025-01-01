@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Outlet } from "react-router-dom";
+import { Link as LinkRoute, Outlet } from "react-router-dom";
 
 // React scroll
 import { Link } from "react-scroll";
@@ -82,17 +82,17 @@ const HeaderCompany = () => {
                     </section>
 
                     <section className="sect-user-nav-list--company">
-                        <Link to="/auth/login" className="item-nav-list--company bg-transparent">Iniciar Sesión</Link>
-                        <Link to="/auth/register" className="item-nav-list--company bg-transparent">Registrarse</Link>
+                        <LinkRoute to="/auth/login" className="item-nav-list--company bg-transparent">Iniciar Sesión</LinkRoute>
+                        <LinkRoute to="/auth/register" className="item-nav-list--company bg-transparent">Registrarse</LinkRoute>
                     </section>
                 </nav>
                 <nav className="nav-user--company bg-transparent">
-                    <Link to="/auth/login" className="btn-header--company btn-login-header--company color-white">
+                    <LinkRoute to="/auth/login" className="btn-header--company btn-login-header--company color-white">
                         Ingresar
-                    </Link>
-                    <Link to="/auth/register" className="btn-header--company btn-signin-header--company color-white">
+                    </LinkRoute>
+                    <LinkRoute to="/auth/register" className="btn-header--company btn-signin-header--company color-white">
                         Únete
-                    </Link>
+                    </LinkRoute>
                     <button className="btn-menu--company color-white bg-transparent" onClick={toggleMenu}>
                         <IoIosMenu />
                     </button>
