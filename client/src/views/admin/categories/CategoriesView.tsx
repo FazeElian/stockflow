@@ -5,6 +5,8 @@ import "../../../assets/css/components/admin/modules/Tables.css";
 // Title component
 import { TitleView } from "../../../components/admin/TitleView"
 
+// Top search bar component
+import { TopSearchBar } from "../../../components/admin/TopSearchBar";
 // React icons
 import { TbEdit } from "react-icons/tb";
 import { FaEye } from "react-icons/fa";
@@ -14,6 +16,11 @@ const CategoriesView = () => {
     return (
         <main className="content-page--admin font-inter">
             <TitleView name="Categorías" />
+            <TopSearchBar
+                searchPlaceholder="Buscar categoría"
+                exportText="Categorías"
+                newText="Categoría"
+            />
 
             <table className="table table-categories">
                 <thead>
