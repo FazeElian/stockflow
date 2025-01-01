@@ -46,6 +46,29 @@ export const GetAllCategories = async (req: Request, res: Response) => {
     res.status(200).json(categories);
 }
 
+// Update category
+export const UpdateCategory = async (req: Request, res: Response) => {
+    // Get category id from URL
+    const _id = req.params.id;
+
+    const category = await Category.findByIdAndUpdate(_id, {
+        // Fields to update
+        name: req.body.name,
+        description: req.body.description
+    });
+
+    // Check if the category exists
+    if (!category) {
+        res.status(404).send("Categoría no encontrada");
+        return;
+    }
+
+    // Save on db
+    await category.save();
+
+    res.send("Categoría actualizada con éxito");
+}
+
 // Delete category
 export const DeleteCategory = async (req: Request, res: Response) => {
     // Get category id from URL

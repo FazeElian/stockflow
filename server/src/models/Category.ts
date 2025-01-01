@@ -1,7 +1,7 @@
-import mongoose, { Schema, Types } from "mongoose";
+import mongoose, { Document, Schema, Types } from "mongoose";
 
 // Interface
-export interface ICategory {
+export interface ICategory extends Document {
     name: string,
     description: string,
     createdAt: Date,

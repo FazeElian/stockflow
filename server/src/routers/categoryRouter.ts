@@ -11,6 +11,7 @@ import { authenticate } from "../middleware/auth";
 import {
     NewCategory,
     GetAllCategories,
+    UpdateCategory,
     DeleteCategory,
 } from "../controllers/categoryController";
 
@@ -33,10 +34,20 @@ categoryRouter.get("/admin/categories",
     GetAllCategories
 );
 
+// Update category
+categoryRouter.patch("/admin/categories/edit/:id",
+    authenticate,
+    UpdateCategory
+)
+
 // Delete category
 categoryRouter.delete("/admin/categories/delete/:id",
+    body("name")
+        .notEmpty()
+        .withMessage("El nombre de usuario no puede ir vacío"),
     authenticate,
-    DeleteCategory
+    DeleteCategory,
+    handleInputErrors
 );
 
 export default categoryRouter;
