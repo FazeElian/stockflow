@@ -5,6 +5,7 @@ import "../../assets/css/views/company/IndexView.css";
 import { TopBannerServices } from "../../components/company/TopBannerServices"
 import { AppMainFeatures } from "../../components/company/AppMainFeatures";
 import { ChooseYourPlan } from "../../components/company/ChooseYourPlan";
+import { StartNowCallToAction } from "../../components/company/StartNowCallToAction";
 import { FooterCompany } from "../../components/company/FooterCompany";
 
 // Document title custom hook
@@ -20,7 +21,8 @@ const IndexView = () => {
                 <TopBannerServices />
                 <AppMainFeatures />
                 <ChooseYourPlan />
-                <FooterCompany bgColor="bg-black-light" />
+                <StartNowCallToAction />
+                <FooterCompany bgColor="bg-black" />
             </main>
         </>
     )
