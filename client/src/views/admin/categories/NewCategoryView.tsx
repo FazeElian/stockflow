@@ -1,3 +1,5 @@
+import { isAxiosError } from "axios";
+
 // Components for this view
 import { BottomModuleForm } from "../../../components/admin/BottomModuleForm";
 
@@ -54,7 +56,9 @@ const NewCategoryView = () => {
             // Sucess toast
             toast.success(data);
         } catch (error) {
-            console.log("Error al crear la categoría: ", error);
+            if (isAxiosError(error) && error.response) {
+                toast.error(error.response.data);
+            }
         }
     }
 
