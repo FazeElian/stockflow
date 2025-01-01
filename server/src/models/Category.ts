@@ -1,10 +1,11 @@
-import mongoose, { Schema} from "mongoose";
+import mongoose, { Schema, Types } from "mongoose";
 
 // Interface
 export interface ICategory {
     name: string,
     description: string,
     createdAt: Date,
+    _id: Types.ObjectId
 }
 
 // Schema

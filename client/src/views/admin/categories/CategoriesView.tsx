@@ -7,6 +7,7 @@ import { TitleView } from "../../../components/admin/TitleView"
 
 // Top search bar component
 import { TopSearchBar } from "../../../components/admin/TopSearchBar";
+
 // React icons
 import { TbEdit } from "react-icons/tb";
 import { FaEye } from "react-icons/fa";
@@ -24,11 +25,17 @@ import { Category } from "../../../types/categories";
 // Document title custom hook
 import { useDocumentTitle } from "../../../hooks/useDocumentTitle"
 
+// Toast alert component
+import { toast } from "sonner";
+
+// API Axios config
+import api from "../../../config/axios";
+
 const CategoriesView = () => {
     // Title
     useDocumentTitle("Admin | Categorías");
 
-    const { data: categories, isLoading, isError} = useQuery({
+    const { data: categories, isLoading, isError, refetch} = useQuery({
         queryFn: getCategories,
         queryKey: ["category"],
         retry: 1,
@@ -37,6 +44,18 @@ const CategoriesView = () => {
 
     if (isLoading) return <div>Cargando...</div>;
     if (isError) return <div>Error al cargar las categorías</div>;
+
+    // Delete category function
+    const deleteCategory = async (categoryId : string) => {
+        try {
+            const { data } = await api.delete(`/admin/categories/delete/${categoryId}`);
+
+            refetch(); // update categories list
+            toast.success(data);
+        } catch (error) {
+            console.log("Error al eliminar categoría: ", error);
+        }
+    }
 
     return (
         <main className="content-page--admin font-inter">
@@ -79,7 +98,7 @@ const CategoriesView = () => {
                                     <button className="btn-td btn-td-edit">
                                         <TbEdit />
                                     </button>
-                                    <button className="btn-td btn-td-delete">
+                                    <button className="btn-td btn-td-delete" onClick={() => deleteCategory(category._id)}>
                                         <MdDelete />
                                     </button>
                                 </td>

@@ -45,3 +45,24 @@ export const GetAllCategories = async (req: Request, res: Response) => {
     // Send categories to client
     res.status(200).json(categories);
 }
+
+// Delete category
+export const DeleteCategory = async (req: Request, res: Response) => {
+    // Get category id from URL
+    const _id = req.params.id;
+
+    // Check if the user is authenticated
+    if (!req.user){
+        res.status(401).json({ error: "No autorizado desde categoría" });
+        return;
+    }
+    const userId = req.user._id;
+
+    const category = await Category.findOneAndDelete({ _id, userId });
+    if (!category) {
+        res.status(404).send("Categoría no encontrada");
+        return;
+    }
+
+    res.status(200).json("Categoría eliminada con éxito");
+}

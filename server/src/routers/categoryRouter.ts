@@ -8,7 +8,11 @@ import { handleInputErrors } from "../middleware/validation";
 import { authenticate } from "../middleware/auth";
 
 // Functions from controller
-import { GetAllCategories, NewCategory } from "../controllers/categoryController";
+import {
+    NewCategory,
+    GetAllCategories,
+    DeleteCategory,
+} from "../controllers/categoryController";
 
 // Router
 const categoryRouter = Router();
@@ -24,9 +28,15 @@ categoryRouter.post("/admin/categories/new",
 );
 
 // Get all categories
-categoryRouter.get("/admiN/categories",
+categoryRouter.get("/admin/categories",
     authenticate,
     GetAllCategories
+);
+
+// Delete category
+categoryRouter.delete("/admin/categories/delete/:id",
+    authenticate,
+    DeleteCategory
 );
 
 export default categoryRouter;
