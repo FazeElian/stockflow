@@ -13,6 +13,9 @@ import { useNavigate } from "react-router-dom";
 import { NavBar } from "./NavBar";
 import { SideBar } from "./SideBar";
 
+// Toaster component
+import { Toaster } from "sonner";
+
 const HeaderAdmin = () => {
     const { data, isLoading, isError } = useQuery({
         queryFn: getUser,
@@ -36,6 +39,7 @@ const HeaderAdmin = () => {
                     profilePhoto={data.profilePhoto}
                 />
                 <SideBar />
+                <Toaster position="bottom-right" richColors />
                 <Outlet />
             </>
         )

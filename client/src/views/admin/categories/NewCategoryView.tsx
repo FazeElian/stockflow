@@ -13,6 +13,15 @@ import { useForm } from "react-hook-form";
 // Type
 import { NewCategoryForm } from "../../../types/categories";
 
+// Toast alert component
+import { toast } from "sonner";
+
+// Redirection
+import { useNavigate } from "react-router-dom";
+
+// API Axios config
+import api from "../../../config/axios";
+
 const NewCategoryView = () => {
     const initialValues = {
         name: "",
@@ -23,11 +32,24 @@ const NewCategoryView = () => {
         defaultValues: initialValues
     });
 
-    const handleNewCategory = async (formData: NewCategoryForm) => {
-        console.log(formData);
+    // Redirect
+    const navigate = useNavigate();
 
-        // Clear form
-        reset()
+    const handleNewCategory = async (formData: NewCategoryForm) => {
+        try {
+            const { data } = await api.post(`/admin/categories/new`, formData);
+
+            // Clear form
+            reset()
+
+            // Redirection to categories view
+            navigate("/admin/categories");
+
+            // Sucess toast
+            toast.success(data);
+        } catch (error) {
+            console.log("Error al crear la categoría: ", error);
+        }
     }
 
     return (

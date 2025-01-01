@@ -26,6 +26,5 @@ export const NewCategory = async (req: Request, res: Response) => {
     // Save on db
     await category.save();
 
-    res.send("Categoría creada con éxito");
-    console.log("Categoría creada con éxito");
+    res.send(`Categoría creada con éxito: ${category.name}`);
 }
