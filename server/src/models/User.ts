@@ -1,4 +1,4 @@
-import mongoose, { Schema} from "mongoose";
+import mongoose, { Schema, Types } from "mongoose";
 
 // Interface
 export interface IUser {
@@ -9,6 +9,7 @@ export interface IUser {
     lastName: string,
     profilePhoto: string,
     createdAt: Date,
+    _id: Types.ObjectId
 }
 
 // Schema
