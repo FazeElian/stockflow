@@ -1,5 +1,8 @@
 import { useState } from "react";
-import { Link, Outlet } from "react-router-dom";
+import { Outlet } from "react-router-dom";
+
+// React scroll
+import { Link } from "react-scroll";
 
 // Styles for this component
 import "../../assets/css/components/company/HeaderCompany.css";
@@ -26,21 +29,49 @@ const HeaderCompany = () => {
         <>
             <header className="header-company font-inter">
                 <nav className="nav-logo--company bg-transparent">
-                    <Link to="/" className="bg-transparent">
+                    <Link
+                        to="home"
+                        className="bg-transparent"
+                        spy={true} 
+                        smooth={true} 
+                        offset={50} 
+                        duration={500}
+                    >
                         <img src={Logo} alt="StockFlow" className="bg-transparent" />
                     </Link>
                 </nav>
                 <nav className={ `nav-list--company ${menu ? "active" : ""}` }>
                     <section className="sect-list-nav-list--company">
-                        <Link to="/" className="item-nav-list--company bg-transparent">
+                        <Link
+                            to="home"
+                            className="item-nav-list--company bg-transparent"
+                            spy={true} 
+                            smooth={true} 
+                            offset={-100} 
+                            duration={500}
+                        >
                             <FaHome />
                             Inicio
                         </Link>
-                        <Link to="/features" className="item-nav-list--company bg-transparent">
+                        <Link
+                            to="features"
+                            className="item-nav-list--company bg-transparent"
+                            spy={true}
+                            offset={-80}
+                            smooth={true} 
+                            duration={500}
+                        >
                             <FaGears />
                             Funcionalidades
                         </Link>
-                        <Link to="/plans" className="item-nav-list--company bg-transparent">
+                        <Link
+                            to="plans"
+                            className="item-nav-list--company bg-transparent"
+                            spy={true}
+                            offset={-100}
+                            smooth={true} 
+                            duration={500}
+                        >
                             <IoMdPricetags />
                             Elije tu Plan
                         </Link>

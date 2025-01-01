@@ -8,9 +8,12 @@ import { motion } from 'framer-motion';
 // Items
 import ItemsChooseYourPlan from './../../utils/ItemsChooseYourPlan';
 
+// React scroll
+import { Element } from "react-scroll";
+
 const ChooseYourPlan = () => {
     return (
-        <section className="choose-plan font-inter">
+        <Element className="choose-plan font-inter" name="plans">
             <h1 className="color-white bg-transparent">Elige tu Plan</h1>
             <div className="group-choose-plan">
                 {/* Items */}
@@ -40,7 +43,7 @@ const ChooseYourPlan = () => {
                     </motion.div>
                 ))}
             </div>
-        </section>
+        </Element>
     )
 }
 

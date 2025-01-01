@@ -45,6 +45,7 @@
             display: flex;
             font-size: 15px;
             color: #89888C;
+            cursor: pointer;
         }
 
         .item-nav-list--company svg {

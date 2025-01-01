@@ -4,9 +4,12 @@ import { motion } from 'framer-motion';
 // Items
 import ItemsMainFeatures from './../../utils/ItemsMainFeatures';
 
+// React scroll
+import { Element } from 'react-scroll';
+
 const AppMainFeatures = () => {
     return (
-        <section className="app-features bg-black-medium font-inter">
+        <Element className="app-features bg-black-medium font-inter" name="features">
             <h1 className="color-white bg-transparent">Funcionalidades esenciales para tu negocio</h1>
                 <div className="items-app-features bg-transparent">
                     {ItemsMainFeatures.map((item) => (
@@ -29,7 +32,7 @@ const AppMainFeatures = () => {
                         </div>
                     ))}
                 </div>
-        </section>
+        </Element>
     )
 }
 
