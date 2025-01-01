@@ -1,5 +1,5 @@
 // Styles for this component
-import "../../assets/css/components/admin/TitleView.css";
+import "../../assets/css/components/admin/modules/TitleView.css";
 
 interface TitleViewProps {
     name: string
