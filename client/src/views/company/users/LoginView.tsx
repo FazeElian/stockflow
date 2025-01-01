@@ -25,7 +25,13 @@ import { useNavigate } from "react-router-dom";
 // API Axios config
 import api from "../../../config/axios";
 
+// Document title custom hook
+import { useDocumentTitle } from "../../../hooks/useDocumentTitle";
+
 const LoginView = () => {
+    // Title
+    useDocumentTitle("Iniciar sesión")
+
     const initialValues = {
         email: "",
         password: ""

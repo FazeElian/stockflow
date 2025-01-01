@@ -4,14 +4,19 @@ import "../../../assets/css/views/company/users/Form.css";
 // Logo
 import Logo from "../../../assets/img/Logo.png";
 
-
 // React hook form
 import { useForm } from "react-hook-form";
 
 // Error message component
 import ErrorMessageValidation from '../../../components/company/users/ErrorMessageValidation';
 
+// Document title custom hook
+import { useDocumentTitle } from "../../../hooks/useDocumentTitle";
+
 const ForgotPasswordView = () => {
+    // Title
+    useDocumentTitle("Recuperar contraseña")
+
     const initialValues = {
         email: ""
     }

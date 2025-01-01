@@ -26,7 +26,13 @@ import { useNavigate } from "react-router-dom";
 // API Axios config
 import api from "../../../config/axios";
 
+// Document title custom hook
+import { useDocumentTitle } from "../../../hooks/useDocumentTitle";
+
 const RegisterView = () => {
+    // Title
+    useDocumentTitle("Crear cuenta")
+    
     const initialValues : RegisterForm = {
         userName: "",
         email: "",

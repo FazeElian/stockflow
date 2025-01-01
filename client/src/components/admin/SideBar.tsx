@@ -7,7 +7,7 @@ import "../../assets/css/components/admin/SideBar.css";
 import Logo from "../../assets/img/Logo.png";
 
 // React icons
-import { MdOutlineDashboard, MdOutlineInventory } from "react-icons/md";
+import { MdOutlineDashboard } from "react-icons/md";
 import { BiShoppingBag, BiCategory } from "react-icons/bi";
 import { TbCashRegister } from "react-icons/tb";
 import { IoPeopleOutline } from "react-icons/io5";
@@ -48,15 +48,6 @@ const SideBar = () => {
                 >
                     <BiCategory />
                     <h2>Categorías</h2>
-                </Link>
-                <Link
-                    to="/admin/inventories"
-                    className={`item-nav-side-bar
-                        ${location.pathname === "/admin/inventories" ? "item-selected-nav-side-bar" : ""}
-                    `}
-                >
-                    <MdOutlineInventory />
-                    <h2>Inventarios</h2>
                 </Link>
                 <Link
                     to="/admin/invoices"

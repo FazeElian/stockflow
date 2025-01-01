@@ -21,7 +21,13 @@ import { useQuery } from "@tanstack/react-query"
 // Type
 import { Category } from "../../../types/categories";
 
+// Document title custom hook
+import { useDocumentTitle } from "../../../hooks/useDocumentTitle"
+
 const CategoriesView = () => {
+    // Title
+    useDocumentTitle("Admin | Categorías");
+
     const { data: categories, isLoading, isError} = useQuery({
         queryFn: getCategories,
         queryKey: ["category"],

@@ -21,7 +21,6 @@ import ProductsView from "./views/admin/products/ProductsView";
 import CategoriesView from "./views/admin/categories/CategoriesView";
 import NewCategoryView from "./views/admin/categories/NewCategoryView";
 
-import InventoriesView from "./views/admin/inventories/InventoriesView";
 import InvoicesView from "./views/admin/invoices/InvoicesView";
 import SalesView from "./views/admin/sales/SalesView";
 import CustomersView from "./views/admin/customers/CustomersView";
@@ -52,7 +51,6 @@ export default function Router () {
                     <Route path="/admin/categories" element={<CategoriesView />} />
                     <Route path="/admin/categories/new" element={<NewCategoryView />} />
 
-                    <Route path="/admin/inventories" element={<InventoriesView />} />
                     <Route path="/admin/invoices" element={<InvoicesView />} />
                     <Route path="/admin/sales" element={<SalesView />} />
                     <Route path="/admin/customers" element={<CustomersView />} />

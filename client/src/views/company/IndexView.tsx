@@ -7,7 +7,13 @@ import { AppMainFeatures } from "../../components/company/AppMainFeatures";
 import { ChooseYourPlan } from "../../components/company/ChooseYourPlan";
 import { FooterCompany } from "../../components/company/FooterCompany";
 
+// Document title custom hook
+import { useDocumentTitle } from "../../hooks/useDocumentTitle";
+
 const IndexView = () => {
+    // Title
+    useDocumentTitle("StockFlow")
+
     return (
         <>
             <main className="content-page--company">
