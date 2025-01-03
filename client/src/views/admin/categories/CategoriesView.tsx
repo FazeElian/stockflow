@@ -12,7 +12,6 @@ import { TopSearchBar } from "../../../components/admin/TopSearchBar";
 
 // React icons
 import { TbEdit } from "react-icons/tb";
-import { FaEye } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
 
 // Function from API
@@ -94,9 +93,6 @@ const CategoriesView = () => {
                                     </td>
                                 )}
                                 <td className="td td-options td-options-category">
-                                    <button className="btn-td btn-td-view">
-                                        <FaEye />
-                                    </button>
                                     <Link to={`edit/${category._id}`} className="btn-td btn-td-edit">
                                         <TbEdit />
                                     </Link>

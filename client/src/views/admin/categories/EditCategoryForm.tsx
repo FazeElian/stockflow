@@ -12,9 +12,9 @@ import { toast } from "sonner";
 import { isAxiosError } from "axios";
 import api from "../../../config/axios";
 
-type CategoryProps = Pick<Category, "_id" | "name" | "description"  >
+type CategoryProps = Pick<Category, "_id" | "name" | "description" > & { refetch: () => void };
 
-const EditCategoryForm = ({ _id, name, description } : CategoryProps) => {
+const EditCategoryForm = ({ _id, name, description, refetch } : CategoryProps) => {
     const { register, handleSubmit, formState: { errors } } = useForm ({
         defaultValues: {
             name: name,
@@ -33,6 +33,9 @@ const EditCategoryForm = ({ _id, name, description } : CategoryProps) => {
 
             // Sucess toast
             toast.success(data);
+
+            // Refetch the category data
+            refetch();
         } catch (error) {
             if (isAxiosError(error) && error.response) {
                 toast.error(error.response.data);

@@ -15,7 +15,7 @@ const EditCategoryView = () => {
     // Category id from URL param
     const { _id } = useParams<{ _id: string }>();
 
-    const { data, isError, isLoading } = useQuery ({
+    const { data, isError, refetch, isLoading } = useQuery ({
         queryFn: () => getCategory(_id!),
         queryKey: ["category", _id],
         retry: 1,
@@ -32,11 +32,10 @@ const EditCategoryView = () => {
                     _id={data._id}
                     name={data.name}
                     description={data.description}
+                    refetch={refetch}
                 />
             </>
         )
-    } else {
-        console.log("no data")
     }
 }
 
