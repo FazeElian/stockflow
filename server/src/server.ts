@@ -26,6 +26,10 @@ connectDB()
 app.use(express.json())
 
 // Routers
-app.use("/api", userRouter, categoryRouter, customerRouter);
+app.use("/api",
+    userRouter,
+    categoryRouter,
+    customerRouter,
+);
 
 export default app;

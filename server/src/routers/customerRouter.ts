@@ -8,7 +8,7 @@ import { handleInputErrors } from "../middleware/validation";
 import { authenticate } from "../middleware/auth";
 
 // Functions from controller
-import { NewCustomer, GetAllCustomers } from "../controllers/customerController";
+import { NewCustomer, GetAllCustomers, GetCustomer, UpdateCustomer, DeleteCustomer } from "../controllers/customerController";
 
 // Router
 const customerRouter = Router();
@@ -27,6 +27,28 @@ customerRouter.post("/admin/customers/new",
 customerRouter.get("/admin/customers", 
     authenticate,
     GetAllCustomers
+);
+
+// Get customer
+customerRouter.get("/admin/customers/:id",
+    authenticate,
+    GetCustomer
+)
+
+// Update customer
+customerRouter.patch("/admin/customers/edit/:id",
+    body("name")
+        .notEmpty()
+        .withMessage("El nombre de usuario no puede ir vacío"),
+    authenticate,
+    UpdateCustomer
+)
+
+// Delete customer
+customerRouter.delete("/admin/customers/delete/:id",
+    authenticate,
+    DeleteCustomer,
+    handleInputErrors
 );
 
 export default customerRouter;

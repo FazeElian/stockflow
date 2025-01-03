@@ -51,3 +51,14 @@ export async function getCustomers () {
         }
     }
 }
+
+export async function getCustomer (_id : string) {
+    try {
+        const { data } = await api.get<Customer>(`/admin/customers/${_id}`);
+        return data;
+    } catch (error) {
+        if (isAxiosError(error) && error.response) {
+            throw new Error(error.response.data.error);
+        }
+    }   
+}

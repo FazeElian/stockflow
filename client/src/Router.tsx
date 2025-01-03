@@ -27,6 +27,7 @@ import SalesView from "./views/admin/sales/SalesView";
 // Customers module
 import CustomersView from "./views/admin/customers/CustomersView";
 import NewCustomerView from "./views/admin/customers/NewCustomerView";
+import EditCustomerView from "./views/admin/customers/EditCustomerView";
 
 export default function Router () {
     return (
@@ -59,6 +60,7 @@ export default function Router () {
                     {/* Customers */}
                     <Route path="/admin/customers" element={<CustomersView />} />
                     <Route path="/admin/customers/new" element={<NewCustomerView />} />
+                    <Route path="/admin/customers/edit/:_id" element={<EditCustomerView />} />
                 </Route>
             </Routes>
         </BrowserRouter>
