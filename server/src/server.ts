@@ -4,6 +4,7 @@ import "dotenv/config";
 // Routers:
 import userRouter from "./routers/userRouter";
 import categoryRouter from "./routers/categoryRouter";
+import customerRouter from "./routers/customerRouter";
 
 // Cors
 import cors from "cors";
@@ -25,7 +26,6 @@ connectDB()
 app.use(express.json())
 
 // Routers
-app.use("/api", userRouter, categoryRouter);
-// app.use("/api", categoryRouter)
+app.use("/api", userRouter, categoryRouter, customerRouter);
 
 export default app;

@@ -23,7 +23,10 @@ import EditCategoryView from "./views/admin/categories/EditCategoryView";
 
 import InvoicesView from "./views/admin/invoices/InvoicesView";
 import SalesView from "./views/admin/sales/SalesView";
+
+// Customers module
 import CustomersView from "./views/admin/customers/CustomersView";
+import NewCustomerView from "./views/admin/customers/NewCustomerView";
 
 export default function Router () {
     return (
@@ -52,7 +55,10 @@ export default function Router () {
 
                     <Route path="/admin/invoices" element={<InvoicesView />} />
                     <Route path="/admin/sales" element={<SalesView />} />
+
+                    {/* Customers */}
                     <Route path="/admin/customers" element={<CustomersView />} />
+                    <Route path="/admin/customers/new" element={<NewCustomerView />} />
                 </Route>
             </Routes>
         </BrowserRouter>

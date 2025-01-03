@@ -11,10 +11,22 @@ import { MdDelete } from "react-icons/md";
 // Document title custom hook
 import { useDocumentTitle } from "../../../hooks/useDocumentTitle"
 import { Link } from "react-router-dom";
+import { getCustomers } from "../../../api/StockFlowAPI";
+import { useQuery } from "@tanstack/react-query";
 
 const CustomersView = () => {
     // Title
     useDocumentTitle("Admin | Clientes");
+
+    const { data: customers, isLoading, isError } = useQuery({
+        queryFn: getCustomers,
+        queryKey: ["customer"],
+        retry: 1,
+        refetchOnWindowFocus: false,
+    });
+
+    if (isLoading) return <div>Cargando...</div>;
+    if (isError) return <div>Error al cargar las categorías</div>;
 
     return (
         <main className="content-page--admin font-inter">
@@ -36,21 +48,35 @@ const CustomersView = () => {
                 </thead>
                 
                 <tbody>
-                    <tr className="tbody tbody-categories">
-                        <td className="td td-no-category">1</td>
-                        <td className="td td-name-category">Cliente 1</td>
-                        <td className="td td-description-category color-gray">
-                            Sin descripción
-                        </td>
-                        <td className="td td-options td-options-category">
-                            <Link to="" className="btn-td btn-td-edit">
-                                <TbEdit />
-                            </Link>
-                            <button className="btn-td btn-td-delete">
-                                <MdDelete />
-                            </button>
-                        </td>
-                    </tr>
+                    {customers && customers.length > 0 ? (
+                        customers.map((customer, i) => (
+                            <tr className="tbody tbody-categories" key={customer._id}>
+                                <td className="td td-no-category">{i + 1}</td>
+                                <td className="td td-name-category">{customer.name}</td>
+                                {customer.description ? (
+                                    <td className="td td-description-category">
+                                        {customer.description}
+                                    </td>
+                                ) : (
+                                    <td className="td td-description-category color-gray">
+                                        Sin descripción
+                                    </td>
+                                )}
+                                <td className="td td-options td-options-category">
+                                    <Link to="" className="btn-td btn-td-edit">
+                                        <TbEdit />
+                                    </Link>
+                                    <button className="btn-td btn-td-delete">
+                                        <MdDelete />
+                                    </button>
+                                </td>
+                            </tr>
+                        ))
+                    ) : (
+                        <tr className="tbody tbody-categories">
+                            <td className="td td-none">No hay clientes</td>
+                        </tr>
+                    )}
                 </tbody>
             </table>
         </main>
