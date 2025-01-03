@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 // Styles for this view
 import "../../../assets/css/views/admin/modules/CategoriesView.css";
 import "../../../assets/css/components/admin/modules/Tables.css";
@@ -95,9 +97,9 @@ const CategoriesView = () => {
                                     <button className="btn-td btn-td-view">
                                         <FaEye />
                                     </button>
-                                    <button className="btn-td btn-td-edit">
+                                    <Link to={`edit/${category._id}`} className="btn-td btn-td-edit">
                                         <TbEdit />
-                                    </button>
+                                    </Link>
                                     <button className="btn-td btn-td-delete" onClick={() => deleteCategory(category._id)}>
                                         <MdDelete />
                                     </button>

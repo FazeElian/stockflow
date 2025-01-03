@@ -13,6 +13,7 @@ import {
     GetAllCategories,
     UpdateCategory,
     DeleteCategory,
+    GetCategory,
 } from "../controllers/categoryController";
 
 // Router
@@ -33,6 +34,12 @@ categoryRouter.get("/admin/categories",
     authenticate,
     GetAllCategories
 );
+
+// Get category
+categoryRouter.get("/admin/categories/:id",
+    authenticate,
+    GetCategory
+)
 
 // Update category
 categoryRouter.patch("/admin/categories/edit/:id",

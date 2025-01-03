@@ -46,6 +46,23 @@ export const GetAllCategories = async (req: Request, res: Response) => {
     res.status(200).json(categories);
 }
 
+// Get category
+export const GetCategory = async (req: Request, res: Response) => {
+    // Get category id from URL
+    const _id = req.params.id;
+
+    const category = await Category.findOne({ _id });
+
+    // Check if the category exists
+    if (!category) {
+        res.status(404).send("Categoría no encontrada");
+        return;
+    }
+
+    // Send category data
+    res.send(category);
+}
+
 // Update category
 export const UpdateCategory = async (req: Request, res: Response) => {
     // Get category id from URL

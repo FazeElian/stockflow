@@ -28,3 +28,14 @@ export async function getCategories () {
         }
     }
 }
+
+export async function getCategory (_id : string) {
+    try {
+        const { data } = await api.get<Category>(`/admin/categories/${_id}`);
+        return data;
+    } catch (error) {
+        if (isAxiosError(error) && error.response) {
+            throw new Error(error.response.data.error);
+        }
+    }
+}

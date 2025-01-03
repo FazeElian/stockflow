@@ -19,6 +19,7 @@ import ProductsView from "./views/admin/products/ProductsView";
 // Categories module
 import CategoriesView from "./views/admin/categories/CategoriesView";
 import NewCategoryView from "./views/admin/categories/NewCategoryView";
+import EditCategoryView from "./views/admin/categories/EditCategoryView";
 
 import InvoicesView from "./views/admin/invoices/InvoicesView";
 import SalesView from "./views/admin/sales/SalesView";
@@ -47,6 +48,7 @@ export default function Router () {
                     {/* Categories */}
                     <Route path="/admin/categories" element={<CategoriesView />} />
                     <Route path="/admin/categories/new" element={<NewCategoryView />} />
+                    <Route path="/admin/categories/edit/:_id" element={<EditCategoryView />} />
 
                     <Route path="/admin/invoices" element={<InvoicesView />} />
                     <Route path="/admin/sales" element={<SalesView />} />
