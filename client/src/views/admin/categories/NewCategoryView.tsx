@@ -76,7 +76,7 @@ const NewCategoryView = () => {
                         {...register("name", {
                             required: "El nombre es un campo obligatorio",
                             pattern: {
-                                value: /^[a-zA-Z0-9\s-]+$/,
+                                value: /^[a-zA-Z0-9áéíóúÁÉÍÓÚ\s-]+$/,
                                 message: "Solo se permiten letras, números y guiones"
                             },
                             minLength: {
@@ -100,7 +100,7 @@ const NewCategoryView = () => {
                         {...register("description", {
                             required: false,
                             pattern: {
-                                value: /^[a-zA-Z0-9\s-]+$/,
+                                value: /^[a-zA-Z0-9áéíóúÁÉÍÓÚ\s-]+$/,
                                 message: "Solo se permiten letras, números y guiones"
                             }
                         })}
