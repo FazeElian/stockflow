@@ -119,6 +119,10 @@
         font-weight: 500;
     }
 
+    .btn-new h2 {
+        font-weight: 500;
+    }
+
 /* Responsive 1440px */
 @media screen and (max-width: 1440px) {
     .top-search-bar {
