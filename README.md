@@ -10,29 +10,46 @@ All-in-one solution designed for small and medium-sized businesses, focused on o
 <br />
 
 # ⚙ Main Features
-### 1) **📊 Dynamic Dashboard**
-- Business overview.
-- Statistics, detailed analysis, and custom reports.
-
-### 2) **📦 Products**
-- Accurate inventory management.
-- Organization by details like code, name, category, and price.
-
-### 3. **🏷 Categories**
-- Classification of products for efficient management.
-- Simplified inventory navigation.
-
-### 4. **💳 Invoicing**
-- Creation, editing, and organizing invoices.
-- Automatic integration of clients, products, and totals.
-
-### 5. **📈 Sales**
-- Intuitive sales tracking and analysis.
-- Tools to maximize revenue and customer satisfaction.
-
-### 6. **👥 Customers**
-- Efficient management of customer data.
-- Analysis of purchasing patterns.
+<dl>
+  <dd>
+    <dl>
+      <dd>
+          <dl>
+              <dd>
+                    <h3> 1) 📊 Dashboard </h3>
+                    - Business overview.
+                    - Statistics, detailed analysis, and custom reports.
+              </dd>
+              <dd>
+                    <h3> 2) 📦 Products </h3>
+                    - Accurate inventory management.
+                    - Organization by details like code, name, category, and price.
+              </dd>
+              <dd>
+                    <h3> 3) 🏷 Categories </h3>
+                    - Classification of products for efficient management.
+                    - Simplified inventory navigation.
+              </dd>
+              <dd>
+                    <h3> 4) 💳 Invoicing </h3>
+                    - Creation, editing, and organizing invoices.
+                    - Automatic integration of clients, products, and totals.
+              </dd>
+              <dd>
+                    <h3> 5) 📈 Sales </h3>
+                    - Intuitive sales tracking and analysis.
+                    - Tools to maximize revenue and customer satisfaction.
+              </dd>
+              <dd>
+                    <h3> 6) 👥 Customers </h3>
+                    - Efficient management of customer data.
+                    - Analysis of purchasing patterns.
+              </dd>
+          </dl>
+      </dd>
+    </dl>
+  </dd>
+</dl>
 
 <br />
 
