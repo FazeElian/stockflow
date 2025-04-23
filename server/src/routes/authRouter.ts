@@ -1,21 +1,92 @@
 import { Router } from "express";
+import { body, param } from "express-validator";
 
 // Controller
 import { AuthController } from "../controllers/AuthController";
 
 // Middleware
 import { authenticate } from "../middleware/auth";
+import { handleInputErrors } from "../middleware/validation";
 
 const router = Router()
 
 // Routes
-router.post("/register", AuthController.register)
-router.post("/login", AuthController.login)
-router.post("/confirm-account", AuthController.confirmAccount)
-router.post("/forgot-password", AuthController.forgotPassword)
-router.post("/validate-code", AuthController.validateToken)
-router.post("/reset-password/:token", AuthController.resetPasswordWithToken)
-router.get("/user", authenticate, AuthController.getUser)
-router.post("/update-password", authenticate, AuthController.updatePassword)
+router.post("/register",
+    body("userName")
+        .notEmpty().withMessage("Por favor, introduzca un nombre de usuario.")
+        .isLength({ min: 4 }).withMessage("El nombre de usuario debe tener al menos 4 caracteres."),
+    body("email")
+        .isEmail().withMessage("Por favor, introduzca una dirección de correo electrónico válida.")
+        .notEmpty().withMessage("Por favor, introduzca una dirección de correo electrónico."),
+    body("password")
+        .isLength({ min: 8 }).withMessage("La contraseña debe tener al menos 8 caracteres.")
+        .notEmpty().withMessage("Por favor, introduzca una contraseña."),
+    handleInputErrors,
+    AuthController.register
+)
+
+router.post("/login",
+    body("email")
+        .isEmail().withMessage("Por favor, introduzca una dirección de correo electrónico válida.")
+        .notEmpty().withMessage("Por favor, introduzca una dirección de correo electrónico."),
+    body("password")
+        .isLength({ min: 8 }).withMessage("La contraseña debe tener al menos 8 caracteres.")
+        .notEmpty().withMessage("Por favor, introduzca una contraseña."),
+    handleInputErrors,
+    AuthController.login
+)
+
+router.post("/confirm-account",
+    body("token")
+        .notEmpty()
+        .isLength({ min: 6, max: 6  })
+        .withMessage("Código no válido"),
+    handleInputErrors,
+    AuthController.confirmAccount
+)
+
+router.post("/forgot-password",
+    body("email")
+        .isEmail().withMessage("Por favor, introduzca una dirección de correo electrónico válida.")
+        .notEmpty().withMessage("Por favor, introduzca una dirección de correo electrónico."),
+    handleInputErrors,
+    AuthController.forgotPassword
+)
+
+router.post("/validate-code",
+    body("token")
+        .notEmpty()
+        .isLength({ min: 6, max: 6  })
+        .withMessage("Código no válido"),
+    AuthController.validateToken
+)
+
+router.post("/reset-password/:token",
+    body("token")
+        .notEmpty()
+        .isLength({ min: 6, max: 6  })
+        .withMessage("Código no válido"),
+    body("password")
+        .isLength({ min: 8 }).withMessage("La contraseña debe tener al menos 8 caracteres.")
+        .notEmpty().withMessage("Por favor, introduzca una contraseña."),
+    handleInputErrors,
+    AuthController.resetPasswordWithToken
+)
+
+router.get("/user",
+    authenticate,
+    AuthController.getUser
+)
+
+router.post("/update-password",
+    authenticate,
+    body("currentPassword")
+        .notEmpty().withMessage("Por favor, introduzca su contraseña actual."),
+    body("newPassword")
+        .isLength({ min: 8 }).withMessage("La nueva contraseña debe tener al menos 8 caracteres.")
+        .notEmpty().withMessage("Por favor, introduzca una nueva contraseña."),
+    handleInputErrors,
+    AuthController.updatePassword
+)
 
 export default router;
