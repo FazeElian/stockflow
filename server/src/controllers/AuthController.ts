@@ -4,7 +4,8 @@ import { Request, Response } from "express"
 import User from "../models/User";
 
 // Utils for this controller
-import { hashPassword } from "../utils/auth";
+import { checkPassword, hashPassword } from "../utils/auth";
+import { generateJWT } from "../utils/jwt";
 
 export class AuthController {
     static register = async (req: Request, res: Response) => {
@@ -30,7 +31,35 @@ export class AuthController {
     }
 
     static login = async (req: Request, res: Response) => {
-        console.log("Login function")
+        const { email, password } = req.body;
+
+        // Check if the user already exists
+        const user = await User.findOne({ where: { email } });
+
+        if(!user) {
+            const error = new Error("No pudimos encontrar una cuenta con los datos proporcionados. Por favor, compruébelo y vuelva a intentarlo.");
+            res.status(404).json({ error: error.message });
+            return;
+        }
+
+        // Check if the account has been confirmed
+        if (!user.confirmed) {
+            const error = new Error("Tu cuenta aún no ha sido verificada. Revisa tu correo electrónico para confirmarla.");
+            res.status(403).json({ error: error.message });
+            return;
+        }
+
+        const isPasswordCorrect = await checkPassword(password, user.password);
+        if(!isPasswordCorrect) {
+            const error = new Error("Por favor verifique su contraseña y vuelva a intentarlo.");
+            res.status(401).json({ error: error.message });
+            return;
+        }
+
+        const token = generateJWT(user.id)
+
+        // res.status(200).json("You have logged in successfully.");
+        res.send(token);
     }
 
     static confirmAccount = async (req: Request, res: Response) => {
