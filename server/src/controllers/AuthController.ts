@@ -92,15 +92,61 @@ export class AuthController {
     }
 
     static forgotPassword = async (req: Request, res: Response) => {
-        console.log("Forgot Password function")
+        const { email } = req.body;
+
+        // Check if the user already exists
+        const user = await User.findOne({ where: { email } });
+
+        if(!user) {
+            const error = new Error("No encontramos ninguna cuenta asociada a la dirección de correo electrónico que ingresaste. Por favor, compruébalo y vuelve a intentarlo.");
+            res.status(404).json({ error: error.message });
+            return;
+        }
+
+        user.token = generateToken();
+        await user.save();
+        await AuthEmail.sendForgotPasswordEmail({
+            email: user.email,
+            userName: user.userName,
+            token: user.token
+        });
+
+        res.status(200).json("¡Listo! Te enviamos un correo electrónico para restablecer tu contraseña. Revisa tu bandeja de entrada y sigue los pasos para restablecerla.")
     }
 
     static validateToken = async (req: Request, res: Response) => {
-        console.log("Validate Code function")
+        const { token } = req.body;
+
+        // Check if the token exists
+        const existingToken = await User.findOne({ where: { token } });
+        if(!existingToken) {
+            const error = new Error("Código no válido");
+            res.status(404).json({ error: error.message });
+            return;
+        }
+
+        res.status(200).json("El código se verificó correctamente. Ya puedes configurar tu nueva contraseña.");
     }
 
     static resetPasswordWithToken = async (req: Request, res: Response) => {
-        console.log("resetPasswordWithToken function")
+        const { token } = req.params;
+        const { password } = req.body;
+
+        // Check if the token exists
+        const user = await User.findOne({ where: { token } });
+        if(!user) {
+            const error = new Error("Código no válido");
+            res.status(404).json({ error: error.message });
+            return;
+        }
+
+        // New password
+        user.password = await hashPassword(password);
+        user.token = null;
+
+        await user.save();
+
+        res.status(200).json("Tu contraseña se ha restablecido correctamente. Ya puedes iniciar sesión con tu nueva contraseña.");
     }
 
     static getUser = async (req: Request, res: Response) => {

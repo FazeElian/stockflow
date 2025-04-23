@@ -11,7 +11,7 @@ export class AuthEmail {
         const email = await transport.sendMail({
             from: "StockFlow",
             to: user.email,
-            subject: "StockFlow - Confirm your account",
+            subject: "StockFlow - Confirma tu cuenta",
             html: `
                 <h2> Hola ${user.userName}, </h2>
                 <br />
@@ -22,6 +22,25 @@ export class AuthEmail {
 
                 <p><b>Código:: </b> ${user.token} </p>
                 <a href="#"> Confirmar mi cuenta </a>
+            `
+        })
+        console.log(email)
+    }
+
+    static sendForgotPasswordEmail = async (user: EmailType) => {
+        const email = await transport.sendMail({
+            from: "StockFlow",
+            to: user.email,
+            subject: "StockFlow - Reestablece tu contraseña",
+            html: `
+                <h2> Hola ${user.userName}, </h2>
+                <br />
+
+                <h2>Recientemente solicitaste restablecer tu contraseña para tu cuenta de StockFlow. Usa el código a continuación para restablecerla:</h2>
+                <br />
+
+                <p><b>Código: </b> ${user.token} </p>
+                <a href="#"> Reestablece tu contraseña </a>
             `
         })
         console.log(email)
