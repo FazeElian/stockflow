@@ -1,11 +1,15 @@
 import { Request, Response } from "express"
 
+// Confirmation mail config
+import { AuthEmail } from "../emails/AuthEmail";
+
 // Model
 import User from "../models/User";
 
 // Utils for this controller
 import { checkPassword, hashPassword } from "../utils/auth";
 import { generateJWT } from "../utils/jwt";
+import { generateToken } from "../utils/token";
 
 export class AuthController {
     static register = async (req: Request, res: Response) => {
@@ -20,14 +24,22 @@ export class AuthController {
             return;
         }       
 
-        // Create new user
-        const user = new User(req.body);
+        try {
+            const user = new User(req.body);
+            user.password = await hashPassword(password)
+            user.token = generateToken()
+            await user.save();
 
-        // Hash password (for security)
-        user.password = await hashPassword(password)
+            await AuthEmail.sendConfirmationEmail({
+                userName: user.userName,
+                email: user.email,
+                token: user.token
+            })
 
-        // Save
-        await user.save();
+            res.status(201).json("Has creado tu cuenta con éxito");
+        } catch (error) {
+            res.status(500).json({ error: "Error creating the user" })
+        }
     }
 
     static login = async (req: Request, res: Response) => {
@@ -63,14 +75,27 @@ export class AuthController {
     }
 
     static confirmAccount = async (req: Request, res: Response) => {
-        console.log("Confirm Account function")
+        const { token } = req.body;
+
+        const user = await User.findOne({ where: { token } })
+        if (!user) {
+            const error = new Error("Token no válido");
+            res.status(409).json({ error: error.message });
+            return;
+        }
+
+        user.confirmed = true;
+        user.token = null;
+        await user.save();
+
+        res.status(200).json("Gracias por verificar tu correo electrónico. Ya puedes iniciar sesión.");
     }
 
     static forgotPassword = async (req: Request, res: Response) => {
         console.log("Forgot Password function")
     }
 
-    static validateCode = async (req: Request, res: Response) => {
+    static validateToken = async (req: Request, res: Response) => {
         console.log("Validate Code function")
     }
 
