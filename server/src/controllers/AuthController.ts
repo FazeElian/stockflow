@@ -154,6 +154,21 @@ export class AuthController {
     }
 
     static updatePassword = async (req: Request, res: Response) => {
-        console.log("Update Password function")
+        const { currentPassword, newPassword } = req.body;
+        const { id } = req.user;
+
+        const user = await User.findByPk(id);
+
+        const isPasswordCorrect = await checkPassword(currentPassword, user.password);
+        if (!isPasswordCorrect) {
+            const error = new Error("La contraseña que ingresaste es incorrecta");
+            res.status(401).json({ error: error.message });
+            return;
+        }
+
+        user.password = await hashPassword(newPassword)
+        await user.save();
+
+        res.status(200).json("Contraseña actualizada con éxito");
     }
 }
