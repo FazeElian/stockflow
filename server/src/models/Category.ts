@@ -7,11 +7,13 @@ import {
     Unique,
     AllowNull,
     ForeignKey,
-    BelongsTo
+    BelongsTo,
+    HasMany
 } from "sequelize-typescript";
 
-// User model
+// Models
 import User from "./User";
+import Product from "./Product";
 
 @Table({
     tableName: "categories"
@@ -31,6 +33,13 @@ class Category extends Model {
         type: DataType.STRING(100)
     })
     declare description: string
+
+    // Relationship with <Products[]>
+    @HasMany(() => Product, {
+        onUpdate: "CASCADE",
+        onDelete: "CASCADE"
+    })
+    declare products: Product[]
 
     // Relationship with <User>
     @ForeignKey(() => User)
