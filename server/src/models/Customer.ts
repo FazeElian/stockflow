@@ -4,22 +4,19 @@ import {
     Model,
     DataType,
     Default,
-    Unique,
     AllowNull,
     ForeignKey,
     BelongsTo,
-    HasMany
 } from "sequelize-typescript";
 
 // Models
 import User from "./User";
-import Product from "./Product";
 
 @Table({
-    tableName: "categories"
+    tableName: "customers"
 })
 
-class Category extends Model {
+class Customer extends Model {
     @AllowNull(false)
     @Column({
         type: DataType.STRING(50)
@@ -33,13 +30,6 @@ class Category extends Model {
     })
     declare description: string
 
-    // Relationship with <Products[]>
-    @HasMany(() => Product, {
-        onUpdate: "CASCADE",
-        onDelete: "CASCADE"
-    })
-    declare products: Product[]
-
     // Relationship with <User>
     @ForeignKey(() => User)
     declare userId : number
@@ -48,4 +38,4 @@ class Category extends Model {
     declare user : User
 }
 
-export default Category;
+export default Customer;
