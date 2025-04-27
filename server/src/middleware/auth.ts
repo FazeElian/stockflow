@@ -21,7 +21,7 @@ export const authenticate = async (req: Request, res: Response, next: NextFuncti
 
     const [ , token] = bearer.split(" ");
     if(!token) {
-        const error = new Error("Código no válido");
+        const error = new Error("Token no válido");
         res.status(401).json({ error: error.message });
         return;
     }
@@ -35,6 +35,6 @@ export const authenticate = async (req: Request, res: Response, next: NextFuncti
             next();
         }
     } catch (error) {
-        res.status(500).json({ error: "Código no válido" })
+        res.status(500).json({ error: "Token no válido" })
     }
 }

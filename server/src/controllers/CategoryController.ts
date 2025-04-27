@@ -3,14 +3,6 @@ import { Request, Response } from "express"
 // Model
 import Category from "../models/Category"
 
-declare global {
-    namespace Express {
-        interface Request {
-            category: Category
-        }
-    }
-}
-
 export class CategoryController {
     static getAll = async (req: Request, res: Response) => {
         try {
@@ -23,6 +15,10 @@ export class CategoryController {
         } catch (error) {
             res.status(500).json({ error: "Error al obtener las categorías" })
         }
+    }
+    
+    static getById = async (req: Request, res:  Response) => {
+        res.json(req.category);
     }
 
     static new = async (req: Request, res: Response) => {
