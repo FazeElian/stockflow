@@ -49,4 +49,18 @@ export class CategoryController {
             res.status(500).json({ error: "Error al crear categoría." })
         }
     }
+
+    static updateById = async (req: Request, res: Response) => {
+        // Update changes
+        await req.category.update(req.body);
+
+        res.json("Categoría actualizada con éxito.");
+    }
+
+    static deleteById = async (req: Request, res: Response) => {
+        // Delete
+        await req.category.destroy()
+
+        res.json("Categoría eliminada con éxito.");
+    }
 }

@@ -41,4 +41,16 @@ router.post("/categories/new",
     CategoryController.new
 );
 
+router.put("/categories/:categoryId",
+    validateCategoryInput,
+    handleInputErrors,
+    authenticate,
+    CategoryController.updateById
+);
+
+router.delete("/categories/:categoryId",
+    authenticate,
+    CategoryController.deleteById
+);
+
 export default router;
