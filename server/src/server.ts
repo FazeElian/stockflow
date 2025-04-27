@@ -8,6 +8,7 @@ import { db } from "./config/db";
 // Modules router
 import authRouter from "./routes/authRouter";
 import categoryRouter from "./routes/categoryRouter";
+import productRouter from "./routes/productRouter";
 
 async function connectDB () {
     try {
@@ -27,6 +28,6 @@ app.use(express.json())
 
 // API
 app.use("/api/auth/", authRouter);
-app.use("/api/admin/", categoryRouter)
+app.use("/api/admin/", categoryRouter, productRouter)
 
 export default app

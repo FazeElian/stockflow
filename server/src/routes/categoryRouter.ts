@@ -33,8 +33,6 @@ router.get("/categories/:categoryId",
 )
 
 router.post("/categories/new",
-    body("name")
-        .notEmpty().withMessage("El nombre de categoría es obligatorio."),
     validateCategoryInput,
     handleInputErrors,
     authenticate,

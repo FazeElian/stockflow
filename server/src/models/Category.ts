@@ -21,7 +21,6 @@ import Product from "./Product";
 
 class Category extends Model {
     @AllowNull(false)
-    @Unique(true)
     @Column({
         type: DataType.STRING(50)
     })

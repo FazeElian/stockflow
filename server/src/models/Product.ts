@@ -18,53 +18,56 @@ import User from "./User";
 })
 
 class Product extends Model {
-    @ForeignKey(() => Category)
-    declare categoryId: number
-
     @AllowNull(false)
     @Column({
         type: DataType.STRING(150)
     })
-    name: string
+    declare name: string
 
     @AllowNull(false)
-    @Unique(true)
     @Column({
         type: DataType.STRING(10)
     })
-    code: string
+    declare code: string
 
     @AllowNull(false)
     @Column({
         type: DataType.DECIMAL
     })
-    price: number
+    declare price: number
 
     @AllowNull(true)
     @Column({
         type: DataType.STRING
     })
-    image: string
+    declare image: string
 
     @AllowNull(false)
     @Column({
         type: DataType.INTEGER
     })
-    inflows: number
+    declare inflows: number
 
     @Column({
-        type: DataType.INTEGER
+        type: DataType.INTEGER,
+        defaultValue: 0
     })
-    outflows: number
+    declare outflows: number
 
     @Column({
-        type: DataType.STRING
+        type: DataType.STRING,
+        defaultValue: "Sin descripción"
     })
-    description: string
+    declare description: string
 
+    // Relationship with <Category>
     @BelongsTo(() => Category)
     declare category: Category
 
+    @ForeignKey(() => Category)
+    declare categoryId: number
+
+    // Relationship with <User>
     @ForeignKey(() => User)
     declare userId : number
 

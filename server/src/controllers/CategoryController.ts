@@ -7,7 +7,7 @@ export class CategoryController {
     static getAll = async (req: Request, res: Response) => {
         try {
             const userId = req.user.id;
-            console.log(userId)
+            // console.log(userId)
             const categories = await Category.findAll({ where: { userId: userId } });
 
             // Return categories list
@@ -24,9 +24,10 @@ export class CategoryController {
     static new = async (req: Request, res: Response) => {
         try {
             const { name, description } = req.body;
+            const userId = req.user.id
 
             // Check if the category exists
-            const existingCategory = await Category.findOne({ where: { name } })
+            const existingCategory = await Category.findOne({ where: { name, userId } })
     
             if(existingCategory) {
                 const error = new Error("Esta categoría ya existe.");

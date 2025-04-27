@@ -5,8 +5,13 @@ import {
     DataType,
     Default,
     Unique,
-    AllowNull
+    AllowNull,
+    HasMany
 } from "sequelize-typescript";
+
+// Models
+import Category from "./Category";
+import Product from "./Product";
 
 @Table({
     tableName: "users"
@@ -60,6 +65,20 @@ class User extends Model {
         type: DataType.BOOLEAN
     })
     declare confirmed: boolean
+
+    // Relationship with <Category[]>
+    @HasMany(() => Category, {
+        onUpdate: "CASCADE",
+        onDelete: "CASCADE"
+    })
+    declare categories: Category[]
+
+    // Relationship with <Product[]>
+    // @HasMany(() => Product, {
+    //     onUpdate: "CASCADE",
+    //     onDelete: "CASCADE"
+    // })
+    // declare products: Product[]
 }
 
 export default User;
