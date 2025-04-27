@@ -10,7 +10,15 @@ import { handleInputErrors } from "../middleware/validation";
 
 const router = Router()
 
+router.param("categoryId", authenticate);
+
 // Routes
+router.get("/categories",
+    authenticate,
+    CategoryController.getAll
+);
+
+
 router.post("/categories/new",
     body("name")
         .notEmpty().withMessage("El nombre de categoría es obligatorio."),
