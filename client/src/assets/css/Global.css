@@ -131,6 +131,23 @@ a {
         color: #89888C;
     }
 
+
+/* Scrollbar */
+body::-webkit-scrollbar {
+    width: 8px;
+}
+    
+body::-webkit-scrollbar-track {
+    background-color: #0B0B0D;
+    box-shadow: inset 0 0 1px #89888C;
+}
+
+body::-webkit-scrollbar-thumb {
+    background-color: #212026;
+    box-shadow: inset 0 0 2px #0E0E10;
+    border-radius: 5px;
+}
+
 .content-page--admin {
     display: flex;
     width: 100%;
