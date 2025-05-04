@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom"
 import { useForm } from "react-hook-form";
-import { Toaster } from "sonner";
+import { toast, Toaster } from "sonner";
 
 // Styles
 import "../../../assets/css/components/company/auth/Forms.css";
@@ -14,8 +14,11 @@ import { ErrorMessageValidation } from "../../../components/company/auth/ErrorMe
 // Type
 import { LoginForm } from "../../../types/auth";
 
+// API Call
+import { login } from "../../../api/auth";
+
 const LoginView = () => {
-    const { register, handleSubmit, formState: { errors } } = useForm<LoginForm> ({
+    const { register, handleSubmit, reset, formState: { errors } } = useForm<LoginForm> ({
         defaultValues: {
             email: "",
             password: ""     
@@ -23,7 +26,25 @@ const LoginView = () => {
     })
 
     const handleLogin = async (formData: LoginForm) => {
-        console.log(formData)
+        const userData = {
+            email: formData.email,
+            password: formData.password
+        }
+
+        try {
+            const response = await login(userData)
+
+            // Save JWT on localStorage
+            localStorage.setItem("AUTH_TOKEN", response);
+
+            // Sucess message
+            toast.success("Has iniciado sesión");
+
+            // Clear form
+            reset();
+        } catch (error) {
+            toast.error((error as Error).message);
+        }
     }
 
     return (

@@ -4,7 +4,11 @@ import { isAxiosError } from "axios";
 import api from "../config/axios";
 
 // Types
-import { ConfirmAccountForm, RegisterForm } from "../types/auth";
+import {
+    ConfirmAccountForm,
+    LoginForm,
+    RegisterForm
+} from "../types/auth";
 
 export async function createAccount (userData: RegisterForm) {
     try {
@@ -13,6 +17,18 @@ export async function createAccount (userData: RegisterForm) {
     } catch (error) {
         if (isAxiosError(error) && error.response) {
             throw new Error(error.response.data.error);
+        }
+        throw new Error(`${error}`)
+    }
+}
+
+export async function login (userData: LoginForm) {
+    try {
+        const { data } = await api.post("/auth/login", userData);
+        return data;
+    } catch (error) {
+        if (isAxiosError(error) && error.response) {
+            throw new Error(`${error.response.data.error}`);
         }
         throw new Error(`${error}`)
     }
