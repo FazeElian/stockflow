@@ -1,5 +1,6 @@
 import { useForm } from "react-hook-form";
-import { Toaster } from "sonner";
+import { useParams } from "react-router-dom";
+import { toast, Toaster } from "sonner";
 
 // Styles
 import "../../../assets/css/components/company/auth/Forms.css";
@@ -13,15 +14,36 @@ import { ErrorMessageValidation } from "../../../components/company/auth/ErrorMe
 // Type
 import { ResetPasswordForm } from "../../../types/auth";
 
+// API Call
+import { resetPassword } from "../../../api/auth";
+
 const ResetPasswordView = () => {
-    const { register, handleSubmit, formState: { errors } } = useForm<ResetPasswordForm> ({
+    const { register, handleSubmit, reset, formState: { errors } } = useForm<ResetPasswordForm> ({
         defaultValues: {
             password: "",
         }
     })
 
+    const { token } = useParams<{ token: string }>();
+    const tokenNumber = token ? Number(token) : NaN;
+
     const handleResetPassword = async (formData: ResetPasswordForm) => {
-        console.log(formData)
+        const userData = {
+            password: formData.password,
+            token: tokenNumber
+        }
+            
+        try {
+            const response = await resetPassword(userData, tokenNumber);
+    
+            // Sucess message
+            toast.success(response);
+    
+            // Clear form
+            reset();
+        } catch (error) {
+            toast.error((error as Error).message);
+        }
     }
 
     return (
