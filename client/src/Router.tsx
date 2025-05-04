@@ -20,34 +20,38 @@ import InvoicesView from "./views/admin/invoices/InvoicesView";
 import SalesView from "./views/admin/sales/SalesView";
 import CustomersView from "./views/admin/customers/CustomersView";
 import ProfileView from "./views/admin/profile/ProfileView";
+import { Suspense } from "react";
+import { Loading } from "./components/Loading";
 
 export default function Router () {
   return (
     <>
       <BrowserRouter>
-        <Routes>
-          {/* Company */}
-          <Route index element={<HomeView />} />
+        <Suspense fallback={<Loading />}>
+          <Routes>
+            {/* Company */}
+            <Route index element={<HomeView />} />
 
-          {/* Users */}
-          <Route path="/auth/register" element={<RegisterView />} />
-          <Route path="/auth/login" element={<LoginView />} />
-          <Route path="/auth/confirm-account" element={<ConfirmAccountView />} />
-          <Route path="/auth/forgot-password" element={<ForgotPasswordView />} />
-          <Route path="/auth/reset-password/:token" element={<ResetPasswordView />} />
-          <Route path="/auth/validate-token" element={<ValidateCodeView />} />
+            {/* Users */}
+            <Route path="/auth/register" element={<RegisterView />} />
+            <Route path="/auth/login" element={<LoginView />} />
+            <Route path="/auth/confirm-account" element={<ConfirmAccountView />} />
+            <Route path="/auth/forgot-password" element={<ForgotPasswordView />} />
+            <Route path="/auth/reset-password/:token" element={<ResetPasswordView />} />
+            <Route path="/auth/validate-token" element={<ValidateCodeView />} />
 
-          {/* Admin */}
-          <Route path="/admin/*" element={<HeaderAdmin />}>
-            <Route path="dashboard" element={<DashboardView />} />
-            <Route path="products" element={<ProductsView />} />
-            <Route path="categories" element={<CategoriesView />} />
-            <Route path="invoices" element={<InvoicesView />} />
-            <Route path="sales" element={<SalesView />} />
-            <Route path="customers" element={<CustomersView />} />
-            <Route path="profile" element={<ProfileView />} />
-          </Route>
-        </Routes>
+            {/* Admin */}
+            <Route path="/admin/*" element={<HeaderAdmin />}>
+              <Route path="dashboard" element={<DashboardView />} />
+              <Route path="products" element={<ProductsView />} />
+              <Route path="categories" element={<CategoriesView />} />
+              <Route path="invoices" element={<InvoicesView />} />
+              <Route path="sales" element={<SalesView />} />
+              <Route path="customers" element={<CustomersView />} />
+              <Route path="profile" element={<ProfileView />} />
+            </Route>
+          </Routes>
+        </Suspense>
       </BrowserRouter>
     </>
   )

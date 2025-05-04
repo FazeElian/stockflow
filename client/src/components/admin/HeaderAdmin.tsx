@@ -11,6 +11,9 @@ import { Toaster } from "sonner";
 // API Call
 import { getUser } from "../../api/auth";
 
+// Loader component
+import { Loading } from "../Loading";
+
 const HeaderAdmin = () => {
     const { data: user, isLoading, isError } = useQuery({
         queryFn: getUser,
@@ -21,7 +24,7 @@ const HeaderAdmin = () => {
 
     const navigate = useNavigate();
 
-    if (isLoading) return "Cargando";
+    if (isLoading) return <Loading />;
     if (isError) {
         navigate("/auth/login");
     }
