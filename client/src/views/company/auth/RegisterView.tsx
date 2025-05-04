@@ -14,8 +14,11 @@ import { ErrorMessageValidation } from "../../../components/company/auth/ErrorMe
 // Type
 import { RegisterForm } from "../../../types/auth";
 
+// API Call
+import { createAccount } from "../../../api/auth";
+
 const RegisterView = () => {
-    const { register, handleSubmit, formState: { errors } } = useForm<RegisterForm> ({
+    const { register, handleSubmit, reset, formState: { errors } } = useForm<RegisterForm> ({
         defaultValues: {
             userName: "",
             email: "",
@@ -24,7 +27,17 @@ const RegisterView = () => {
     })
 
     const handleRegister = async (formData: RegisterForm) => {
-        console.log(formData)
+        const userData = {
+            userName: formData.userName,
+            email: formData.email,
+            password: formData.password
+        }
+
+        // console.log(userData)
+        createAccount(userData)
+
+        // Clean form
+        reset();
     }
 
     return (
