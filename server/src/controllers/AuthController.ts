@@ -150,7 +150,7 @@ export class AuthController {
     }
 
     static getUser = async (req: Request, res: Response) => {
-        console.log("Get User function")
+        res.json(req.user);
     }
 
     static updatePassword = async (req: Request, res: Response) => {

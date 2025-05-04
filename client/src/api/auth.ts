@@ -10,6 +10,7 @@ import {
     LoginForm,
     RegisterForm,
     ResetPasswordForm,
+    User,
     ValidateCodeForm
 } from "../types/auth";
 
@@ -76,6 +77,18 @@ export async function validateCode (userData: ValidateCodeForm) {
 export async function resetPassword (userData: ResetPasswordForm, token: number) {
     try {
         const { data } = await api.post(`/auth/reset-password/${token}`, userData);
+        return data;
+    } catch (error) {
+        if (isAxiosError(error) && error.response) {
+            throw new Error(`${error.response.data.error}`);
+        }
+        throw new Error(`${error}`)
+    }
+}
+
+export async function getUser () {
+    try {
+        const { data } = await api<User>(`/auth/user`);
         return data;
     } catch (error) {
         if (isAxiosError(error) && error.response) {
