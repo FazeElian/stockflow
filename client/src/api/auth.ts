@@ -14,7 +14,7 @@ export async function createAccount (userData: RegisterForm) {
         if (isAxiosError(error) && error.response) {
             throw new Error(error.response.data.error);
         }
-        throw new Error(`Error getting story. ${error}`)
+        throw new Error(`${error}`)
     }
 }
 

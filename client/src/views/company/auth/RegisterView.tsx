@@ -33,14 +33,17 @@ const RegisterView = () => {
             password: formData.password
         }
 
-        // console.log(userData)
-        const message = createAccount(userData)
+        try {
+            const response = await createAccount(userData)
 
-        // Success toast
-        toast.success(message)
+            // Sucess message
+            toast.success(response);
 
-        // Clean form
-        reset();
+            // Clear form
+            reset();
+        } catch (error) {
+            toast.error((error as Error).message);
+        }
     }
 
     return (
