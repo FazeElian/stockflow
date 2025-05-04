@@ -1,4 +1,5 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Suspense } from "react";
 
 // Company views
 import HomeView from "./views/company/HomeView";
@@ -16,11 +17,14 @@ import { HeaderAdmin } from "./components/admin/HeaderAdmin";
 import DashboardView from "./views/admin/DashboardView";
 import ProductsView from "./views/admin/products/ProductsView";
 import CategoriesView from "./views/admin/categories/CategoriesView";
+import NewCategoryView from "./views/admin/categories/NewCategoryView";
+
 import InvoicesView from "./views/admin/invoices/InvoicesView";
 import SalesView from "./views/admin/sales/SalesView";
 import CustomersView from "./views/admin/customers/CustomersView";
 import ProfileView from "./views/admin/profile/ProfileView";
-import { Suspense } from "react";
+
+// Loading component
 import { Loading } from "./components/Loading";
 
 export default function Router () {
@@ -45,6 +49,7 @@ export default function Router () {
               <Route path="dashboard" element={<DashboardView />} />
               <Route path="products" element={<ProductsView />} />
               <Route path="categories" element={<CategoriesView />} />
+              <Route path="categories/new" element={<NewCategoryView />} />
               <Route path="invoices" element={<InvoicesView />} />
               <Route path="sales" element={<SalesView />} />
               <Route path="customers" element={<CustomersView />} />

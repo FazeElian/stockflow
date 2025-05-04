@@ -4,11 +4,23 @@ import { isAxiosError } from "axios";
 import api from "../config/axios";
 
 // Types
-import { Category } from "../types/category";
+import { Category, NewCategory } from "../types/category";
 
 export async function getAllCategories () {
     try {
         const { data } = await api.get<Category[]>("/admin/categories");
+        return data;
+    } catch (error) {
+        if (isAxiosError(error) && error.response) {
+            throw new Error(error.response.data.error);
+        }
+        throw new Error(`${error}`)
+    }
+}
+
+export async function newCategory (categoryData: NewCategory) {
+    try {
+        const { data } = await api.post("/admin/categories/new", categoryData);
         return data;
     } catch (error) {
         if (isAxiosError(error) && error.response) {
