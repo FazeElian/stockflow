@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom"
 import { useForm } from "react-hook-form";
-import { Toaster } from "sonner";
+import { toast, Toaster } from "sonner";
 
 // Styles
 import "../../../assets/css/components/company/auth/Forms.css";
@@ -34,7 +34,10 @@ const RegisterView = () => {
         }
 
         // console.log(userData)
-        createAccount(userData)
+        const message = createAccount(userData)
+
+        // Success toast
+        toast.success(message)
 
         // Clean form
         reset();
