@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form";
-import { Toaster } from "sonner";
+import { toast, Toaster } from "sonner";
 
 // Styles
 import "../../../assets/css/components/company/auth/Forms.css";
@@ -13,15 +13,32 @@ import { ErrorMessageValidation } from "../../../components/company/auth/ErrorMe
 // Type
 import { ConfirmAccountForm } from "../../../types/auth";
 
+// API Call
+import { confirmAccount } from "../../../api/auth";
+
 const ConfirmAccountView = () => {
-    const { register, handleSubmit, formState: { errors } } = useForm<ConfirmAccountForm> ({
+    const { register, handleSubmit, reset, formState: { errors } } = useForm<ConfirmAccountForm> ({
         defaultValues: {
             token: undefined
         }
     })
 
     const handleConfirmAccount = async (formData: ConfirmAccountForm) => {
-        console.log(formData)
+        const userData = {
+            token: formData.token
+        }
+    
+        try {
+            const response = await confirmAccount(userData);
+    
+            // Sucess message
+            toast.success(response);
+    
+            // Clear form
+            reset();
+        } catch (error) {
+            toast.error((error as Error).message);
+        }
     }
 
     return (
