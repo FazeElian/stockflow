@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form";
-import { Toaster } from "sonner";
+import { toast, Toaster } from "sonner";
 
 // Styles
 import "../../../assets/css/components/company/auth/Forms.css";
@@ -13,15 +13,32 @@ import { ErrorMessageValidation } from "../../../components/company/auth/ErrorMe
 // Type
 import { ForgotPasswordForm } from "../../../types/auth";
 
+// API Call
+import { forgotPassword } from "../../../api/auth";
+
 const ForgotPasswordView = () => {
-    const { register, handleSubmit, formState: { errors } } = useForm<ForgotPasswordForm> ({
+    const { register, handleSubmit, reset, formState: { errors } } = useForm<ForgotPasswordForm> ({
         defaultValues: {
             email: "",
         }
     })
 
     const handleForgotPassword = async (formData: ForgotPasswordForm) => {
-        console.log(formData)
+        const userData = {
+            email: formData.email
+        }
+    
+        try {
+            const response = await forgotPassword(userData);
+    
+            // Sucess message
+            toast.success(response);
+    
+            // Clear form
+            reset();
+        } catch (error) {
+            toast.error((error as Error).message);
+        }
     }
 
     return (
