@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form";
-import { Toaster } from "sonner";
+import { toast, Toaster } from "sonner";
 
 // Styles
 import "../../../assets/css/components/company/auth/Forms.css";
@@ -12,16 +12,31 @@ import { ErrorMessageValidation } from "../../../components/company/auth/ErrorMe
 
 // Type
 import { ValidateCodeForm } from "../../../types/auth";
+import { validateCode } from "../../../api/auth";
 
 const ValidateCodeView = () => {
-    const { register, handleSubmit, formState: { errors } } = useForm<ValidateCodeForm>({
+    const { register, handleSubmit, reset, formState: { errors } } = useForm<ValidateCodeForm>({
         defaultValues: {
-            password: "",
+            token: undefined,
         }
     })
 
     const handleValidateCode = async (formData: ValidateCodeForm) => {
-        console.log(formData)
+        const userData = {
+            token: formData.token
+        }
+    
+        try {
+            const response = await validateCode(userData);
+    
+            // Sucess message
+            toast.success(response);
+    
+            // Clear form
+            reset();
+        } catch (error) {
+            toast.error((error as Error).message);
+        }
     }
 
     return (

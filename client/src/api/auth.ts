@@ -8,7 +8,8 @@ import {
     ConfirmAccountForm,
     ForgotPasswordForm,
     LoginForm,
-    RegisterForm
+    RegisterForm,
+    ValidateCodeForm
 } from "../types/auth";
 
 export async function createAccount (userData: RegisterForm) {
@@ -50,6 +51,18 @@ export async function confirmAccount (userData: ConfirmAccountForm) {
 export async function forgotPassword (userData: ForgotPasswordForm) {
     try {
         const { data } = await api.post("/auth/forgot-password", userData);
+        return data;
+    } catch (error) {
+        if (isAxiosError(error) && error.response) {
+            throw new Error(`${error.response.data.error}`);
+        }
+        throw new Error(`${error}`)
+    }
+}
+
+export async function validateCode (userData: ValidateCodeForm) {
+    try {
+        const { data } = await api.post("/auth/validate-code", userData);
         return data;
     } catch (error) {
         if (isAxiosError(error) && error.response) {

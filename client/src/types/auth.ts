@@ -21,6 +21,4 @@ export type ResetPasswordForm = Pick<User, "token"> & {
     password: string
 }
 
-export type ValidateCodeForm = Pick<User, "token"> & {
-    password: string
-}
+export type ValidateCodeForm = Pick<User, "token">
