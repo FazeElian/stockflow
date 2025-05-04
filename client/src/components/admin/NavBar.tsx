@@ -12,7 +12,12 @@ import { MdLogout } from "react-icons/md";
 import { LuUserRound } from "react-icons/lu";
 import { FiHelpCircle } from "react-icons/fi";
 
-const NavBar = () => {
+// Type
+import { User } from "../../types/auth";
+
+type UserProps = Pick<User, "userName" | "profilePhoto">;
+
+const NavBar = ({ userName, profilePhoto } : UserProps) => {
     const [ dropdownUser, setDropdownUser ] = useState(false);
 
     const handleDropdownUser = () => {
@@ -42,15 +47,20 @@ const NavBar = () => {
                 </button>
                 <button className="btn-user-nav-bar font-inter btn-profile-nav-bar" onClick={handleDropdownUser}>
                     <FaUserCircle />
-                    <h2 className="font-inter">username</h2>
+                    <h2 className="font-inter">{userName}</h2>
                     <RiArrowDropDownLine />
                 </button>
 
                 {/* Dropdown */}
                 <div className={ `dropdown-user font-inter ${dropdownUser ? "active" : ""}` }>
                     <div className="top-dropdown">
-                        <FaUserCircle />
-                        <h2>username</h2>
+                        {/* If the user has profile photo */}
+                        {profilePhoto ? (
+                            <img src={profilePhoto} alt={userName} />
+                        ) : (
+                            <FaUserCircle />
+                        )}
+                        <h2>{userName}</h2>
                     </div>
                     <nav className="nav-dropdown">
                         <Link to="/admin/profile" className="item-nav-dropdown">

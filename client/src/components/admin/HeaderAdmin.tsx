@@ -32,7 +32,10 @@ const HeaderAdmin = () => {
     if (user) {
         return (
             <>
-                <NavBar/>
+                <NavBar
+                    profilePhoto={user.profilePhoto}
+                    userName={user.userName}
+                />
                 <SideBar />
                 <Toaster position="bottom-right" richColors />
                 <Outlet />
