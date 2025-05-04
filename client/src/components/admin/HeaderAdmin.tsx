@@ -1,4 +1,5 @@
 import { Outlet, useNavigate } from "react-router-dom";
+import { useQuery } from "@tanstack/react-query";
 
 // Components for this layout
 import { NavBar } from "./NavBar";
@@ -11,27 +12,32 @@ import { Toaster } from "sonner";
 import { getUser } from "../../api/auth";
 
 const HeaderAdmin = () => {
-    const navigate = useNavigate()
+    const { data: user, isLoading, isError } = useQuery({
+        queryFn: getUser,
+        queryKey: ["user"],
+        retry: 1,
+        refetchOnWindowFocus: false,
+    });
 
-    const getAuthenticatedUser = async () => {
-        const isUserAuthenticated = await getUser()
+    const navigate = useNavigate();
 
-        if (isUserAuthenticated == null) {
-            // Redirection to login page
-            navigate("/auth/login")
-        }
+    if (isLoading) return "Cargando";
+    if (isError) {
+        navigate("/auth/login");
     }
 
-    getAuthenticatedUser()
-
-    return (
-        <>
-            <NavBar/>
-            <SideBar />
-            <Toaster position="bottom-right" richColors />
-            <Outlet />
-        </>
-    )
+    if (user) {
+        return (
+            <>
+                <NavBar/>
+                <SideBar />
+                <Toaster position="bottom-right" richColors />
+                <Outlet />
+            </>
+        )
+    } else {
+        navigate("/auth/login");
+    }
 }
 
 export { HeaderAdmin };

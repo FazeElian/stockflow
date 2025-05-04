@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { useForm } from "react-hook-form";
 import { toast, Toaster } from "sonner";
 
@@ -25,6 +25,8 @@ const LoginView = () => {
         }
     })
 
+    const navigate = useNavigate()
+
     const handleLogin = async (formData: LoginForm) => {
         const userData = {
             email: formData.email,
@@ -37,8 +39,8 @@ const LoginView = () => {
             // Save JWT on localStorage
             localStorage.setItem("AUTH_TOKEN", response);
 
-            // Sucess message
-            toast.success("Has iniciado sesión");
+            // Redirection
+            navigate("/admin/dashboard")
 
             // Clear form
             reset();

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 // Styles for this component
 import "../../assets/css/components/admin/NavBar.css";
@@ -17,6 +17,15 @@ const NavBar = () => {
 
     const handleDropdownUser = () => {
         setDropdownUser(!dropdownUser)
+    }
+
+    // Redirection
+    const navigate = useNavigate()
+
+    // Log out
+    const LogOut = () => {
+        localStorage.removeItem("AUTH_TOKEN");
+        navigate("/auth/login/");
     }
 
     return (
@@ -52,7 +61,7 @@ const NavBar = () => {
                             <FiHelpCircle />
                             Ayuda
                         </Link>
-                        <button className="item-nav-dropdown font-inter">
+                        <button className="item-nav-dropdown font-inter" onClick={LogOut}>
                             <MdLogout />
                             Cerrar Sesión
                         </button>
