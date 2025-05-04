@@ -17,7 +17,13 @@ import { LoginForm } from "../../../types/auth";
 // API Call
 import { login } from "../../../api/auth";
 
+// Document title hook
+import { useDocumentTitle } from "../../../hooks/useDocumentTitle"
+
 const LoginView = () => {
+    // Page title
+    useDocumentTitle("Iniciar Sesión")
+
     const { register, handleSubmit, reset, formState: { errors } } = useForm<LoginForm> ({
         defaultValues: {
             email: "",

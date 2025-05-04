@@ -10,7 +10,13 @@ import { StartNowCallToAction } from "../../components/company/StartNowCallToAct
 import { ContactUs } from "../../components/company/ContactUs";
 import { FooterCompany } from "../../components/company/FooterCompany";
 
+// Document title hook
+import { useDocumentTitle } from "../../hooks/useDocumentTitle"
+
 const HomeView = () => {
+    // Page title
+    useDocumentTitle("Stockflow | Inicio")
+
     return (
         <main className="content-page--company">
             <HeaderCompany />

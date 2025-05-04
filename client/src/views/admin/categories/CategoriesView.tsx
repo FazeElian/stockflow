@@ -9,7 +9,13 @@ import { TopSearchBar } from "../../../components/admin/TopSearchBar";
 // Categories Table component
 import { CategoriesTable } from "./CategoriesTable";
 
+// Document title hook
+import { useDocumentTitle } from "../../../hooks/useDocumentTitle"
+
 const CategoriesView = () => {
+    // Page title
+    useDocumentTitle("Admin | Categorías")
+
     return (
         <main className="content-page--admin font-inter">
             <TitleView name="Categorías de Productos" />

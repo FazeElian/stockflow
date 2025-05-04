@@ -12,9 +12,17 @@ import { ErrorMessageValidation } from "../../../components/company/auth/ErrorMe
 
 // Type
 import { ValidateCodeForm } from "../../../types/auth";
+
+// API Call
 import { validateCode } from "../../../api/auth";
 
+// Document title hook
+import { useDocumentTitle } from "../../../hooks/useDocumentTitle"
+
 const ValidateCodeView = () => {
+    // Page title
+    useDocumentTitle("Verificar Código")
+
     const { register, handleSubmit, reset, formState: { errors } } = useForm<ValidateCodeForm>({
         defaultValues: {
             token: undefined,

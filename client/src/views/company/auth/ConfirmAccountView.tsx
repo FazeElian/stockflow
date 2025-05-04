@@ -16,7 +16,13 @@ import { ConfirmAccountForm } from "../../../types/auth";
 // API Call
 import { confirmAccount } from "../../../api/auth";
 
+// Document title hook
+import { useDocumentTitle } from "../../../hooks/useDocumentTitle"
+
 const ConfirmAccountView = () => {
+    // Page title
+    useDocumentTitle("Confirmar Cuenta")
+    
     const { register, handleSubmit, reset, formState: { errors } } = useForm<ConfirmAccountForm> ({
         defaultValues: {
             token: undefined

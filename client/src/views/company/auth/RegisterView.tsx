@@ -17,7 +17,13 @@ import { RegisterForm } from "../../../types/auth";
 // API Call
 import { createAccount } from "../../../api/auth";
 
+// Document title hook
+import { useDocumentTitle } from "../../../hooks/useDocumentTitle"
+
 const RegisterView = () => {
+    // Page title
+    useDocumentTitle("Crear Cuenta")
+
     const { register, handleSubmit, reset, formState: { errors } } = useForm<RegisterForm> ({
         defaultValues: {
             userName: "",

@@ -17,7 +17,13 @@ import { ResetPasswordForm } from "../../../types/auth";
 // API Call
 import { resetPassword } from "../../../api/auth";
 
+// Document title hook
+import { useDocumentTitle } from "../../../hooks/useDocumentTitle"
+
 const ResetPasswordView = () => {
+    // Page title
+    useDocumentTitle("Reestablecer Contraseña")
+
     const { register, handleSubmit, reset, formState: { errors } } = useForm<ResetPasswordForm> ({
         defaultValues: {
             password: "",

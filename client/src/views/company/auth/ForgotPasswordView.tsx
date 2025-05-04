@@ -16,7 +16,13 @@ import { ForgotPasswordForm } from "../../../types/auth";
 // API Call
 import { forgotPassword } from "../../../api/auth";
 
+// Document title hook
+import { useDocumentTitle } from "../../../hooks/useDocumentTitle"
+
 const ForgotPasswordView = () => {
+    // Page title
+    useDocumentTitle("Recuperar Contraseña")
+
     const { register, handleSubmit, reset, formState: { errors } } = useForm<ForgotPasswordForm> ({
         defaultValues: {
             email: "",
