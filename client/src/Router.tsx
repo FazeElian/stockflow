@@ -16,8 +16,11 @@ import { HeaderAdmin } from "./components/admin/HeaderAdmin";
 // Admin views
 import DashboardView from "./views/admin/DashboardView";
 import ProductsView from "./views/admin/products/ProductsView";
+
+// Categories
 import CategoriesView from "./views/admin/categories/CategoriesView";
 import NewCategoryView from "./views/admin/categories/NewCategoryView";
+import EditCategoryView from "./views/admin/categories/EditCategoryView";
 
 import InvoicesView from "./views/admin/invoices/InvoicesView";
 import SalesView from "./views/admin/sales/SalesView";
@@ -50,6 +53,7 @@ export default function Router () {
               <Route path="products" element={<ProductsView />} />
               <Route path="categories" element={<CategoriesView />} />
               <Route path="categories/new" element={<NewCategoryView />} />
+              <Route path="categories/edit/:id" element={<EditCategoryView />} />
               <Route path="invoices" element={<InvoicesView />} />
               <Route path="sales" element={<SalesView />} />
               <Route path="customers" element={<CustomersView />} />
