@@ -114,12 +114,22 @@
 /* Responsive 1024px */
 @media screen and (max-width: 1024px) {
     .side-bar {
-        display: none;
+        display: flex;
         top: 3.6rem;
+        height: 0vh;
+        height: -webkit-fill-available;
+        overflow: auto;
+        transition: .25s;
+        flex-direction: column;
+        transform: translateX(-100%);
+        left: 0;
+        opacity: 0;
     }
 
-    .side-bar.active {
-        display: flex;
+    .side-bar.active{
+        opacity: 1;
+        height: 100vh;
+        transform: translate(0) !important;
     }
 }
 
@@ -130,6 +140,7 @@
         width: 250px;
         top: 4.2rem;
         padding: 1.7rem;
+        transform: translate(0) !important;
     }
 
     .top-side-bar {

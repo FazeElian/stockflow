@@ -1,5 +1,6 @@
 import { Outlet, useNavigate } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
+import { useState } from "react";
 
 // Components for this layout
 import { NavBar } from "./NavBar";
@@ -15,6 +16,12 @@ import { getUser } from "../../api/auth";
 import { Loading } from "../Loading";
 
 const HeaderAdmin = () => {
+    const [sideBar, setSideBar] = useState(false);
+
+    const handleSideBar = () => {
+        setSideBar(!sideBar);
+    };
+
     const { data: user, isLoading, isError } = useQuery({
         queryFn: getUser,
         queryKey: ["user"],
@@ -35,8 +42,12 @@ const HeaderAdmin = () => {
                 <NavBar
                     profilePhoto={user.profilePhoto}
                     userName={user.userName}
+                    handleSideBar={handleSideBar}
                 />
-                <SideBar />
+                <SideBar
+                    sideBar={sideBar}
+                    closeSidebar={() => setSideBar(false)}
+                />
                 <Toaster position="bottom-right" richColors />
                 <Outlet />
             </>

@@ -12,12 +12,13 @@ import { MdLogout } from "react-icons/md";
 import { LuUserRound } from "react-icons/lu";
 import { FiHelpCircle } from "react-icons/fi";
 
-// Type
-import { User } from "../../types/auth";
+interface NavBarProps {
+    profilePhoto: string;
+    userName: string;
+    handleSideBar: () => void;
+}
 
-type UserProps = Pick<User, "userName" | "profilePhoto">;
-
-const NavBar = ({ userName, profilePhoto } : UserProps) => {
+const NavBar = ({ userName, profilePhoto, handleSideBar } : NavBarProps) => {
     const [ dropdownUser, setDropdownUser ] = useState(false);
 
     const handleDropdownUser = () => {
@@ -36,7 +37,7 @@ const NavBar = ({ userName, profilePhoto } : UserProps) => {
     return (
         <nav className="nav-bar">
             <div className="cont-btn-menu">
-                <button className="btn-menu">
+                <button className="btn-menu" onClick={handleSideBar}>
                     <IoMenuSharp />
                 </button>
             </div>
