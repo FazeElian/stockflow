@@ -17,9 +17,9 @@ const CategoriesTable = () => {
         queryFn: getAllCategories,
         queryKey: ["categories"],
         retry: 1,
-        refetchOnWindowFocus: true,
+        refetchOnWindowFocus: false,
         gcTime: 30 * 10000,
-        refetchInterval: 2 * 1000,
+        refetchInterval: 10 * 1000,
     });
 
     if (isLoading) return <TableLoader />;
