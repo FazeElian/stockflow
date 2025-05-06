@@ -1,4 +1,5 @@
 import { Request, Response } from "express"
+import { Op } from "sequelize";
 
 // Model
 import Category from "../models/Category"
@@ -16,7 +17,7 @@ export class CategoryController {
             res.status(500).json({ error: "Error al obtener las categorías" })
         }
     }
-    
+
     static getById = async (req: Request, res:  Response) => {
         res.json(req.category);
     }
@@ -63,5 +64,34 @@ export class CategoryController {
         await req.category.destroy()
 
         res.json("Categoría eliminada con éxito.");
+    }
+
+    static search = async (req: Request, res: Response) => {
+        try {
+            const userId = req.user.id;
+            const categoryQuery = req.query.name;
+            // console.log(categoryQuery)
+
+            const categories = await Category.findAll({
+                where: {
+                    userId: userId,
+                }
+            });
+
+            const searchResult = categories.filter(category =>
+                category.name.toLowerCase().includes((categoryQuery as string).trim())
+            );
+
+            if (!searchResult  || searchResult.length === 0) {
+                const error = new Error(`La categoría "${categoryQuery}}" no existe.`);
+                res.status(409).json({ error: error.message });
+                return;
+            }
+
+            // Return categories list
+            res.json(searchResult)
+        } catch (error) {
+            res.status(500).json({ error: "Error al buscar categoría." })
+        }
     }
 }

@@ -16,15 +16,25 @@ import {
 
 const router = Router()
 
+// ID for CRUD
 router.param("categoryId", validateCategoryId);
 router.param("categoryId", validateIfCategoryExists);
 router.param("categoryId", authenticate);
-router.param("categoryId", hasAccess);
+// router.param("categoryId", hasAccess);
+
+// Query - search
+// router.param("categoryQuery", authenticate);
+// router.param("categoryQuery", hasAccess);
 
 // Routes
 router.get("/categories",
     authenticate,
     CategoryController.getAll
+);
+
+router.get("/categories/search",
+    authenticate,
+    CategoryController.search
 );
 
 router.get("/categories/:categoryId",
