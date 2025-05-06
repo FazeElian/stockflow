@@ -30,7 +30,7 @@
             color: #F2F2F2;
         }
 
-        .group-form-module input, 
+        .group-form-module input,
         .group-form-module textarea {
             display: flex;
             width: 100%;
@@ -61,6 +61,14 @@
             color: #89888C;
         }
 
+/* Hide the X from search type input */
+input[type="search"]::-webkit-search-cancel-button {
+    display: none;
+}
+input[type="search"]::-moz-search-cancel-button {
+    display: none;
+}
+
 /* Responsive 1440px */
 @media screen and (max-width: 1440px) {
     .form-module {
@@ -81,7 +89,7 @@
         font-size: 16px;
     }
 
-    .group-form-module input, 
+    .group-form-module input,
     .group-form-module textarea {
         padding: 9px 1rem 9px;
         font-size: 14px;

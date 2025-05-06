@@ -10,12 +10,27 @@ import { MdDelete } from "react-icons/md";
 import { TableLoader } from "../../../components/admin/TableLoader";
 
 // API Call
-import { deleteCategory, getAllCategories } from "../../../api/category";
+import {
+    deleteCategory,
+    getAllCategories,
+    searchCategory
+} from "../../../api/category";
 
-const CategoriesTable = () => {
-    const { data: categories, isLoading } = useQuery({
-        queryFn: getAllCategories,
-        queryKey: ["categories"],
+interface CategoriesTableProps {
+    searchQuery: string;
+}
+
+const CategoriesTable: React.FC<CategoriesTableProps> = ({ searchQuery }) => {
+    const queryKey = searchQuery
+        ? ["categories", "search", searchQuery]
+        : ["categories", "all"];
+
+    const { data: categories, refetch, isLoading } = useQuery({
+        queryKey,
+        queryFn: () =>
+            searchQuery
+                ? searchCategory(searchQuery)
+                : getAllCategories(),
         retry: 1,
         refetchOnWindowFocus: false,
         gcTime: 30 * 10000,
@@ -23,12 +38,12 @@ const CategoriesTable = () => {
     });
 
     if (isLoading) return <TableLoader />;
-
     if ((categories ?? []).length > 0) {
         const handleDeleteCategory = async (id: number) => {
             const response = await deleteCategory(id)
+            refetch()
             toast.success(response)
-        }
+        } 
 
         return (
             <tbody>
@@ -61,7 +76,11 @@ const CategoriesTable = () => {
         return (
             <tbody>
                 <tr className="tbody tbody-categories">
-                    <td className="td td-none">No hay categorías</td>
+                    <td className="td td-none">
+                        {searchQuery
+                            ? `No hay categorías que coincidan con "${searchQuery}"`
+                            : "No hay categorías"}
+                    </td>
                 </tr>
             </tbody>
         )

@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 // Styles
 import "../../../assets/css/components/admin/modules/Tables.css";
 import "../../../assets/css/views/admin/CategoriesView.css";
@@ -16,6 +18,12 @@ const CategoriesView = () => {
     // Page title
     useDocumentTitle("Admin | Categorías")
 
+    const [searchQuery, setSearchQuery] = useState("");
+
+    const handleSearchSubmit = (value: string) => {
+        setSearchQuery(value);
+    };
+
     return (
         <main className="content-page--admin font-inter">
             <TitleView name="Categorías de Productos" />
@@ -23,6 +31,8 @@ const CategoriesView = () => {
                 searchPlaceholder="Buscar categoría"
                 exportText="Categorías"
                 newText="Categoría"
+                inputName="name"
+                onSearchSubmit={handleSearchSubmit}
             />
             <table className="table table-categories">
                 <thead>
@@ -34,7 +44,7 @@ const CategoriesView = () => {
                     </tr>
                 </thead>
                 
-                <CategoriesTable />
+                <CategoriesTable searchQuery={searchQuery} />
             </table>
         </main>
     )

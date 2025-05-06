@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 
 // Styles for this component
@@ -12,12 +13,21 @@ interface TopSearchBarProps {
     searchPlaceholder: string,
     exportText: string,
     newText: string
+    inputName: string,
+    onSearchSubmit: (query: string) => void;
 }
 
 const TopSearchBar: React.FC<TopSearchBarProps> = (props) => {
+    const [searchQuery, setSearchQuery] = useState("");
+
+    const handleSearchSubmit = (event: React.FormEvent) => {
+        event.preventDefault();
+        props.onSearchSubmit(searchQuery);
+    };
+
     return (
         <div className="top-search-bar">
-            <div className="search">
+            <form className="search" method="post" onSubmit={handleSearchSubmit}>
                 <button className="btn-filter">
                     <RiListSettingsLine />
                 </button>
@@ -25,13 +35,15 @@ const TopSearchBar: React.FC<TopSearchBarProps> = (props) => {
                     <IoSearchSharp />
                     <input
                         className="font-inter"
-                        type="text"
-                        name="search"
+                        type="search"
+                        name={props.inputName}
                         id="search"
                         placeholder={props.searchPlaceholder}
+                        value={searchQuery}
+                        onChange={(e) => setSearchQuery(e.target.value)}
                     />
                 </div>
-            </div>
+            </form>
             <div className="module-options">
                 <button className="btn-module-options btn-export font-inter">
                     <TiExportOutline />
