@@ -1,0 +1,73 @@
+.tr-no-product,
+.td-no-product {
+    width: 10%;
+    min-width: 10%;
+}
+
+.tr-name-product,
+.td-name-product {
+    width: 25%;
+    min-width: 25%;
+}
+
+.tr-inflows-product,
+.td-inflows-product,
+.tr-outflows-product,
+.td-outflows-product,
+.tr-stock-product,
+.td-stock-product {
+    width: 15%;
+    min-width: 15%;
+}
+
+.tr-options-product,
+.td-options-product {
+    width: 20%;
+    min-width: 20%;
+}
+
+/* Responsive 768px */
+@media screen and (max-width: 768px) {
+    .td-outflows-product,
+    .tr-outflows-product {
+        display: none;
+    }
+
+    .tr-inflows-product,
+    .td-inflows-product,
+    .tr-stock-product,
+    .td-stock-product {
+        width: 18%;
+        min-width: 18%;
+    }
+
+    .tr-name-product,
+    .td-name-product {
+        width: 33%;
+        min-width: 33%;
+    }
+}
+
+/* Responsive 600px */
+@media screen and (max-width: 600px) {
+    .td-inflows-product,
+    .tr-inflows-product,
+    .tr-no-product,
+    .td-no-product {
+        display: none;
+    }
+
+    .tr-stock-product,
+    .td-stock-product {
+        width: 27%;
+        min-width: 27%;
+    }
+
+    .tr-name-product,
+    .td-name-product,
+    .tr-options-product,
+    .td-options-product {
+        width: 36%;
+        min-width: 36%;
+    }
+}

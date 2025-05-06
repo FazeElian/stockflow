@@ -26,12 +26,6 @@ class Product extends Model {
 
     @AllowNull(false)
     @Column({
-        type: DataType.STRING(10)
-    })
-    declare code: string
-
-    @AllowNull(false)
-    @Column({
         type: DataType.DECIMAL
     })
     declare price: number
