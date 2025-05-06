@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 
 // Styles for this component
@@ -13,10 +13,12 @@ import { EditCategoryForm } from "./EditCategoryForm";
 
 // Loader component
 import { Loading } from "../../../components/Loading";
+import { toast } from "sonner";
 
 const EditCategoryView = () => {
     const { id } = useParams<{ id: string }>();
     const idNumber = id ? Number(id) : undefined;
+    const navigate = useNavigate()
     
     const { data: category, isLoading } = useQuery<Category>({
         queryKey: ["category", idNumber],
@@ -37,6 +39,9 @@ const EditCategoryView = () => {
                 />
             </main>
         )
+    } else {
+        navigate("/admin/categories")
+        return toast.error("Esta categoría no existe o ha sido eliminada.")
     }
 }
 
