@@ -64,11 +64,11 @@ const NavBar = ({ userName, profilePhoto, handleSideBar } : NavBarProps) => {
                         <h2>{userName}</h2>
                     </div>
                     <nav className="nav-dropdown">
-                        <Link to="/admin/profile" className="item-nav-dropdown">
+                        <Link to="/admin/profile" className="item-nav-dropdown" onClick={() => setDropdownUser(false)}>
                             <LuUserRound />
                             Perfil
                         </Link>
-                        <Link to="" className="item-nav-dropdown">
+                        <Link to="" className="item-nav-dropdown" onClick={() => setDropdownUser(false)}>
                             <FiHelpCircle />
                             Ayuda
                         </Link>
