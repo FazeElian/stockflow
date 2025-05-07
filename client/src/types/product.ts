@@ -3,8 +3,17 @@ export type Product = {
     categoryId: number,
     name: string,
     price: number,
-    image?: string[],
-    inflows?: number,
+    image: string,
+    inflows: number,
     outflows: number,
-    description?: string
+    description: string
 }
+
+export type NewProduct = Pick<Product,
+    "name" |
+    "categoryId" |
+    "price" |
+    "image" |
+    "inflows" |
+    "description"
+>;

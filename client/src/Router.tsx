@@ -15,7 +15,10 @@ import { HeaderAdmin } from "./components/admin/HeaderAdmin";
 
 // Admin views
 import DashboardView from "./views/admin/DashboardView";
+
+// Products
 import ProductsView from "./views/admin/products/ProductsView";
+import NewProductView from "./views/admin/products/NewProductView";
 
 // Categories
 import CategoriesView from "./views/admin/categories/CategoriesView";
@@ -50,7 +53,12 @@ export default function Router () {
             {/* Admin */}
             <Route path="/admin/*" element={<HeaderAdmin />}>
               <Route path="dashboard" element={<DashboardView />} />
+
+              {/* Products */}
               <Route path="products" element={<ProductsView />} />
+              <Route path="products/new" element={<NewProductView />} />
+
+              {/* Categories */}
               <Route path="categories" element={<CategoriesView />} />
               <Route path="categories/new" element={<NewCategoryView />} />
               <Route path="categories/edit/:id" element={<EditCategoryView />} />

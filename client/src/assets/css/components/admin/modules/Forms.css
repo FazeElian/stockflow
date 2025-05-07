@@ -31,7 +31,9 @@
         }
 
         .group-form-module input,
-        .group-form-module textarea {
+        .group-form-module textarea,
+        .group-form-module select,
+        .group-form-module option {
             display: flex;
             width: 100%;
             height: auto;
@@ -45,19 +47,29 @@
             transition: 0.2s ease-in-out;
         }
 
+        .group-form-module option {
+            background-color: #212026;
+        }
+
+        .group-form-module select {
+            cursor: pointer;
+        }
+
         .group-form-module textarea {
             field-sizing: content;
             min-height: 100px;
         }
 
         .group-form-module input:focus,
-        .group-form-module textarea:focus {
+        .group-form-module textarea:focus,
+        .group-form-module select:focus {
             border: 1px solid #F2F2F2;
             transition: 0.2s ease-in;
         }
 
         .group-form-module input::-webkit-input-placeholder,
-        .group-form-module textarea::-webkit-input-placeholder {
+        .group-form-module textarea::-webkit-input-placeholder,
+        .group-form-module select::-webkit-input-placeholder {
             color: #89888C;
         }
 
@@ -67,6 +79,14 @@ input[type="search"]::-webkit-search-cancel-button {
 }
 input[type="search"]::-moz-search-cancel-button {
     display: none;
+}
+
+/* Hide the arrow from select input */
+select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background: none;
 }
 
 /* Responsive 1440px */
@@ -90,7 +110,8 @@ input[type="search"]::-moz-search-cancel-button {
     }
 
     .group-form-module input,
-    .group-form-module textarea {
+    .group-form-module textarea,
+    .group-form-module select {
         padding: 9px 1rem 9px;
         font-size: 14px;
         border-radius: 4px;
