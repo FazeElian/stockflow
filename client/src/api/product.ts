@@ -17,3 +17,15 @@ export async function getAllProducts () {
         throw new Error(`${error}`)
     }
 }
+
+export async function deleteProduct (id: number) {
+    try {
+        const { data } = await api.delete(`/admin/products/${id}`);
+        return data;
+    } catch (error) {
+        if (isAxiosError(error) && error.response) {
+            throw new Error(error.response.data.error);
+        }
+        throw new Error(`${error}`)
+    }
+}

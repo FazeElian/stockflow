@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { Link } from "react-router-dom";
+import { toast } from "sonner";
 
 // React icons
 import { TbEdit } from "react-icons/tb";
@@ -9,10 +10,10 @@ import { MdDelete } from "react-icons/md";
 import { TableLoader } from "../../../components/admin/TableLoader";
 
 // API Call
-import { getAllProducts } from "../../../api/product";
+import { deleteProduct, getAllProducts } from "../../../api/product";
 
 const ProductsTable = () => {
-    const { data: products, isLoading } = useQuery({
+    const { data: products, refetch, isLoading } = useQuery({
         queryKey: ["products"],
         queryFn: getAllProducts,
         retry: 1,
@@ -23,6 +24,12 @@ const ProductsTable = () => {
 
     if (isLoading) return <TableLoader />;
     if ((products ?? []).length > 0) {
+        const handleDeleteProduct = async (id: number) => {
+            const response = await deleteProduct(id)
+            refetch()
+            toast.success(response)
+        }
+
         return (
             <tbody>
                 {products?.map((product, i:number) => (
@@ -36,7 +43,7 @@ const ProductsTable = () => {
                             <Link to={`edit/${product.id}`} className="btn-td btn-td-edit">
                                 <TbEdit />
                             </Link>
-                            <button className="btn-td btn-td-delete">
+                            <button className="btn-td btn-td-delete" onClick={() => handleDeleteProduct(product.id)}>
                                 <MdDelete />
                             </button>
                         </td>
