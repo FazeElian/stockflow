@@ -33,7 +33,7 @@ router.get("/products/:productId",
 );
 
 router.post("/products/new",
-    validateProductInput,
+    // validateProductInput,
     handleInputErrors,
     authenticate,
     ProductController.new

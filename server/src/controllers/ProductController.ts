@@ -1,7 +1,12 @@
 import { Request, Response } from "express"
+import formidable from "formidable";
+import { v4 as uuid } from "uuid";
 
 // Model
 import Product from "../models/Product"
+
+// Cloudinary config
+import cloudinary from "../config/cloudinary";
 
 export class ProductController {
     static getAll = async (req: Request, res: Response) => {
@@ -22,27 +27,48 @@ export class ProductController {
     }
 
     static new = async (req: Request, res: Response) => {
+        const form = formidable({
+            multiples: false
+        })
+
         try {
-            const { name } = req.body
-            const userId = req.user.id
+            form.parse(req, (err, fields, files) => {
+                const imageUploaded = files.image
 
-            // Check if the Product exists
-            const existingProduct = await Product.findOne({ where: { name, userId } })
-    
-            if(existingProduct) {
-                const error = new Error("Este producto ya existe.");
-                res.status(409).json({ error: error.message });
-                return;
-            }
+                cloudinary.uploader.upload(imageUploaded[0].filepath, { public_id: uuid() }, async function (error, result) {
+                    if (error) {
+                        const error = new Error("Error al cargar la imagen.")
+                        return res.status(500).json({ error: error.message })
+                    }
 
-            // Add the new Product
-            const product = new Product(req.body)
+                    const name = Array.isArray(fields.name) ? fields.name[0] : fields.name;
+                    const categoryId = Array.isArray(fields.categoryId) ? fields.categoryId[0] : fields.categoryId;
+                    const price = Array.isArray(fields.price) ? fields.price[0] : fields.price;
+                    const inflows = Array.isArray(fields.inflows) ? fields.inflows[0] : fields.inflows;
+                    const description = Array.isArray(fields.description) ? fields.description[0] : fields.description;
 
-            // Send the user id & save
-            product.userId = req.user.id;
-            await product.save()
+                    if (result) {
+                        const imageParsed = result.secure_url
+                        // res.json({ image: imageParsed })
+                        console.log(imageParsed)
 
-            res.status(200).json("Producto creado con éxito.")
+                        const product = new Product({
+                            name: name,
+                            categoryId: categoryId,
+                            price: price,
+                            inflows: inflows,
+                            description: description,
+                            image: imageParsed
+                        });
+
+                        // Send the user id & save
+                        product.userId = req.user.id;
+                        await product.save()
+
+                        res.status(200).json("Producto creado con éxito.")
+                    }
+                })
+            })
         } catch (error) {
             res.status(500).json({ error: "Error al crear producto." })
             console.log(error)
