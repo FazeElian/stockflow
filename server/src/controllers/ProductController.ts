@@ -31,9 +31,36 @@ export class ProductController {
             multiples: false
         })
 
-        try {
-            form.parse(req, (err, fields, files) => {
+        form.parse(req, async (err, fields, files) => {
+            if (err) {
+                console.log("Form parse error:", err);
+                return res.status(500).json({ error: "Error al procesar el formulario." });
+            }
+
+            try {
                 const imageUploaded = files.image
+                const name = Array.isArray(fields.name) ? fields.name[0] : fields.name;
+                const categoryId = Array.isArray(fields.categoryId) ? fields.categoryId[0] : fields.categoryId;
+                const price = Array.isArray(fields.price) ? fields.price[0] : fields.price;
+                const inflows = Array.isArray(fields.inflows) ? fields.inflows[0] : fields.inflows;
+                const description = Array.isArray(fields.description) ? fields.description[0] : fields.description;
+
+                if (!imageUploaded || Array.isArray(imageUploaded) && imageUploaded.length === 0) {
+                    const product = new Product({
+                        name: name,
+                        categoryId: categoryId,
+                        price: price,
+                        inflows: inflows,
+                        description: description,
+                        image: null,
+                        userId: req.user.id
+                    });
+
+                    // Send the user id & save
+                    await product.save()
+
+                    return res.status(200).json("Producto creado con éxito.")
+                }
 
                 cloudinary.uploader.upload(imageUploaded[0].filepath, { public_id: uuid() }, async function (error, result) {
                     if (error) {
@@ -41,16 +68,10 @@ export class ProductController {
                         return res.status(500).json({ error: error.message })
                     }
 
-                    const name = Array.isArray(fields.name) ? fields.name[0] : fields.name;
-                    const categoryId = Array.isArray(fields.categoryId) ? fields.categoryId[0] : fields.categoryId;
-                    const price = Array.isArray(fields.price) ? fields.price[0] : fields.price;
-                    const inflows = Array.isArray(fields.inflows) ? fields.inflows[0] : fields.inflows;
-                    const description = Array.isArray(fields.description) ? fields.description[0] : fields.description;
-
                     if (result) {
                         const imageParsed = result.secure_url
                         // res.json({ image: imageParsed })
-                        console.log(imageParsed)
+                        // console.log(imageParsed)
 
                         const product = new Product({
                             name: name,
@@ -65,14 +86,14 @@ export class ProductController {
                         product.userId = req.user.id;
                         await product.save()
 
-                        res.status(200).json("Producto creado con éxito.")
+                        return res.status(200).json("Producto creado con éxito.")
                     }
                 })
-            })
-        } catch (error) {
-            res.status(500).json({ error: "Error al crear producto." })
-            console.log(error)
-        }
+            } catch (error) {
+                console.log(error)
+                return res.status(500).json({ error: "Error al crear producto." })
+            }
+        })
     }
 
     static updateById = async (req: Request, res: Response) => {

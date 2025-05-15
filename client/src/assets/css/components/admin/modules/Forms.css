@@ -33,7 +33,8 @@
         .group-form-module input,
         .group-form-module textarea,
         .group-form-module select,
-        .group-form-module option {
+        .group-form-module option,
+        .file-btn {
             display: flex;
             width: 100%;
             height: auto;
@@ -47,6 +48,10 @@
             transition: 0.2s ease-in-out;
         }
 
+        .file-btn {
+            cursor: pointer;
+        }
+        
         .group-form-module option {
             background-color: #212026;
         }
@@ -62,7 +67,8 @@
 
         .group-form-module input:focus,
         .group-form-module textarea:focus,
-        .group-form-module select:focus {
+        .group-form-module select:focus,
+        .file-btn:focus {
             border: 1px solid #F2F2F2;
             transition: 0.2s ease-in;
         }
@@ -111,7 +117,8 @@ select {
 
     .group-form-module input,
     .group-form-module textarea,
-    .group-form-module select {
+    .group-form-module select,
+    .file-btn {
         padding: 9px 1rem 9px;
         font-size: 14px;
         border-radius: 4px;
@@ -153,7 +160,8 @@ select {
         gap: 8px;
     }
 
-    .group-form-module label {
+    .group-form-module label,
+    .file-btn {
         font-size: 15px;
     }
 

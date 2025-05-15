@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
+import { useRef, useState } from "react";
 
 // Components for this view
 import { BottomModuleForm } from "../../../components/admin/BottomModuleForm";
@@ -28,15 +29,29 @@ const NewProductView = () => {
     const { data: categories } = useQuery({
         queryKey: ["categories"],
         queryFn: getAllCategories,
-        staleTime: 5 * 60 * 1000,
         refetchOnWindowFocus: false,
-        gcTime: 30 * 10000,
-        refetchInterval: 10 * 1000,
     });
+
+    // Handle input for image field
+    const fileInputRef = useRef<HTMLInputElement>(null);
+    const [fileName, setFileName] = useState<string>("");
+  
+    const handleClick = () => {
+        fileInputRef.current?.click();
+    };
+  
+    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        const file = event.target.files?.[0];
+        if (file) {
+            setFileName(file.name);
+        } else {
+            setFileName("");
+        }
+    };
 
     const initialValues = {
         name: "",
-        categoryId: 1,
+        categoryId: 0,
         price: 50,
         inflows: 1,
         image: "",
@@ -51,17 +66,22 @@ const NewProductView = () => {
     const navigate = useNavigate();
 
     const handleNewProduct = async (formData: NewProduct) => {
+        const imageObtained = formData.image[0]
+
         const productData = {
             name: formData.name,
             categoryId: formData.categoryId,
             price: formData.price,
             inflows: formData.inflows,
-            image: formData.image,
+            image: imageObtained,
             description: formData.description
         }
-        
+
+        // console.log(productData)
+
         try {
             const response = await newProduct(productData)
+            console.log(response)
 
             navigate("/admin/products")
 
@@ -108,12 +128,15 @@ const NewProductView = () => {
                     <label htmlFor="category">Categoría:</label>
                     <select
                         className="font-inter"
+                        defaultValue={0}
                         id="categoryId"
                         {...register("categoryId", {
                             required: "La categoría del producto es un dato obligatorio.",
                         })}
                     >
-                        <option value="" disabled selected>Seleccionar Categoría</option>
+                        <option value={0} disabled>
+                            Selecciona una categoría
+                        </option>
                         {categories?.map((category) => (
                             <option value={category.id} key={category.id}>
                                 {category.name}
@@ -149,12 +172,22 @@ const NewProductView = () => {
 
                 {/* Image */}
                 <div className="group-form-module">
-                    <label htmlFor="image">Categoría:</label>
+                    <label htmlFor="image">Imagen (Opcional):</label>
+                    <button className="file-btn font-inter" onClick={handleClick} type="button">
+                        {fileName ? "Imagen cargada" : "Seleccionar Archivo"}
+                    </button>
                     <input
                         type="file"
+                        style={{ display: "none" }}
                         className="font-inter"
                         id="image"
-                        placeholder="Ingresa el precio del producto ($$$)"
+                        {...register("image", {
+                            onChange: handleChange,
+                        })}
+                        ref={(e) => {
+                            fileInputRef.current = e;
+                            register("image").ref(e);
+                        }}
                     />
                     {errors.image && 
                         <ErrorMessageValidation>
@@ -165,7 +198,7 @@ const NewProductView = () => {
 
                 {/* Inflows */}
                 <div className="group-form-module">
-                    <label htmlFor="inflows">Entradas (Stock inicial):</label>
+                    <label htmlFor="inflows">Entradas - Stock inicial:</label>
                     <input
                         type="number"
                         className="font-inter"
