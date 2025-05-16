@@ -1,7 +1,7 @@
 import { isAxiosError } from "axios";
 
 // Axios config
-import api from "../config/axios";
+import { api } from "../config/axios";
 
 // Types
 import { Category, NewCategory } from "../types/category";
