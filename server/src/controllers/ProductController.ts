@@ -27,6 +27,8 @@ export class ProductController {
     }
 
     static new = async (req: Request, res: Response) => {
+        const userId = req.user.id
+
         const form = formidable({
             multiples: false
         })
@@ -44,6 +46,15 @@ export class ProductController {
                 const price = Array.isArray(fields.price) ? fields.price[0] : fields.price;
                 const inflows = Array.isArray(fields.inflows) ? fields.inflows[0] : fields.inflows;
                 const description = Array.isArray(fields.description) ? fields.description[0] : fields.description;
+
+                // Check if the Product exists
+                const existingProduct = await Product.findOne({ where: { name, userId } })
+        
+                if(existingProduct) {
+                    const error = new Error("Este producto ya existe.");
+                    res.status(409).json({ error: error.message });
+                    return;
+                }
 
                 if (!imageUploaded || Array.isArray(imageUploaded) && imageUploaded.length === 0) {
                     const product = new Product({
