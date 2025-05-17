@@ -49,6 +49,12 @@ class Product extends Model {
     declare outflows: number
 
     @Column({
+        type: DataType.INTEGER,
+        defaultValue: 0
+    })
+    declare stock: number
+
+    @Column({
         type: DataType.STRING,
         defaultValue: "Sin descripción"
     })
