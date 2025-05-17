@@ -34,7 +34,7 @@ const CategoriesTable: React.FC<CategoriesTableProps> = ({ searchQuery }) => {
         retry: 1,
         refetchOnWindowFocus: false,
         gcTime: 30 * 10000,
-        refetchInterval: 10 * 1000,
+        refetchInterval: 300 * 1000,
     });
 
     if (isLoading) return <TableLoader />;

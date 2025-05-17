@@ -21,6 +21,7 @@ const CategoriesView = () => {
     const [searchQuery, setSearchQuery] = useState("");
 
     const handleSearchSubmit = (value: string) => {
+        value = value.toLowerCase()
         setSearchQuery(value);
     };
 
