@@ -9,13 +9,13 @@ import { Element } from 'react-scroll';
 
 const AppMainFeatures = () => {
     return (
-        <Element className="app-features bg-black-medium font-inter" name="features">
-            <h1 className="color-white bg-transparent">Características esenciales para su negocio</h1>
-                <div className="items-app-features bg-transparent">
+        <Element className="app-features bg-black font-inter" name="features">
+            <h1 className="color-white bg-black">Características esenciales para su negocio</h1>
+                <div className="items-app-features bg-black">
                     {ItemsMainFeatures.map((item) => (
                         <div key={item.id}>
                             <motion.div
-                                className="item-app-features bg-gray-dark"
+                                className="item-app-features bg-black-light"
                                 whileHover={{ scale: 1.1 }}
                                 transition={{
                                     duration: .25,
