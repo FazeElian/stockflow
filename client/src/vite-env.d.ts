@@ -5,6 +5,7 @@ declare module "*.svg";
 declare module "*.jpeg";
 declare module "*.jpg";
 declare module "*.css";
+declare module "*.webp";
 
 interface ImportMetaEnv {
     readonly VITE_API_URL: string;

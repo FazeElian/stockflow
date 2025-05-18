@@ -4,7 +4,7 @@ import { Link, useLocation } from "react-router-dom";
 import "../../assets/css/components/admin/SideBar.css";
 
 // Images - icons
-import Logo from "../../assets/img/Logo.png";
+import Logo from "../../assets/img/Logo.webp";
 
 // React icons
 import { MdOutlineDashboard } from "react-icons/md";

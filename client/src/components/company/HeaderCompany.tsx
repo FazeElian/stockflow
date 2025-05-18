@@ -8,7 +8,7 @@ import { Link as LinkScroll } from "react-scroll";
 import "../../assets/css/components/company/HeaderCompany.css";
 
 // Logo
-import Logo from "../../assets/img/Logo.png";
+import Logo from "../../assets/img/Logo.webp";
 
 // React icons
 import { FaHome } from "react-icons/fa";

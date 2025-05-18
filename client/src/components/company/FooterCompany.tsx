@@ -5,7 +5,7 @@ import { Link as LinkScroll } from 'react-scroll';
 import "../../assets/css/components/company/FooterCompany.css";
 
 // Logo
-import Logo from "../../assets/img/Logo.png";
+import Logo from "../../assets/img/Logo.webp";
 
 // React icons
 import { FaInstagram, FaFacebookSquare } from "react-icons/fa";
