@@ -1,34 +1,34 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { Suspense } from "react";
+import { lazy, Suspense } from "react";
 
 // Company views
-import HomeView from "./views/company/HomeView";
-import RegisterView from "./views/company/auth/RegisterView";
-import LoginView from "./views/company/auth/LoginView";
-import ConfirmAccountView from "./views/company/auth/ConfirmAccountView";
-import ForgotPasswordView from "./views/company/auth/ForgotPasswordView";
-import ResetPasswordView from "./views/company/auth/ResetPaswordView";
-import ValidateCodeView from "./views/company/auth/ValidateTokenView";
+const HomeView = lazy(() => import("./views/company/HomeView"))
+const RegisterView = lazy(() => import("./views/company/auth/RegisterView"))
+const LoginView = lazy(() => import("./views/company/auth/LoginView"))
+const ConfirmAccountView = lazy(() => import("./views/company/auth/ConfirmAccountView"))
+const ForgotPasswordView = lazy(() => import("./views/company/auth/ForgotPasswordView"))
+const ResetPasswordView = lazy(() => import("./views/company/auth/ResetPaswordView"))
+const ValidateCodeView = lazy(() => import("./views/company/auth/ValidateTokenView"))
 
 // Header admin side component
 import { HeaderAdmin } from "./components/admin/HeaderAdmin";
 
 // Admin views
-import DashboardView from "./views/admin/DashboardView";
+const DashboardView = lazy(() => import("./views/admin/DashboardView"))
 
 // Products
-import ProductsView from "./views/admin/products/ProductsView";
-import NewProductView from "./views/admin/products/NewProductView";
+const ProductsView = lazy(() => import("./views/admin/products/ProductsView"))
+const NewProductView = lazy(() => import("./views/admin/products/NewProductView"))
 
 // Categories
-import CategoriesView from "./views/admin/categories/CategoriesView";
-import NewCategoryView from "./views/admin/categories/NewCategoryView";
-import EditCategoryView from "./views/admin/categories/EditCategoryView";
+const CategoriesView = lazy(() => import("./views/admin/categories/CategoriesView"))
+const NewCategoryView = lazy(() => import("./views/admin/categories/NewCategoryView"))
+const EditCategoryView = lazy(() => import("./views/admin/categories/EditCategoryView"))
 
-import InvoicesView from "./views/admin/invoices/InvoicesView";
-import SalesView from "./views/admin/sales/SalesView";
-import CustomersView from "./views/admin/customers/CustomersView";
-import ProfileView from "./views/admin/profile/ProfileView";
+const InvoicesView = lazy(() => import("./views/admin/invoices/InvoicesView"));
+const SalesView = lazy(() => import("./views/admin/sales/SalesView"));
+const CustomersView = lazy(() => import("./views/admin/customers/CustomersView"));
+const ProfileView = lazy(() => import("./views/admin/profile/ProfileView"));
 
 // Loading component
 import { Loading } from "./components/Loading";
