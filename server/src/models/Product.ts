@@ -6,7 +6,8 @@ import {
     BelongsTo,
     ForeignKey,
     AllowNull,
-    Unique
+    Unique,
+    Default
 } from "sequelize-typescript";
 
 // Models
@@ -18,45 +19,68 @@ import User from "./User";
 })
 
 class Product extends Model {
+    // Name
     @AllowNull(false)
+    @Unique(true)
     @Column({
         type: DataType.STRING(150)
     })
     declare name: string
 
+    // Unique code
+    @AllowNull(false)
+    @Unique(true)
+    @Column({
+        type: DataType.STRING(30)
+    })
+    declare code: string
+
+    // Selling Price
     @AllowNull(false)
     @Column({
         type: DataType.DECIMAL
     })
-    declare price: number
+    declare sellingPrice: number
 
-    @AllowNull(true)
-    @Column({
-        type: DataType.STRING
-    })
-    declare image: string
-
+    // Purchase Cost
     @AllowNull(false)
+    @Column({
+        type: DataType.DECIMAL
+    })
+    declare purchaseCost: number
+
+    // Initial stock
+    @AllowNull(false)
+    @Default(0)
     @Column({
         type: DataType.INTEGER
     })
     declare inflows: number
 
+    // Outflows - every sale
+    @Default(0)
     @Column({
         type: DataType.INTEGER,
-        defaultValue: 0
     })
     declare outflows: number
 
+    // Stock
+    @Default(0)
     @Column({
         type: DataType.INTEGER,
-        defaultValue: 0
     })
     declare stock: number
 
+    // State of the product
+    @AllowNull(false)
+    @Default(true)
+    @Column({
+        type: DataType.BOOLEAN,
+    })
+    declare state: boolean;
+
     @Column({
         type: DataType.STRING,
-        defaultValue: "Sin descripción"
     })
     declare description: string
 
