@@ -64,4 +64,33 @@ export class CustomerController {
 
         res.json("Cliente eliminado con éxito.");
     }
+
+    static search = async (req: Request, res: Response) => {
+        try {
+            const userId = req.user.id;
+            const customerQuery = req.query.name;
+            // console.log(customerQuery)
+
+            const categories = await Customer.findAll({
+                where: {
+                    userId: userId,
+                }
+            });
+
+            const searchResult = categories.filter(customer =>
+                customer.name.toLowerCase().includes((customerQuery as string).trim())
+            );
+
+            if (!searchResult  || searchResult.length === 0) {
+                const error = new Error(`El cliente "${customerQuery}}" no existe.`);
+                res.status(409).json({ error: error.message });
+                return;
+            }
+
+            // Return categories list
+            res.json(searchResult)
+        } catch (error) {
+            res.status(500).json({ error: "Error al buscar cliente." })
+        }
+    }
 }

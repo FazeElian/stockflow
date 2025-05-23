@@ -26,6 +26,11 @@ router.get("/customers",
     CustomerController.getAll
 );
 
+router.get("/customers/search",
+    authenticate,
+    CustomerController.search
+);
+
 router.get("/customers/:customerId",
     authenticate,
     CustomerController.getById
