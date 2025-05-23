@@ -1,6 +1,5 @@
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
-import { useRef, useState } from "react";
 
 // Components for this view
 import { BottomModuleForm } from "../../../components/admin/BottomModuleForm";
@@ -18,11 +17,15 @@ import { useForm } from "react-hook-form";
 import { NewProduct } from "../../../types/product";
 
 // Toast alert component
-import { toast } from "sonner";
+// import { toast } from "sonner";
 
 // API Call
-import { newProduct } from "../../../api/product";
+// import { newProduct } from "../../../api/product";
 import { getAllCategories } from "../../../api/category";
+
+// Icons
+import { FiInfo } from "react-icons/fi";
+import { MdAttachMoney, MdOutlineInventory2 } from "react-icons/md";
 
 const NewProductView = () => {
     // Get all categories
@@ -32,67 +35,54 @@ const NewProductView = () => {
         refetchOnWindowFocus: false,
     });
 
-    // Handle input for image field
-    const fileInputRef = useRef<HTMLInputElement>(null);
-    const [fileName, setFileName] = useState<string>("");
-  
-    const handleClick = () => {
-        fileInputRef.current?.click();
-    };
-  
-    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        const file = event.target.files?.[0];
-        if (file) {
-            setFileName(file.name);
-        } else {
-            setFileName("");
-        }
-    };
-
     const initialValues = {
         name: "",
+        code: "",
         categoryId: 0,
-        price: 50,
-        inflows: 1,
-        image: "",
-        description: ""
+        sellingPrice: 50,
+        purchaseCost: 50,
+        description: "",
+        inflows: 2,
+        minimunStock: 1,
+        state: 1
     }
 
-    const { register, handleSubmit, reset, formState: { errors } } = useForm ({
+    const { register, handleSubmit, formState: { errors } } = useForm ({
         defaultValues: initialValues
     });
 
     // Redirect
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
 
     const handleNewProduct = async (formData: NewProduct) => {
-        const imageObtained = formData.image[0]
+        console.log(formData)
+        // const imageObtained = formData.image[0]
 
-        const productData = {
-            name: formData.name,
-            categoryId: formData.categoryId,
-            price: formData.price,
-            inflows: formData.inflows,
-            image: imageObtained,
-            description: formData.description
-        }
+        // const productData = {
+        //     name: formData.name,
+        //     categoryId: formData.categoryId,
+        //     price: formData.price,
+        //     inflows: formData.inflows,
+        //     image: imageObtained,
+        //     description: formData.description
+        // }
 
-        // console.log(productData)
+        // // console.log(productData)
 
-        try {
-            const response = await newProduct(productData)
-            console.log(response)
+        // try {
+        //     const response = await newProduct(productData)
+        //     console.log(response)
 
-            navigate("/admin/products")
+        //     navigate("/admin/products")
 
-            // Sucess message
-            toast.success(response);
+        //     // Sucess message
+        //     toast.success(response);
 
-            // Clear form
-            reset();
-        } catch (error) {
-            toast.error((error as Error).message);
-        }
+        //     // Clear form
+        //     reset();
+        // } catch (error) {
+        //     toast.error((error as Error).message);
+        // }
     }
 
     return (
@@ -100,123 +90,83 @@ const NewProductView = () => {
             <form action="" className="form-module font-inter" method="post" onSubmit={handleSubmit(handleNewProduct)}>
                 <h1>Añadir Producto</h1>
 
-                {/* Name */}
-                <div className="group-form-module">
-                    <label htmlFor="name">Nombre:</label>
-                    <input
-                        type="text"
-                        className="font-inter"
-                        id="name"
-                        placeholder="Ingresa el nombre de la Producto"
-                        {...register("name", {
-                            required: "El nombre del producto es un dato obligatorio.",
-                            pattern: {
-                                value: /^[a-zA-Z0-9áéíóúÁÉÍÓÚ\s-]+$/,
-                                message: "Solo se permiten letras, números y guiones."
-                            }
-                        })}
-                    />
-                    {errors.name && 
-                        <ErrorMessageValidation>
-                            {errors.name?.message}
-                        </ErrorMessageValidation>
-                    }
+                <div className="title-section-divided-group-form-module" style={{ marginTop: 0 }}>
+                    <FiInfo />
+                    <h2>Información Básica</h2>
                 </div>
+                <div className="group-divided-form-module">
+                    {/* Name */}
+                    <div className="item-group-divided-form-module group-basic-info-prod">
+                        <label htmlFor="name">Nombre:</label>
+                        <input
+                            type="text"
+                            className="font-inter"
+                            id="name"
+                            placeholder="Ingresa el nombre de la Producto"
+                            {...register("name", {
+                                required: "El nombre del producto es un dato obligatorio.",
+                                pattern: {
+                                    value: /^[a-zA-Z0-9áéíóúÁÉÍÓÚ\s-]+$/,
+                                    message: "Solo se permiten letras, números y guiones."
+                                }
+                            })}
+                        />
+                        {errors.name && 
+                            <ErrorMessageValidation>
+                                {errors.name?.message}
+                            </ErrorMessageValidation>
+                        }
+                    </div>
 
-                {/* Category */}
-                <div className="group-form-module">
-                    <label htmlFor="category">Categoría:</label>
-                    <select
-                        className="font-inter"
-                        defaultValue={0}
-                        id="categoryId"
-                        {...register("categoryId", {
-                            required: "La categoría del producto es un dato obligatorio.",
-                        })}
-                    >
-                        <option value={0} disabled>
-                            Selecciona una categoría
-                        </option>
-                        {categories?.map((category) => (
-                            <option value={category.id} key={category.id}>
-                                {category.name}
+                    {/* Code */}
+                    <div className="item-group-divided-form-module group-basic-info-prod">
+                        <label htmlFor="name">Código:</label>
+                        <input
+                            type="text"
+                            className="font-inter"
+                            id="code"
+                            placeholder="Ingresa el código del Producto"
+                            {...register("code", {
+                                required: "El código del producto es un dato obligatorio.",
+                                pattern: {
+                                    value: /^[a-zA-Z0-9áéíóúÁÉÍÓÚ\s-]+$/,
+                                    message: "Solo se permiten letras, números y guiones."
+                                }
+                            })}
+                        />
+                        {errors.code && 
+                            <ErrorMessageValidation>
+                                {errors.code?.message}
+                            </ErrorMessageValidation>
+                        }
+                    </div>
+
+                    {/* Category */}
+                    <div className="item-group-divided-form-module group-basic-info-prod">
+                        <label htmlFor="category">Categoría:</label>
+                        <select
+                            className="font-inter"
+                            defaultValue={0}
+                            id="categoryId"
+                            {...register("categoryId", {
+                                required: "La categoría del producto es un dato obligatorio.",
+                            })}
+                        >
+                            <option value={0} disabled>
+                                Selecciona una categoría
                             </option>
-                        ))}
-                    </select>
-                    {errors.categoryId && 
-                        <ErrorMessageValidation>
-                            {errors.categoryId?.message}
-                        </ErrorMessageValidation>
-                    }
-                </div>
-
-                {/* Price */}
-                <div className="group-form-module">
-                    <label htmlFor="price">Precio:</label>
-                    <input
-                        type="number"
-                        step={50}
-                        className="font-inter"
-                        id="price"
-                        placeholder="Ingresa el precio del producto ($$$)"
-                        {...register("price", {
-                            required: "El precio del producto es un dato obligatorio.",
-                        })}
-                    />
-                    {errors.price && 
-                        <ErrorMessageValidation>
-                            {errors.price?.message}
-                        </ErrorMessageValidation>
-                    }
-                </div>
-
-                {/* Image */}
-                <div className="group-form-module">
-                    <label htmlFor="image">Imagen (Opcional):</label>
-                    <button className="file-btn font-inter" onClick={handleClick} type="button">
-                        {fileName ? "Imagen cargada" : "Seleccionar Archivo"}
-                    </button>
-                    <input
-                        type="file"
-                        style={{ display: "none" }}
-                        className="font-inter"
-                        id="image"
-                        {...register("image", {
-                            onChange: handleChange,
-                        })}
-                        ref={(e) => {
-                            fileInputRef.current = e;
-                            register("image").ref(e);
-                        }}
-                    />
-                    {errors.image && 
-                        <ErrorMessageValidation>
-                            {errors.image?.message}
-                        </ErrorMessageValidation>
-                    }
-                </div>
-
-                {/* Inflows */}
-                <div className="group-form-module">
-                    <label htmlFor="inflows">Entradas - Stock inicial:</label>
-                    <input
-                        type="number"
-                        className="font-inter"
-                        id="inflows"
-                        placeholder="Ingresa la cantidad de existencias iniciales del producto"
-                        {...register("inflows", {
-                            required: "La cantidad de existencias iniciales del producto es un dato obligatorio",
-                            minLength: {
-                                value: 1,
-                                message: "El producto debe tener al menos 1 existencia inicial."
-                            }
-                        })}
-                    />
-                    {errors.inflows && 
-                        <ErrorMessageValidation>
-                            {errors.inflows?.message}
-                        </ErrorMessageValidation>
-                    }
+                            {categories?.map((category) => (
+                                <option value={category.id} key={category.id}>
+                                    {category.name}
+                                </option>
+                            ))}
+                        </select>
+                        {errors.categoryId && 
+                            <ErrorMessageValidation>
+                                {errors.categoryId?.message}
+                            </ErrorMessageValidation>
+                        }
+                    </div>
                 </div>
 
                 {/* Description */}
@@ -239,6 +189,129 @@ const NewProductView = () => {
                             {errors.description?.message}
                         </ErrorMessageValidation>
                     }
+                </div>
+
+                {/* Prices info */}
+                <div className="title-section-divided-group-form-module">
+                    <MdAttachMoney />
+                    <h2>Información de Precios</h2>
+                </div>
+                <div className="group-divided-form-module">
+                    {/* Selling price */}
+                    <div className="item-group-divided-form-module group-prices-info-prod">
+                        <label htmlFor="sellingPrice">Precio de venta (por unidad):</label>
+                        <input
+                            type="number"
+                            step={50}
+                            className="font-inter"
+                            id="sellingPrice"
+                            placeholder="Ingresa el precio de venta para el producto ($$$)"
+                            {...register("sellingPrice", {
+                                required: "El precio de venta para el producto es un dato obligatorio.",
+                            })}
+                        />
+                        {errors.sellingPrice && 
+                            <ErrorMessageValidation>
+                                {errors.sellingPrice?.message}
+                            </ErrorMessageValidation>
+                        }
+                    </div>
+
+                    {/* Purchase cost */}
+                    <div className="item-group-divided-form-module group-prices-info-prod">
+                        <label htmlFor="purchaseCost">Precio de costo (por unidad):</label>
+                        <input
+                            type="number"
+                            step={50}
+                            className="font-inter"
+                            id="purchaseCost"
+                            placeholder="Ingresa el costo por producto ($$$)"
+                            {...register("purchaseCost", {
+                                required: "El costo por producto es un dato obligatorio.",
+                            })}
+                        />
+                        {errors.purchaseCost && 
+                            <ErrorMessageValidation>
+                                {errors.purchaseCost?.message}
+                            </ErrorMessageValidation>
+                        }
+                    </div>
+                </div>
+
+                {/* Inventory info */}
+                <div className="title-section-divided-group-form-module">
+                    <MdOutlineInventory2 />
+                    <h2>Información de Inventario</h2>
+                </div>
+                <div className="group-divided-form-module">
+                    {/* Inflows - initial stock */}
+                    <div className="item-group-divided-form-module group-prices-info-prod">
+                        <label htmlFor="inflows">Entradas - Stock inicial:</label>
+                        <input
+                            type="number"
+                            className="font-inter"
+                            id="inflows"
+                            placeholder="Ingresa la cantidad de existencias iniciales del producto"
+                            {...register("inflows", {
+                                required: "La cantidad de existencias iniciales del producto es un dato obligatorio",
+                                minLength: {
+                                    value: 1,
+                                    message: "El producto debe tener al menos 1 existencia inicial."
+                                }
+                            })}
+                        />
+                        {errors.inflows && 
+                            <ErrorMessageValidation>
+                                {errors.inflows?.message}
+                            </ErrorMessageValidation>
+                        }
+                    </div>
+
+                    {/* Minimum amount to generate inventory alert */}
+                    <div className="item-group-divided-form-module group-prices-info-prod">
+                        <label htmlFor="inflows">Stock mínimo (alerta al superar el límite):</label>
+                        <input
+                            type="number"
+                            className="font-inter"
+                            id="minimunStock"
+                            placeholder="Ingresa la cantidad mínima del producto para tu inventario"
+                            {...register("minimunStock", {
+                                required: "La cantidad mínima del producto es un dato obligatorio",
+                                minLength: {
+                                    value: 1,
+                                    message: "El producto debe tener al menos 1 unidad como cantidad mínima."
+                                }
+                            })}
+                        />
+                        {errors.minimunStock && 
+                            <ErrorMessageValidation>
+                                {errors.minimunStock?.message}
+                            </ErrorMessageValidation>
+                        }
+                    </div>
+                </div>
+
+                <div className="group-form-module">
+                    {/* State of the product */}
+                    <div className="item-group-divided-form-module">
+                        <label htmlFor="state">Estado:</label>
+                        <select
+                            className="font-inter"
+                            defaultValue={1}
+                            id="state"
+                            {...register("state", {
+                                required: "El estado del producto es un dato obligatorio.",
+                            })}
+                        >
+                            <option value={1}>Disponible</option>
+                            <option value={0}>Agotado</option>
+                        </select>
+                        {errors.state && 
+                            <ErrorMessageValidation>
+                                {errors.state?.message}
+                            </ErrorMessageValidation>
+                        }
+                    </div>
                 </div>
             
                 {/* Bottom buttons component */}
