@@ -27,7 +27,12 @@ const EditCategoryView = lazy(() => import("./views/admin/categories/EditCategor
 
 const InvoicesView = lazy(() => import("./views/admin/invoices/InvoicesView"));
 const SalesView = lazy(() => import("./views/admin/sales/SalesView"));
+
+// Customers
 const CustomersView = lazy(() => import("./views/admin/customers/CustomersView"));
+const NewCustomerView = lazy(() => import("./views/admin/customers/NewCustomerView"))
+const EditCustomerView = lazy(() => import("./views/admin/customers/EditCustomerView"))
+
 const ProfileView = lazy(() => import("./views/admin/profile/ProfileView"));
 
 // Loading component
@@ -62,9 +67,15 @@ export default function Router () {
               <Route path="categories" element={<CategoriesView />} />
               <Route path="categories/new" element={<NewCategoryView />} />
               <Route path="categories/edit/:id" element={<EditCategoryView />} />
+
               <Route path="invoices" element={<InvoicesView />} />
               <Route path="sales" element={<SalesView />} />
+
+              {/* Customers */}
               <Route path="customers" element={<CustomersView />} />
+              <Route path="customers/new" element={<NewCustomerView />} />
+              <Route path="customers/edit/:id" element={<EditCustomerView />} />
+
               <Route path="profile" element={<ProfileView />} />
             </Route>
           </Routes>
