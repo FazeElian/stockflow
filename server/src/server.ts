@@ -9,8 +9,9 @@ import { CORSConfig } from "./config/cors";
 // Database config
 import { db } from "./config/db";
 
-// Router
+// Routers
 import authRouter from "./routes/authRouter";
+import categoryRouter from "./routes/categoryRouter";
 
 async function connectDB () {
     try {
@@ -32,5 +33,6 @@ app.use(express.json())
 
 // API
 app.use("/api/v1/auth/", authRouter);
+app.use("/api/v1/admin/", categoryRouter);
 
 export default app
