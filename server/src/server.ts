@@ -5,6 +5,9 @@ import morgan from "morgan"
 // Database config
 import { db } from "./config/db";
 
+// Router
+import authRouter from "./routes/authRouter";
+
 async function connectDB () {
     try {
         await db.authenticate();
@@ -22,6 +25,6 @@ app.use(morgan("dev"))
 app.use(express.json())
 
 // API
-// app.use("/api/v1/");
+app.use("/api/v1/auth/", authRouter);
 
 export default app
