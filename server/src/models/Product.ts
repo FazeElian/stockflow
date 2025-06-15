@@ -93,11 +93,16 @@ class Product extends Model {
 
     // Relationship with <Category>
     @BelongsTo(() => Category)
-    declare category: Category
+    declare category?: Category
 
     @ForeignKey(() => Category)
-    declare categoryId: number
-
+    @AllowNull(true)
+    @Default(null)
+    @Column({
+        type: DataType.INTEGER
+    })
+    declare categoryId?: number | null
+    
     // Relationship with <User>
     @ForeignKey(() => User)
     declare userId : number

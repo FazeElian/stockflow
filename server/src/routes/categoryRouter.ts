@@ -7,6 +7,7 @@ import { CategoryController } from "../controllers/CategoryController";
 import { authenticate } from "../middleware/auth";
 import { handleInputErrors } from "../middleware/validation";
 import {
+    hasAccess,
     validateCategoryId,
     validateCategoryInput,
     validateIfCategoryExists
@@ -18,6 +19,7 @@ const router = Router()
 router.param("categoryId", validateCategoryId);
 router.param("categoryId", validateIfCategoryExists);
 router.param("categoryId", authenticate);
+router.param("categoryId", hasAccess);
 
 // Routes
 router.get("/categories",

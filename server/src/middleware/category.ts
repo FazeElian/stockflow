@@ -66,3 +66,12 @@ export const validateCategoryInput = async (req: Request, res: Response, next: N
         .run(req)
     next()
 }
+
+export const hasAccess = async (req: Request, res: Response, next: NextFunction) => {
+    if(req.category.userId !== req.user.id) {
+        const error = new Error("Acción no válida");
+        return res.status(401).json({ error: error.message });
+    }    
+
+    next();
+}
