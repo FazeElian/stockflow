@@ -7,19 +7,17 @@ import { ProductRow } from "../atoms/services/products/ProductRow";
 
 // Query
 import { useGetAllProducts } from "../../services/products/queries";
+
+// Type
 import type { ProductRowType } from "../../lib/types/services/product.type";
+
+// Loader & error component
+import { ModuleLoader } from "../atoms/services/ModuleLoader";
+import { ModuleError } from "../atoms/services/ModuleError";
 
 const ProductsTable = () => {
     // Get all products
     const { data: products, isLoading, isError } = useGetAllProducts()
-
-    if (isLoading) {
-        return ""
-    }
-
-    if (isError) {
-        return ""
-    }
 
     return (
         <table className="table table-products">
@@ -48,6 +46,10 @@ const ProductsTable = () => {
                             status={product.status}
                         />
                     ))
+                ) : isLoading ? (
+                    <ModuleLoader />
+                ) : isError ? (
+                    <ModuleError />
                 ) : (
                     <tr className="tbody tbody-products">
                         <td className="td td-none" colSpan={7}>
