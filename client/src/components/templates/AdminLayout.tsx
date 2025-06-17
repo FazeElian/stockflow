@@ -6,11 +6,14 @@ import { useGetAuthenticatedUser } from "../../services/auth/quieries"
 // Type
 import type { User } from "../../lib/types/services/auth/user.type";
 
+// Loader component
+import { Loading } from "../atoms/Loading";
+
 const AdminLayout = () => {
     const { data: userResult, isError, isLoading } = useGetAuthenticatedUser()
     const redirect = useNavigate()
 
-    if(isLoading) return "Cargando...";
+    if(isLoading) return <Loading />;
     if(isError) redirect("/auth/login")
 
     const user = userResult as User
