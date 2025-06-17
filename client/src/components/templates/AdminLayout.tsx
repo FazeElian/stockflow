@@ -1,4 +1,6 @@
 import { Outlet, useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { Toaster } from "sonner";
 
 // Query
 import { useGetAuthenticatedUser } from "../../services/auth/quieries"
@@ -9,7 +11,17 @@ import type { User } from "../../lib/types/services/auth/user.type";
 // Loader component
 import { Loading } from "../atoms/Loading";
 
+// Components for this layout
+import { NavBar } from "../organisms/NavBar";
+import { SideBar } from "../organisms/SideBar";
+
 const AdminLayout = () => {
+    const [sideBar, setSideBar] = useState(false);
+
+    const handleSideBar = () => {
+        setSideBar(!sideBar);
+    };
+
     const { data: userResult, isError, isLoading } = useGetAuthenticatedUser()
     const redirect = useNavigate()
 
@@ -20,10 +32,15 @@ const AdminLayout = () => {
 
     return (
         <>
-            <header>
-                <h1>Admin Layout</h1>
-                <h2>{user.userName}</h2>
-            </header>
+            <NavBar
+                userName={user.userName}
+                handleSideBar={handleSideBar}
+            />
+            <SideBar
+                sideBar={sideBar}
+                closeSidebar={() => setSideBar(false)}
+            />
+            <Toaster position="top-center" richColors />
             <Outlet />
         </>
     )
