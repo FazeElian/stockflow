@@ -1,6 +1,7 @@
 // Components for this view
 import { TitleView } from "../../../components/atoms/services/TitleView"
 import { TopModuleBar } from "../../../components/organisms/TopModuleBar"
+import { ProductsTable } from "../../../components/molecules/ProductsTable"
 
 const ProductsView = () => {
     return (
@@ -15,6 +16,9 @@ const ProductsView = () => {
                 newText="Nuevo producto"
                 exportText="productos"
             />
+
+            {/* Table */}
+            <ProductsTable />
         </main>
     )
 }
