@@ -63,6 +63,10 @@
     }
 
     .out-td-state-prod {
+        color: #D49124 !important;
+    }
+    
+    .discontinued-td-state-prod {
         color: #F20544 !important;
     }
 

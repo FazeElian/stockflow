@@ -5,7 +5,22 @@ import "../../assets/css/components/admin/services/products/ProductsTable.css";
 // Subcomponent
 import { ProductRow } from "../atoms/services/products/ProductRow";
 
+// Query
+import { useGetAllProducts } from "../../services/products/queries";
+import type { ProductRowType } from "../../lib/types/services/product.type";
+
 const ProductsTable = () => {
+    // Get all products
+    const { data: products, isLoading, isError } = useGetAllProducts()
+
+    if (isLoading) {
+        return ""
+    }
+
+    if (isError) {
+        return ""
+    }
+
     return (
         <table className="table table-products">
             <thead>
@@ -20,12 +35,26 @@ const ProductsTable = () => {
                 </tr>
             </thead>
             <tbody>
-                {/* <tr className="tbody tbody-products">
-                    <td className="td td-none">
-                        No hay productos
-                    </td>
-                </tr> */}
-                <ProductRow />
+                {Array.isArray(products) && products.length > 0 ? (
+                    products.map((product: ProductRowType) => (
+                        <ProductRow
+                            key={product.id}
+                            id={product.id}
+                            name={product.name}
+                            code={product.code}
+                            sellingPrice={product.sellingPrice}
+                            outflows={product.outflows}
+                            stock={product.stock}
+                            status={product.status}
+                        />
+                    ))
+                ) : (
+                    <tr className="tbody tbody-products">
+                        <td className="td td-none" colSpan={7}>
+                            No hay productos
+                        </td>
+                    </tr>
+                )}
             </tbody>
         </table>
     )

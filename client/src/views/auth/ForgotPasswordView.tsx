@@ -5,7 +5,7 @@ import { Toaster } from "sonner";
 import Logo from "../../assets/img/Logo.webp";
 
 // Type
-import type { ForgotPasswordForm } from "../../lib/types/services/auth/user.type"
+import type { ForgotPasswordForm } from "../../lib/types/services/user.type"
 
 // Form components
 import { AuthInputField } from "../../components/atoms/auth/AuthInputField";

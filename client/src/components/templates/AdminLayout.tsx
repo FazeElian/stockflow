@@ -6,7 +6,7 @@ import { Toaster } from "sonner";
 import { useGetAuthenticatedUser } from "../../services/auth/quieries"
 
 // Type
-import type { User } from "../../lib/types/services/auth/user.type";
+import type { User } from "../../lib/types/services/user.type";
 
 // Loader component
 import { Loading } from "../atoms/Loading";

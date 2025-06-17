@@ -12,7 +12,7 @@ import type {
     ResetPasswordForm,
     User,
     ValidateCodeForm,
-} from "../../lib/types/services/auth/user.type";
+} from "../../lib/types/services/user.type";
 
 export async function registerUser (userData: RegisterForm) {
     try {

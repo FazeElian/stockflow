@@ -2,7 +2,7 @@ import { useMutation } from "@tanstack/react-query";
 import { toast } from "sonner";
 
 // Types
-import type { ConfirmAccountForm, ForgotPasswordForm, LoginForm, RegisterForm, ResetPasswordForm, ValidateCodeForm } from "../../lib/types/services/auth/user.type";
+import type { ConfirmAccountForm, ForgotPasswordForm, LoginForm, RegisterForm, ResetPasswordForm, ValidateCodeForm } from "../../lib/types/services/user.type";
 
 // API Calls
 import { confirmAccount, forgotPassword, login, registerUser, resetPassword, validateCode } from "./api";

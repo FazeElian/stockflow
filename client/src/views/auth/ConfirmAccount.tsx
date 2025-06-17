@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 import Logo from "../../assets/img/Logo.webp";
 
 // Type
-import type { ConfirmAccountForm} from "../../lib/types/services/auth/user.type"
+import type { ConfirmAccountForm} from "../../lib/types/services/user.type"
 
 // Form components
 import { AuthInputField } from "../../components/atoms/auth/AuthInputField";
