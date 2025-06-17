@@ -1,5 +1,5 @@
 // Components for this view
-import { TitleView } from "../../components/atoms/TitleView"
+import { TitleView } from "../../components/atoms/services/TitleView"
 
 const DashboardView = () => {
     return (

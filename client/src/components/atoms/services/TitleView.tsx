@@ -1,8 +1,8 @@
 // Styles for this component
-import "../../assets/css/components/admin/services/TitleView.css";
+import "../../../assets/css/components/admin/services/TitleView.css";
 
 // Type
-import type { TitleViewType } from "../../lib/types/atoms/services/title-view.type";
+import type { TitleViewType } from "../../../lib/types/atoms/services/title-view.type";
 
 // Functional component -> React.FC
 const TitleView : React.FC<TitleViewType> = (props) => {
