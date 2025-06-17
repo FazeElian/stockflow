@@ -15,8 +15,11 @@ import type { RegisterForm } from "../../lib/types/services/auth/user.type";
 import { AuthInputField } from "../../components/atoms/auth/AuthInputField";
 import { AuthSubmitButton } from "../../components/atoms/auth/AuthSubmitButton";
 
+// Mutation
+import { useRegisterMutation } from "../../services/auth/mutations";
+
 const RegisterView = () => {
-    const { register, handleSubmit, formState: { errors } } = useForm<RegisterForm> ({
+    const { register, handleSubmit, reset, formState: { errors } } = useForm<RegisterForm> ({
         defaultValues: {
             userName: "",
             email: "",
@@ -24,8 +27,13 @@ const RegisterView = () => {
         }
     })
 
+    const registerMutation = useRegisterMutation()
     const handleRegister = async (formData: RegisterForm) => {
-        console.log(formData)
+        registerMutation.mutate(formData, {
+            onSuccess: () => {
+                reset()
+            }
+        });
     }
 
     return (

@@ -11,15 +11,23 @@ import type { ForgotPasswordForm } from "../../lib/types/services/auth/user.type
 import { AuthInputField } from "../../components/atoms/auth/AuthInputField";
 import { AuthSubmitButton } from "../../components/atoms/auth/AuthSubmitButton";
 
+// Mutation
+import { useForgotPasswordMutation } from "../../services/auth/mutations";
+
 const ForgotPasswordView = () => {
-    const { register, handleSubmit, formState: { errors } } = useForm<ForgotPasswordForm> ({
+    const { register, handleSubmit, reset, formState: { errors } } = useForm<ForgotPasswordForm> ({
         defaultValues: {
             email: "",
         }
     })
 
+    const forgotPasswordMutation = useForgotPasswordMutation()
     const handleForgotPassword = async (formData: ForgotPasswordForm) => {
-        console.log(formData)
+        forgotPasswordMutation.mutate(formData, {
+            onSuccess: () => {
+                reset()
+            }
+        });
     }
 
     return (

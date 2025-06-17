@@ -14,6 +14,9 @@ import ResetPasswordView from "./views/auth/ResetPasswordView";
 // Admin views
 import DashboardView from "./views/admin/DashboardView";
 
+// Admin layout component
+import AdminLayout from "./components/templates/AdminLayout";
+
 export default function Router () {
     return (
         <BrowserRouter>
@@ -31,7 +34,7 @@ export default function Router () {
                 <Route path="/auth/reset-password/:code" element={<ResetPasswordView />} />
 
                 {/* Admin */}
-                <Route path="/admin/*">
+                <Route path="/admin/*" element={<AdminLayout />}>
                     <Route path="dashboard" element={<DashboardView />} />
                 </Route>
             </Routes>

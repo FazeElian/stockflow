@@ -11,20 +11,26 @@ import type { ResetPasswordForm } from "../../lib/types/services/auth/user.type"
 // Form components
 import { AuthInputField } from "../../components/atoms/auth/AuthInputField";
 import { AuthSubmitButton } from "../../components/atoms/auth/AuthSubmitButton";
+import { useResetPasswordMutation } from "../../services/auth/mutations";
 
 const ResetPasswordView = () => {
-    const { register, handleSubmit, formState: { errors } } = useForm<ResetPasswordForm> ({
+    const { register, handleSubmit, reset, formState: { errors } } = useForm<ResetPasswordForm> ({
         defaultValues: {
             password: "",
         }
     })
 
-    const { token } = useParams<{ token: string }>();
-    const tokenNumber = token ? Number(token) : NaN;
-    console.log(tokenNumber)
+    // Convert code to number
+    const { code } = useParams<{ code: string }>();
+    const codeNumber = code ? Number(code) : NaN;
 
+    const resetPasswordMutation = useResetPasswordMutation(codeNumber)
     const handleResetPassword = async (formData: ResetPasswordForm) => {
-        console.log(formData)
+        resetPasswordMutation.mutate(formData, {
+            onSuccess: () => {
+                reset()
+            }
+        });
     }
 
     return (

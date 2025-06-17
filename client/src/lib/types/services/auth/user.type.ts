@@ -8,15 +8,17 @@ export type User = {
     code: string;
 };
 
-export type RegisterForm = Pick<User, "userName" | "email" | "password">
+export type UserContextType = {
+    user: User | null
+}
 
+export type RegisterForm = Pick<User, "userName" | "email" | "password">
 export type LoginForm = Pick<User, "email"> & {
     password: string,
 }
 
 export type ForgotPasswordForm = Pick<User, "email">;
 export type ConfirmAccountForm = Pick<User, "code">;
-
 export type ResetPasswordForm = Pick<User, "code"> & {
     password: string
 }

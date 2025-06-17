@@ -16,16 +16,24 @@ import type { LoginForm } from "../../lib/types/services/auth/user.type";
 import { AuthInputField } from "../../components/atoms/auth/AuthInputField";
 import { AuthSubmitButton } from "../../components/atoms/auth/AuthSubmitButton";
 
+// Mutation
+import { useLoginMutation } from "../../services/auth/mutations";
+
 const LoginView = () => {
-    const { register, handleSubmit, formState: { errors } } = useForm<LoginForm> ({
+    const { register, handleSubmit, reset, formState: { errors } } = useForm<LoginForm> ({
         defaultValues: {
             email: "",
             password: ""     
         }
     })
 
+    const loginMutation = useLoginMutation()
     const handleLogin = async (formData: LoginForm) => {
-        console.log(formData)
+        loginMutation.mutate(formData, {
+            onSuccess: () => {
+                reset()
+            }
+        });
     }
 
     return (

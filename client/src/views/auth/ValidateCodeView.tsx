@@ -11,15 +11,27 @@ import type { ValidateCodeForm } from "../../lib/types/services/auth/user.type"
 import { AuthInputField } from "../../components/atoms/auth/AuthInputField";
 import { AuthSubmitButton } from "../../components/atoms/auth/AuthSubmitButton";
 
+// Mutation
+import { useValidateCodeMutation } from "../../services/auth/mutations";
+import { useNavigate } from "react-router-dom";
+
 const ValidateCodeView = () => {
+    // Redirection
+    const redirect = useNavigate()
+
     const { register, handleSubmit, formState: { errors } } = useForm<ValidateCodeForm> ({
         defaultValues: {
             code: undefined,
         }
     })
 
+    const validateCodeMutation = useValidateCodeMutation()
     const handleValidateCode = async (formData: ValidateCodeForm) => {
-        console.log(formData)
+        validateCodeMutation.mutate(formData, {
+            onSuccess: () => {
+                redirect(`/auth/reset-password/${formData.code}`)
+            }
+        });
     }
 
     return (
@@ -71,7 +83,7 @@ const ValidateCodeView = () => {
 
             <Toaster
                 richColors
-                position="bottom-right"
+                position="top-center"
             />
         </>
     )

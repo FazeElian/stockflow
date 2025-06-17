@@ -11,15 +11,26 @@ import type { ConfirmAccountForm} from "../../lib/types/services/auth/user.type"
 import { AuthInputField } from "../../components/atoms/auth/AuthInputField";
 import { AuthSubmitButton } from "../../components/atoms/auth/AuthSubmitButton";
 
+// Mutation
+import { useConfirmAccountMutation } from "../../services/auth/mutations";
+
 const ConfirmAccountView = () => {
-    const { register, handleSubmit, formState: { errors } } = useForm<ConfirmAccountForm> ({
+    const { register, handleSubmit, reset, formState: { errors } } = useForm<ConfirmAccountForm> ({
         defaultValues: {
-            code: undefined
+            code: ""
         }
     })
 
+    const confirmAccountMutation = useConfirmAccountMutation()
     const handleConfirmAccount = async (formData: ConfirmAccountForm) => {
-        console.log(formData)
+        confirmAccountMutation.mutate(formData, {
+            onSuccess: () => {
+                reset()
+            },
+            onError: (error) => {
+                console.log("Error:", error)
+            }
+        });
     }
 
     return (
@@ -71,7 +82,7 @@ const ConfirmAccountView = () => {
 
             <Toaster
                 richColors
-                position="bottom-right"
+                position="top-center"
             />
         </>
     )
