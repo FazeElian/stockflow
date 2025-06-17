@@ -1,8 +1,11 @@
+// Components for this view
+import { TitleView } from "../../components/atoms/TitleView"
+
 const DashboardView = () => {
     return (
-        <div>
-            <h1>Dashboard view</h1>
-        </div>
+        <main className="content-page--admin font-inter">
+            <TitleView name="Panel Principal" />
+        </main>
     )
 }
 
