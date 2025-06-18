@@ -70,7 +70,7 @@ const ProductRow : React.FC<ProductRowType> = (product) => {
                 )}
             </td>
             <td className="td td-options td-options-product">
-                <Link to="" className="btn-td btn-td-edit">
+                <Link to={`edit/${product.id}`} className="btn-td btn-td-edit">
                     <TbEdit />
                 </Link>
                 <button

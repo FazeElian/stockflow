@@ -3,10 +3,10 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "sonner";
 
 // Types
-import type { ProductForm } from "../../lib/types/services/product.type";
+import type { ProductFormType } from "../../lib/types/services/product.type";
 
 // API Calls
-import { deleteProduct, newProduct } from "./api";
+import { deleteProduct, newProduct, updateProduct } from "./api";
 
 // New product
 export const useNewProductMutation = () => {
@@ -17,7 +17,34 @@ export const useNewProductMutation = () => {
     const redirect = useNavigate()
 
     return useMutation({
-        mutationFn: (data: ProductForm) => newProduct(data),
+        mutationFn: (data: ProductFormType) => newProduct(data),
+        onSuccess: (response) => {
+            // Refetch products list
+            queryClient.refetchQueries({ queryKey: ["products"] })
+
+            // Sucess toast
+            toast.success(response);
+
+            // Redirect to products view
+            redirect("/admin/products")
+        },
+        onError: (error: Error) => {
+            const message = error.message;
+            toast.error(message);
+        },
+    })
+}
+
+// Update product
+export const useUpdateProductMutation = (id: number) => {
+    // Query client
+    const queryClient = useQueryClient()
+
+    // Redirection
+    const redirect = useNavigate()
+
+    return useMutation({
+        mutationFn: (data: ProductFormType) => updateProduct(data, id),
         onSuccess: (response) => {
             // Refetch products list
             queryClient.refetchQueries({ queryKey: ["products"] })

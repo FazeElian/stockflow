@@ -1,3 +1,5 @@
+import type { UseMutationResult } from "@tanstack/react-query";
+
 export type Product = {
     id: number;
     categoryId?: number | null;
@@ -23,7 +25,7 @@ export type ProductRowType = Pick<Product,
     "status"
 >;
 
-export type ProductForm = Pick<Product,
+export type ProductFormType = Pick<Product,
     "name" |
     "code" |
     "categoryId" |
@@ -34,3 +36,8 @@ export type ProductForm = Pick<Product,
     "minimumStock" |
     "status"
 >;
+
+export type ProductFormPropsType = {
+    initialValues: ProductFormType;
+    useMutation: () => UseMutationResult<Product, unknown, ProductFormType, unknown>;
+}

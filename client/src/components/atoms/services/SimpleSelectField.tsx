@@ -21,8 +21,8 @@ const SimpleSelectField = ({
                     {...rest}
                     className="font-inter"
                 >
-                    {optionsList.map((option : SimpleSelectOptionType) => (
-                        <option value={option.value}>
+                    {optionsList?.map((option : SimpleSelectOptionType) => (
+                        <option value={option.value} key={option.value}>
                             {option.text}
                         </option>
                     ))}

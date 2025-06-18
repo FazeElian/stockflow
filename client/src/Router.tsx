@@ -18,6 +18,7 @@ import DashboardView from "./views/admin/DashboardView";
 // Products module views
 import ProductsView from "./views/admin/products/ProductsView";
 import NewProductView from "./views/admin/products/NewProductView";
+import EditProductView from "./views/admin/products/EditProductView";
 
 import CategoriesView from "./views/admin/categories/CategoriesView";
 import InvoicesView from "./views/admin/invoices/InvoicesView";
@@ -54,6 +55,7 @@ export default function Router () {
                         {/* Products */}
                         <Route path="products" element={<ProductsView />} />
                         <Route path="products/new" element={<NewProductView />} />
+                        <Route path="products/edit/:id" element={<EditProductView />} />
 
                         <Route path="categories" element={<CategoriesView />} />
                         <Route path="invoices" element={<InvoicesView />} />
