@@ -1,4 +1,4 @@
-import { QueryClient, useMutation } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useNavigate } from "react-router-dom";
 import { toast } from "sonner";
 
@@ -6,12 +6,12 @@ import { toast } from "sonner";
 import type { ProductForm } from "../../lib/types/services/product.type";
 
 // API Calls
-import { newProduct } from "./api";
+import { deleteProduct, newProduct } from "./api";
 
 // New product
 export const useNewProductMutation = () => {
     // Query client
-    const queryClient = new QueryClient()
+    const queryClient = useQueryClient()
 
     // Redirection
     const redirect = useNavigate()
@@ -27,6 +27,27 @@ export const useNewProductMutation = () => {
 
             // Redirect to products view
             redirect("/admin/products")
+        },
+        onError: (error: Error) => {
+            const message = error.message;
+            toast.error(message);
+        },
+    })
+}
+
+// Delete product
+export const useDeleteProductMutation = () => {
+    // Query client
+    const queryClient = useQueryClient()
+
+    return useMutation({
+        mutationFn: (id: number) => deleteProduct(id),
+        onSuccess: (response) => {
+            // Sucess toast
+            toast.success(response);
+
+            // Refetch products list
+            queryClient.refetchQueries({ queryKey: ["products"] })
         },
         onError: (error: Error) => {
             const message = error.message;

@@ -1,4 +1,6 @@
 import { Link } from "react-router-dom";
+import { toast } from "sonner";
+
 
 // React icons
 import { FaBan, FaCheckCircle } from "react-icons/fa";
@@ -9,7 +11,27 @@ import { TbEdit } from "react-icons/tb";
 // Type
 import type { ProductRowType } from "../../../../lib/types/services/product.type";
 
+// Delete mutation
+import { useDeleteProductMutation } from "../../../../services/products/mutations";
+
 const ProductRow : React.FC<ProductRowType> = (product) => {
+    const deleteProductMutation = useDeleteProductMutation()
+    const handleDeleteProduct  = (id: number) => {
+        toast.warning(`¿Seguro que quieres eliminar este producto: "${product.name}"?`, {
+            action: (
+                <button
+                    onClick={() => {
+                        deleteProductMutation.mutate(id)
+                        toast.dismiss();
+                    }}
+                    className="font-inter btn-confirm-delete"
+                >
+                    Eliminar
+                </button>
+            ),
+        });
+    }
+
     return (
         <tr className="tbody tbody-products" key={product.id}>
             <td className="td td-code-product">
@@ -51,7 +73,11 @@ const ProductRow : React.FC<ProductRowType> = (product) => {
                 <Link to="" className="btn-td btn-td-edit">
                     <TbEdit />
                 </Link>
-                <button className="btn-td btn-td-delete">
+                <button
+                    type="button"
+                    onClick={() => handleDeleteProduct(product.id)}
+                    className="btn-td btn-td-delete"
+                >
                     <MdDelete />
                 </button>
             </td>
