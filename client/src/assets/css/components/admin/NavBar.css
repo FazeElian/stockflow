@@ -201,8 +201,8 @@
     }
 }
 
-/* Responsive 1024px */
-@media screen and (max-width: 1024px) {
+/* Responsive 1280px */
+@media screen and (max-width: 1280px) {
     .nav-bar {
         gap: 1rem;
         padding: 0 1.75rem 0;

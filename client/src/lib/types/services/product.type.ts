@@ -21,4 +21,16 @@ export type ProductRowType = Pick<Product,
     "outflows" |
     "stock" |
     "status"
->
+>;
+
+export type ProductForm = Pick<Product,
+    "name" |
+    "code" |
+    "categoryId" |
+    "description" |
+    "sellingPrice" |
+    "purchaseCost" |
+    "inflows" |
+    "minimumStock" |
+    "status"
+>;

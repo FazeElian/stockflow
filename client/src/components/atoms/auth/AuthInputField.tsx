@@ -2,7 +2,7 @@
 import type { AuthInputFieldType } from '../../../lib/types/atoms/auth-input-field.type'
 
 // Error validation component
-import { ErrorMessageValidation } from './ErrorMessageValidation'
+import { ErrorMessageValidation } from '../ErrorMessageValidation'
 
 const AuthInputField = ({ label, labelFor, error, ...rest }: AuthInputFieldType) => {
     return (

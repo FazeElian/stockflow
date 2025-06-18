@@ -14,7 +14,11 @@ import ResetPasswordView from "./views/auth/ResetPasswordView";
 
 // Admin views
 import DashboardView from "./views/admin/DashboardView";
+
+// Products module views
 import ProductsView from "./views/admin/products/ProductsView";
+import NewProductView from "./views/admin/products/NewProductView";
+
 import CategoriesView from "./views/admin/categories/CategoriesView";
 import InvoicesView from "./views/admin/invoices/InvoicesView";
 import SalesView from "./views/admin/sales/SalesView";
@@ -46,7 +50,11 @@ export default function Router () {
                     {/* Admin */}
                     <Route path="/admin/*" element={<AdminLayout />}>
                         <Route path="dashboard" element={<DashboardView />} />
+
+                        {/* Products */}
                         <Route path="products" element={<ProductsView />} />
+                        <Route path="products/new" element={<NewProductView />} />
+
                         <Route path="categories" element={<CategoriesView />} />
                         <Route path="invoices" element={<InvoicesView />} />
                         <Route path="sales" element={<SalesView />} />

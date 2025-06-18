@@ -1,0 +1,298 @@
+.form-module {
+    display: flex;
+    width: 100%;
+    height: auto;
+    background-color: #212026;
+    flex-direction: column;
+    margin: 3rem 0 3rem;
+    padding: 3rem;
+    border-radius: 8px;
+    gap: 1.5rem;
+}
+
+    .form-module h1 {
+        color: #F2F2F2;
+        font-size: 1.6rem;
+        font-weight: 500;
+    }
+    
+    .title-section-divided-group-form-module {
+        display: flex;
+        width: 100%;
+        height: auto;
+        border-bottom: 1px solid #89888C;
+        padding-bottom: 12px;
+        align-items: center;
+        gap: 8px;
+        color: #F2F2F2 !important;
+        margin-top: 1.5rem;
+    }
+
+        .title-section-divided-group-form-module svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        .title-section-divided-group-form-module h2 {
+            font-size: 1.2rem;
+            font-weight: 500;
+        }
+
+    .group-form-module {
+        display: flex;
+        width: 100%;
+        height: auto;
+        flex-direction: column;
+        gap: 8px;
+        flex-wrap: wrap;
+    }
+
+    .group-divided-form-module {
+        display: flex;
+        width: 100%;
+        height: auto;
+        gap: 8px;
+        flex-wrap: wrap;
+    }
+
+        .item-group-divided-form-module {
+            display: flex;
+            height: auto;
+            gap: 8px;
+            flex-direction: column;
+        }
+
+        .group-basic-info-prod {
+            flex: 30%;
+        }
+
+            .no-categories {
+                display: flex;
+                width: 100%;
+                height: 100%;
+                font-size: 15px;
+                color: #F2F2F2;
+                font-weight: 400;
+                border: 1px solid #D49124;
+                border-radius: 5px;
+                align-items: center;
+                justify-content: center;
+                text-align: center;
+                gap: 5px;
+                height: auto;
+                padding: 10px 1rem 10px;
+                flex-wrap: wrap;
+            }
+
+                .no-categories a {
+                    text-decoration: none;
+                    color: #D49124;
+                    font-weight: 500;
+                    min-width: 50px;
+                }
+
+                .categories-loading {
+                    display: flex;
+                    width: 100%;
+                    height: 100%;
+                    font-size: 15px;
+                    color: #F2F2F2;
+                    font-weight: 400;
+                    align-items: center;
+                    justify-content: center;
+                    border: 1px solid #F2F2F2;
+                    text-align: center;
+                    padding: 10px;
+                    border-radius: 5px;
+                }
+
+        .group-prices-info-prod {
+            flex: 45%;
+        }
+
+        .group-form-module label,
+        .item-group-divided-form-module {
+            font-weight: 500;
+            font-size: 17px;
+            color: #F2F2F2;
+        }
+
+        .group-form-module input,
+        .group-form-module textarea,
+        .group-form-module select,
+        .group-form-module option,
+        .item-group-divided-form-module input,
+        .item-group-divided-form-module textarea,
+        .item-group-divided-form-module select,
+        .item-group-divided-form-module option,
+        .file-btn {
+            display: flex;
+            width: 100%;
+            height: auto;
+            padding: 10px 1rem 10px;
+            font-size: 15.5px;
+            background: transparent;
+            border: 1px solid #89888C;
+            outline: none;
+            border-radius: 5px;
+            color: #F2F2F2;
+            transition: 0.2s ease-in-out;
+        }
+
+        .file-btn {
+            cursor: pointer;
+        }
+        
+        .group-form-module option,
+        .group-divided-form-module option {
+            background-color: #212026;
+        }
+
+        .group-form-module select ,
+        .group-divided-form-module select {
+            cursor: pointer;
+        }
+
+        .group-form-module textarea,
+        .group-divided-form-module textarea {
+            field-sizing: content;
+            min-height: 100px;
+            max-width: 100%;
+            min-width: 100%;
+        }
+
+        .group-form-module input:focus,
+        .group-form-module textarea:focus,
+        .group-form-module select:focus,
+        .group-divided-form-module input:focus,
+        .group-divided-form-module textarea:focus,
+        .group-divided-form-module select:focus,
+        .file-btn:focus {
+            border: 1px solid #F2F2F2;
+            transition: 0.2s ease-in;
+        }
+
+        .group-form-module input::-webkit-input-placeholder,
+        .group-form-module textarea::-webkit-input-placeholder,
+        .group-form-module select::-webkit-input-placeholder,
+        .group-divided-form-module input::-webkit-input-placeholder,
+        .group-divided-form-module textarea::-webkit-input-placeholder,
+        .group-divided-form-module select::-webkit-input-placeholder {
+            color: #89888C;
+        }
+
+/* Hide the X from search type input */
+input[type="search"]::-webkit-search-cancel-button {
+    display: none;
+}
+input[type="search"]::-moz-search-cancel-button {
+    display: none;
+}
+
+/* Hide the calendar icon by default on date type input */
+input[type="date"]::-webkit-calendar-picker-indicator {
+    opacity: 0;
+    display: none;
+    cursor: pointer;
+    padding: 0;
+}
+
+.input-date {
+    cursor: pointer;
+    max-height: 41px;
+}
+
+/* Hide the arrow from select input */
+select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background: none;
+}
+
+/* Responsive 1440px */
+@media screen and (max-width: 1440px) {
+    .form-module {
+        padding: 2.8rem;
+        border-radius: 6px;
+        gap: 1.2rem;
+        margin-top: 5rem;
+    }
+
+    .form-module h1 {
+        font-size: 1.5rem;
+    }
+
+    .group-form-module {
+        gap: 6px;
+    }
+
+    .group-form-module label {
+        font-size: 16px;
+    }
+
+    .group-form-module input,
+    .group-form-module textarea,
+    .group-form-module select,
+    .file-btn {
+        padding: 9px 1rem 9px;
+        font-size: 14px;
+        border-radius: 4px;
+    }
+
+    .group-form-module textarea {
+        min-height: 90px;
+    }
+}
+
+/* Responsive 768px */
+@media screen and (max-width: 768px) {
+    .group-form-module {
+        min-width: 100%;
+        flex-direction: 100%;
+        margin-bottom: 12px;
+    }
+}
+
+/* Responsive 600px */
+@media screen and (max-width: 600px) {
+    .form-module {
+        padding: 0;
+        border-radius: 5px;
+        gap: 1.1rem;
+        margin-top: 3rem;
+        background: transparent;
+    }
+
+    .form-module h1 {
+        font-size: 1.4rem;
+    }
+
+    .group-form-module {
+        gap: 5px;
+    }
+
+    .group-form-module textarea {
+        min-height: 80px;
+    }
+}
+
+/* Responsive 425px */
+@media screen and (max-width: 425px) {
+    .form-module h1 {
+        font-size: 1.3rem;
+    }
+
+    .group-form-module {
+        gap: 8px;
+    }
+
+    .group-form-module label,
+    .file-btn {
+        font-size: 15px;
+    }
+
+    .group-form-module textarea {
+        min-height: 100px;
+    }
+}

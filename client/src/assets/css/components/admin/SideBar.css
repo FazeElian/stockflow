@@ -111,8 +111,8 @@
     }
 }
 
-/* Responsive 1024px */
-@media screen and (max-width: 1024px) {
+/* Responsive 1280px */
+@media screen and (max-width: 1280px) {
     .side-bar {
         display: flex;
         top: 3.6rem;

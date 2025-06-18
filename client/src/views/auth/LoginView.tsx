@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom"
 import { useForm } from "react-hook-form";
 import { Toaster } from "sonner";
-import { ErrorMessageValidation } from "../../components/atoms/auth/ErrorMessageValidation";
+import { ErrorMessageValidation } from "../../components/atoms/ErrorMessageValidation";
 
 // Styles
 import "../../assets/css/components/company/auth/Forms.css";

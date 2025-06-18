@@ -1,5 +1,5 @@
 // Styles
-import "../../../assets/css/components/company/auth/ErrorMessageValidation.css";
+import "../../assets/css/components/company/auth/ErrorMessageValidation.css";
 
 interface ErrorMessageValidationProps {
     children: React.ReactNode
