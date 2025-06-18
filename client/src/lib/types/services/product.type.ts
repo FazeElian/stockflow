@@ -1,6 +1,6 @@
 export type Product = {
     id: number;
-    categoryId: number;
+    categoryId?: number | null;
     name: string;
     code: string;
     sellingPrice: number;

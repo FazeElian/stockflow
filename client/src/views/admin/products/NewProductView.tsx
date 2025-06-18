@@ -20,12 +20,15 @@ import { MdAttachMoney, MdOutlineInventory2 } from "react-icons/md";
 // Type
 import type { ProductForm } from "../../../lib/types/services/product.type";
 
+// Mutation
+import { useNewProductMutation } from "../../../services/products/mutations";
+
 const NewProductView = () => {
     const { register, handleSubmit, reset, formState: { errors } } = useForm<ProductForm>({
         defaultValues: {
             name: "",
             code: "",
-            categoryId: undefined,
+            categoryId: null,
             sellingPrice: NaN,
             purchaseCost: NaN,
             description: "",
@@ -35,9 +38,16 @@ const NewProductView = () => {
         }
     });
 
+    const newProductMutation = useNewProductMutation()
     const handleNewProduct = (formData: ProductForm) => {
-        console.log(formData)
-        reset()
+        newProductMutation.mutate(formData, {
+            onSuccess: () => {
+                reset()
+            },
+            onError: (error) => {
+                console.log(error)
+            }
+        })
     }
 
     return (

@@ -51,6 +51,9 @@ export class ProductController {
             // Add the new Product
             const product = new Product(req.body)
 
+            // Generate stock
+            product.stock = product.inflows - product.outflows
+
             // Send the user id & save
             product.userId = req.user.id;
             await product.save()

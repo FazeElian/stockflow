@@ -11,7 +11,7 @@ import type { ProductRowType } from "../../../../lib/types/services/product.type
 
 const ProductRow : React.FC<ProductRowType> = (product) => {
     return (
-        <tr className="tbody tbody-products">
+        <tr className="tbody tbody-products" key={product.id}>
             <td className="td td-code-product">
                 #{product.code}
             </td>
