@@ -17,6 +17,7 @@ const TopModuleBar : React.FC<TopModuleBarType> = (props) => {
             />
             <ModuleOptions
                 newText={props.newText}
+                shortNewText={props.shortNewText}
                 exportText={props?.exportText}
             />
         </div>

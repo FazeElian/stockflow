@@ -13,6 +13,7 @@ const CustomersView = () => {
                 inputName="name"
                 searchPlaceholder="Buscar cliente por nombre"
                 newText="Añadir cliente"
+                shortNewText="Añadir"
             />
         </main>
     )

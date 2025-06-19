@@ -14,6 +14,7 @@ const SalesView = () => {
                 searchPlaceholder="Buscar venta por código o cliente"
                 newText="Registrar venta"
                 exportText="ventas"
+                shortNewText="Registrar"
             />
         </main>
     )

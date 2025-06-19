@@ -14,6 +14,7 @@ const CategoriesView = () => {
                 inputName="name"
                 searchPlaceholder="Buscar categoría por nombre"
                 newText="Añadir categoría"
+                shortNewText="Añadir"
             />
 
             <CategoriesGallery />

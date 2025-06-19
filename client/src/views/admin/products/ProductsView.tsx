@@ -15,6 +15,7 @@ const ProductsView = () => {
                 searchPlaceholder="Buscar producto por nombre o código"
                 newText="Nuevo producto"
                 exportText="productos"
+                shortNewText="Nuevo"
             />
 
             {/* Table */}

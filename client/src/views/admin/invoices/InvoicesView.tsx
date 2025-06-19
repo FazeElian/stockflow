@@ -14,6 +14,7 @@ const InvoicesView = () => {
                 searchPlaceholder="Buscar factura por código"
                 newText="Nueva factura"
                 exportText="facturas"
+                shortNewText="Nueva"
             />
         </main>
     )

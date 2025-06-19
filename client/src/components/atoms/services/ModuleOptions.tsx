@@ -19,13 +19,15 @@ const ModuleOptions : React.FC<ModuleOptionsType> = (props) => {
                     <Link to="new" className="btn-module-options btn-new font-inter">
                         <IoAddCircleOutline />
                         <h2>{props.newText}</h2>
+                        <h3>{props.shortNewText}</h3>
                     </Link>
                 </div>
             ) : (
                 <div className="module-options">
-                    <Link to="new" className="btn-module-options btn-new font-inter">
+                    <Link to="new" className="btn-module-options btn-new font-inter btn-full-new">
                         <IoAddCircleOutline />
                         <h2>{props.newText}</h2>
+                        <h3>{props.shortNewText}</h3>
                     </Link>
                 </div>
             )}
