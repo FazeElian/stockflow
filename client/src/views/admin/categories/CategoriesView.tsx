@@ -1,6 +1,7 @@
 // Components for this view
 import { TitleView } from "../../../components/atoms/services/TitleView"
 import { TopModuleBar } from "../../../components/organisms/TopModuleBar"
+import { CategoriesGallery } from "../../../components/molecules/CategoriesGallery"
 
 const CategoriesView = () => {
     return (
@@ -14,6 +15,8 @@ const CategoriesView = () => {
                 searchPlaceholder="Buscar categoría por nombre"
                 newText="Añadir categoría"
             />
+
+            <CategoriesGallery />
         </main>
     )
 }
